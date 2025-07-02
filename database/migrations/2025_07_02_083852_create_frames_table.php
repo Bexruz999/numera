@@ -18,12 +18,11 @@ return new class extends Migration {
 
         Schema::create('frames-translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('article_id')->constrained()->onDelete('cascade');
+            $table->foreignId('frame_id')->constrained()->onDelete('cascade');
             $table->string('locale')->index();
             $table->string('name');
             $table->string('title');
             $table->text('text');
-            $table->unique(['article_id', 'locale'], 'article_locale_unique');
         });
     }
 
