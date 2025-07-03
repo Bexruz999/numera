@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Layouts\Services;
+namespace App\Orchid\Layouts\Frames;
 
 use App\Models\Frame;
 use Orchid\Screen\Actions\ModalToggle;
@@ -26,16 +26,19 @@ class FrameTable extends Table
      */
     protected function columns(): iterable
     {
-        $locale = app()->getLocale();
         return [
-            TD::make('name', 'Name')->sort()->render(function (Frame $frame) use ($locale) {
-                return optional($frame->translate($locale))->name;}),
-            TD::make('title', 'Title')->sort()->render(function (Frame $frame) use ($locale) {
-                return optional($frame->translate($locale))->title;}),
-            TD::make('text', 'Text')->sort()->render(function (Frame $frame) use ($locale) {
-                return optional($frame->translate($locale))->text;}),
-            TD::make('created_at', 'Created At')->sort(),
-            TD::make('updated_at', 'Updated At')->sort(),
+            TD::make('name', 'Name')->render(function (Frame $frame) {
+                $locale = app()->getLocale();
+                return $frame->translate($locale)?->name ?? '';
+            }),
+            TD::make('title', 'Title')->render(function (Frame $frame) {
+                $locale = app()->getLocale();
+                return $frame->translate($locale)?->title ?? '';
+            }),
+            TD::make('text', 'Description')->render(function (Frame $frame) {
+                $locale = app()->getLocale();
+                return $frame->translate($locale)?->text ?? '';
+            }),
             TD::make('img', 'Image')->render(function ($frame) {
                 return $frame->img ? "<img src='{$frame->img}' style='max-width:100px;'>" : '';
             }),

@@ -4,25 +4,25 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('frames', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('img');
+            $table->integer('order');
             $table->timestamps();
         });
 
-        Schema::create('frame_translations', function (Blueprint $table) {
+        Schema::create('question_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('frame_id')->constrained()->onDelete('cascade');
+            $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->string('locale')->index();
-            $table->string('name');
-            $table->string('title');
-            $table->text('text');
+            $table->text('question');
+            $table->text('answer');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('frames');
+        Schema::dropIfExists('questions');
     }
 };

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens\Blog;
+namespace App\Orchid\Screens\Articles;
 
 use App\Models\Article;
-use App\Orchid\Layouts\Blog\ArticleTable;
+use App\Orchid\Layouts\Articles\ArticleTable;
 use Illuminate\Support\Facades\App;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\ModalToggle;
@@ -33,7 +33,7 @@ class ArticlesScreen extends Screen
     public function name(): ?string
     {
 
-        return 'Articles ' . App::currentLocale();
+        return 'Articles' . ' ' . App::currentLocale();
     }
 
     /**

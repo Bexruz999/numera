@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\Blog\ArticlesScreen;
-use App\Orchid\Screens\BlogTypes\BlogTypeScreen;
+
+use App\Orchid\Screens\Articles\ArticlesScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -14,9 +14,10 @@ use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\PlatformScreen;
+use App\Orchid\Screens\Questions\QuestionScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
-use App\Orchid\Screens\Services\FramesScreen;
+use App\Orchid\Screens\Frames\FramesScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
@@ -45,6 +46,10 @@ Route::screen('/articles', ArticlesScreen::class)
 //Frame
 Route::screen('/frame', FramesScreen::class)
     ->name('platform.frame');
+
+//Questions
+Route::screen('/question', QuestionScreen::class)
+    ->name('platform.questions');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
