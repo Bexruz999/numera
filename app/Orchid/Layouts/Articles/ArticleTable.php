@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Layouts\Blog;
+namespace App\Orchid\Layouts\Articles;
 
 use App\Models\Article;
 use Orchid\Screen\Actions\ModalToggle;

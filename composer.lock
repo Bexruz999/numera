@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "930aca70b596dd8106d13cf70f07fa43",
+    "content-hash": "22318133520cc68ce8094bf27181dedd",
     "packages": [
         {
             "name": "astrotomic/laravel-translatable",
@@ -2924,6 +2924,77 @@
                 }
             ],
             "time": "2025-06-30T06:53:00+00:00"
+        },
+        {
+            "name": "orchid/settings",
+            "version": "2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tabuna/settings.git",
+                "reference": "538691f643b9ff0e601caeefa09d1d045645345e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tabuna/settings/zipball/538691f643b9ff0e601caeefa09d1d045645345e",
+                "reference": "538691f643b9ff0e601caeefa09d1d045645345e",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=5.4",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~5.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Setting": "Orchid\\Setting\\Facades\\Setting"
+                    },
+                    "providers": [
+                        "Orchid\\Setting\\Providers\\SettingServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Orchid/Setting/helpers.php"
+                ],
+                "psr-4": {
+                    "Orchid\\": "src/Orchid"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Chernyaev",
+                    "email": "bliz48rus@gmail.com"
+                }
+            ],
+            "description": "Settings for The Laravel Framework.",
+            "homepage": "https://theorchid.github.io/",
+            "keywords": [
+                "Settings",
+                "database",
+                "json",
+                "key",
+                "laravel",
+                "value"
+            ],
+            "support": {
+                "issues": "https://github.com/theOrchid/Settings/issues",
+                "source": "https://github.com/theOrchid/Settings"
+            },
+            "time": "2017-07-07T16:15:46+00:00"
         },
         {
             "name": "phpoption/phpoption",
