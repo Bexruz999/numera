@@ -20,6 +20,7 @@ use App\Orchid\Screens\Reviews\ReviewScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\Frames\FramesScreen;
+use App\Orchid\Screens\SettingsScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
@@ -61,6 +62,17 @@ Route::screen('/question', QuestionScreen::class)
 Route::screen('/reviews', ReviewScreen::class)
     ->name('platform.reviews');
 
+
+///////////////////////////////////////////////////////////////
+
+// Settings
+Route::screen('/settings', SettingsScreen::class)
+    ->name('platform.settings')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Settings'), route('platform.settings')));
+
+////////////////////////////////////////////////////////////////
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
     ->name('platform.profile')

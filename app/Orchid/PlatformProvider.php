@@ -9,24 +9,17 @@ use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\App;
 use Orchid\Support\Color;
 
 class PlatformProvider extends OrchidServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @param Dashboard $dashboard
-     *
-     * @return void
-     */
-    public function boot(Dashboard $dashboard): void
-    {
-        parent::boot($dashboard);
 
-        // ...
-    }
+    protected array $locales = [
+        'uz' => 'O‘zbekcha',
+        'ru' => 'Русский',
+    ];
+
+    protected string $locale; // Default locale
 
     /**
      * Register the application menu.
@@ -35,27 +28,20 @@ class PlatformProvider extends OrchidServiceProvider
      */
     public function menu(): array
     {
-        $locales = [
-            'uz' => 'O‘zbekcha',
-            'ru' => 'Русский',
-        ];
-
-        $currentLocale = Session::get('locale', app()->getLocale());
-
-        App::setLocale($currentLocale);
+        $this->locale = Session::get('locale', app()->getLocale());
 
         return [
-            Menu::make($locales[$currentLocale] ?? strtoupper($currentLocale))
+            Menu::make($this->locales[$this->locale] ?? strtoupper($this->locale))
                 ->icon('bs.translate')
                 ->list([
                     Menu::make('O‘zbekcha')
                         ->icon('flag')
                         ->url(route('set-locale', ['locale' => 'uz']))
-                        ->active($currentLocale === 'uz'),
+                        ->active(($this->locale === 'uz') ? 'active' : null),
                     Menu::make('Русский')
                         ->icon('flag')
                         ->url(route('set-locale', ['locale' => 'ru']))
-                        ->active($currentLocale === 'ru'),
+                        ->active(($this->locale === 'ru') ? 'active' : null),
                 ])
                 ->title('Locale'),
 
@@ -88,7 +74,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Sample Screen')
                 ->icon('bs.collection')
                 ->route('platform.example')
-                ->badge(fn () => 6),
+                ->badge(fn() => 6),
 
             Menu::make('Form Elements')
                 ->icon('bs.card-list')
@@ -118,6 +104,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.users')
                 ->title(__('Access Controls')),
 
+            Menu::make('Settings')
+                ->icon('bs.gear')
+                ->route('platform.settings')
+                ->permission('platform.systems.users'),
+
             Menu::make(__('Roles'))
                 ->icon('bs.shield')
                 ->route('platform.systems.roles')
@@ -134,7 +125,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.box-arrow-up-right')
                 ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
                 ->target('_blank')
-                ->badge(fn () => Dashboard::version(), Color::DARK),
+                ->badge(fn() => Dashboard::version(), Color::DARK),
         ];
     }
 

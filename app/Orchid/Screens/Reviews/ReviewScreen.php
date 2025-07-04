@@ -116,7 +116,7 @@ class ReviewScreen extends Screen
                         ->help('Upload an image for the review'),
                 ]),
                 Layout::tabs([
-                    'Create UZ' => Layout::rows([
+                    'Edit UZ' => Layout::rows([
                         Input::make('review.title.uz')
                             ->title('Title (UZ)')
                             ->placeholder('Enter review title (uz)')
@@ -133,7 +133,7 @@ class ReviewScreen extends Screen
                                 'Value (UZ)',
                             ]),
                     ]),
-                    'Create RU' => Layout::rows([
+                    'Edit RU' => Layout::rows([
                         Input::make('review.title.ru')
                             ->title('Title (RU)')
                             ->placeholder('Enter review title (ru)'),

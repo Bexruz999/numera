@@ -169,6 +169,8 @@ class HistoryScreen extends Screen
     public function asyncGet(History $history): array
     {
         // Prepare the article data in the structure expected by the form
+
+        dd($history);
         $data = [
             'img' => $history->img,
             'name' => [
