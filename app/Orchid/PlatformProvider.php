@@ -67,6 +67,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.window')
                 ->route('platform.frame'),
 
+            Menu::make('History')
+                ->icon('bs.window')
+                ->route('platform.history'),
+
+
             Menu::make('Questions')
                 ->icon('bs.question-circle')
                 ->route('platform.questions'),

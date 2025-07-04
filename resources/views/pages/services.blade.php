@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endpush
 
+
 @section('content')
     <section class="feed">
         <div class="feed__container">

@@ -13,6 +13,7 @@ use App\Orchid\Screens\Examples\ExampleGridScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use App\Orchid\Screens\History\HistoryScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Questions\QuestionScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
@@ -46,6 +47,10 @@ Route::screen('/articles', ArticlesScreen::class)
 //Frame
 Route::screen('/frame', FramesScreen::class)
     ->name('platform.frame');
+
+//History
+Route::screen('/history', HistoryScreen::class)
+    ->name('platform.history');
 
 //Questions
 Route::screen('/question', QuestionScreen::class)

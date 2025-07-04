@@ -22,7 +22,9 @@ class ArticlesScreen extends Screen
      */
     public function query(): iterable
     {
-        return ['articles' => Article::paginate(10)];
+        return [
+            'articles' => Article::paginate(10)
+        ];
     }
 
     /**
@@ -69,8 +71,8 @@ class ArticlesScreen extends Screen
                         ->required()
                         ->help('Upload an image for the article'),
                 ]),
-                Layout::accordion([
-                    'Uz' => Layout::rows([
+                Layout::tabs([
+                    'Create UZ' => Layout::rows([
                         Input::make('article.title.uz')
                             ->title('Title (UZ)')
                             ->placeholder('Enter article title (uz)')
@@ -84,7 +86,7 @@ class ArticlesScreen extends Screen
                             ->placeholder('Select the type of the article')
                             ->required(),
                     ]),
-                    'Ru' => Layout::rows([
+                    'Create RU' => Layout::rows([
                         Input::make('article.title.ru')
                             ->title('Title (RU)')
                             ->placeholder('Enter article title (ru)'),
@@ -136,7 +138,7 @@ class ArticlesScreen extends Screen
                     ]),
                 ])
             ])
-            ->async('asyncGetArticle'), // <-- Make edit modal async to populate fields
+                ->async('asyncGetArticle'), // <-- Make edit modal async to populate fields
 
             ArticleTable::class,
         ];

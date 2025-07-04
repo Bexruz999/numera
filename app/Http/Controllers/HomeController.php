@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Article;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
             ->latest('published_at')
             ->take(3)
             ->get();
-        
+
         return view('pages.index', compact('recentPosts'));
     }
 
@@ -25,7 +26,14 @@ class HomeController extends Controller
 
     public function services()
     {
-        return view('pages.services', ['headerClass' => 'about-header']);
+        app()->setlocale('uz');
+
+        $articles = Article::all();
+
+        return view('pages.services', [
+            'headerClass' => 'about-header',
+            'articles' => $articles
+        ]);
     }
 
     public function contact()
@@ -40,6 +48,12 @@ class HomeController extends Controller
 
     public function blog()
     {
-        return view('pages.blog');
+        $locale = app()->getLocale();
+        $articles = Article::get();
+        $article_filters = $articles->map(function ($article) use ($locale) {
+            return $article->translate($locale);
+        })->pluck('type');
+
+        return view('pages.blog', ['articles' => $articles, 'article_filters' => $article_filters, 'locale' => $locale]);
     }
 }
