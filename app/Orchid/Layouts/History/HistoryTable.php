@@ -2,6 +2,9 @@
 
 namespace App\Orchid\Layouts\History;
 
+use App\Models\Article;
+use App\Models\History;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
@@ -15,7 +18,7 @@ class HistoryTable extends Table
      *
      * @var string
      */
-    protected $target = '';
+    protected $target = 'history';
 
     /**
      * Get the table cells to be displayed.
@@ -24,6 +27,31 @@ class HistoryTable extends Table
      */
     protected function columns(): iterable
     {
-        return [];
+        return [
+            TD::make('id', 'ID'),
+            TD::make('name', 'Nomi'),
+
+            TD::make('action')->render(function (History $history) {
+                return
+                    '<div class="d-flex gap-2">'
+                    . ModalToggle::make()
+                        ->icon('bs.pencil-square')
+                        ->modal('edit')
+                        ->method('update')
+                        ->modalTitle('Edit')
+                        ->asyncParameters([
+                            'history' => $history->id,
+                        ])->render()
+                    . ModalToggle::make()
+                        ->icon('bs.trash')
+                        ->modal('delete')
+                        ->method('delete')
+                        ->modalTitle('Delete')
+                        ->asyncParameters([
+                            'history' => $history->id,
+                        ])->render()
+                    . '</div>';
+            }),
+        ];
     }
 }

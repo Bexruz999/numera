@@ -63,6 +63,8 @@ class ArticlesScreen extends Screen
     public function layout(): iterable
     {
         return [
+            ArticleTable::class,
+
             Layout::modal('createArticle', [
                 Layout::rows([
                     Picture::make('article.img')
@@ -139,8 +141,6 @@ class ArticlesScreen extends Screen
                 ])
             ])
                 ->async('asyncGetArticle'), // <-- Make edit modal async to populate fields
-
-            ArticleTable::class,
         ];
     }
 
