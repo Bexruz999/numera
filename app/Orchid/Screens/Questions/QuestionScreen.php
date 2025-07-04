@@ -179,7 +179,7 @@ class QuestionScreen extends Screen
     /**
      * Delete a question and its translations.
      */
-    public function deleteQuestion(Request $request)
+    public function delete(Request $request)
     {
         $id = $request->input('question');
         $question = Question::findOrFail($id);
