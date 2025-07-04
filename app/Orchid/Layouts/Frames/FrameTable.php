@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Frames;
 
 use App\Models\Frame;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -53,14 +54,11 @@ class FrameTable extends Table
                         ->asyncParameters([
                             'frame' => $frame->id,
                         ])->render()
-                    . ModalToggle::make()
+                    . Button::make()
                         ->icon('bs.trash')
-                        ->modal('deleteFrame')
-                        ->method('deleteFrame')
-                        ->modalTitle('Delete Frame')
-                        ->asyncParameters([
-                            'frame' => $frame->id,
-                        ])->render()
+                        ->confirm('Are you sure you want to delete this review?')
+                        ->method('delete', ['frame' => $frame->id])
+                        ->render()
                     . '</div>';
             }),
         ];

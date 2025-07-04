@@ -60,8 +60,6 @@ class HistoryScreen extends Screen
     public function layout(): iterable
     {
         return [
-            HistoryTable::class,
-
             Layout::modal('create', [
                 Layout::rows([
                     Picture::make('history.img')
@@ -138,6 +136,7 @@ class HistoryScreen extends Screen
                 ])
             ])->async('asyncGet'),
 
+            HistoryTable::class,
         ];
     }
 

@@ -224,7 +224,7 @@ class ArticlesScreen extends Screen
         Toast::info('Article updated successfully!');
     }
 
-    public function deleteArticle(Article $article): void
+    public function delete(Article $article): void
     {
         $article->delete();
         Toast::info('Article deleted successfully!');

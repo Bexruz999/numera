@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Questions;
 
 use App\Models\Question;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -56,14 +57,11 @@ class QuestionTable extends Table
                         ->asyncParameters([
                             'question' => $question->id,
                         ])->render()
-                    . ModalToggle::make()
+                    . Button::make()
                         ->icon('bs.trash')
-                        ->modal('deleteQuestion')
-                        ->method('deleteQuestion')
-                        ->modalTitle('Delete Question')
-                        ->asyncParameters([
-                            'question' => $question->id,
-                        ])->render()
+                        ->confirm('Are you sure you want to delete this review?')
+                        ->method('delete', ['question' => $question->id])
+                        ->render()
                     . '</div>';
             }),
         ];

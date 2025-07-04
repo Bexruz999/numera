@@ -16,6 +16,7 @@ use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\History\HistoryScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Questions\QuestionScreen;
+use App\Orchid\Screens\Reviews\ReviewScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\Frames\FramesScreen;
@@ -55,6 +56,10 @@ Route::screen('/history', HistoryScreen::class)
 //Questions
 Route::screen('/question', QuestionScreen::class)
     ->name('platform.questions');
+
+//Reviews
+Route::screen('/reviews', ReviewScreen::class)
+    ->name('platform.reviews');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)

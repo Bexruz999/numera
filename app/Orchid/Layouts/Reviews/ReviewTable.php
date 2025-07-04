@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Orchid\Layouts\Articles;
+namespace App\Orchid\Layouts\Reviews;
 
-use App\Models\Article;
+use App\Models\Review;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
-class ArticleTable extends Table
+class ReviewTable extends Table
 {
     /**
      * Data source.
@@ -18,7 +18,7 @@ class ArticleTable extends Table
      *
      * @var string
      */
-    protected $target = 'articles';
+    protected $target = 'reviews';
 
     /**
      * Get the table cells to be displayed.
@@ -30,35 +30,35 @@ class ArticleTable extends Table
         $locale = app()->getLocale();
 
         return [
-            TD::make('title', 'Title')->sort()->render(function (Article $article) use ($locale) {
-                return optional($article->translate($locale))->title;
+            TD::make('title', 'Title')->sort()->render(function (Review $review) use ($locale) {
+                return optional($review->translate($locale))->title;
             }),
-            TD::make('description', 'Description')->render(function (Article $article) use ($locale) {
-                return optional($article->translate($locale))->description;
+            TD::make('description', 'Description')->render(function (Review $review) use ($locale) {
+                return optional($review->translate($locale))->description;
             }),
-            TD::make('type', 'Type')->render(function (Article $article) use ($locale) {
-                return optional($article->translate($locale))->type;
+            TD::make('matrix', 'Matrix')->render(function (Review $review) use ($locale) {
+                return optional($review->translate($locale))->type;
             }),
             TD::make('created_at', 'Created At')->sort(),
             TD::make('updated_at', 'Updated At')->sort(),
-            TD::make('img', 'Image')->render(function (Article $article) {
-                return $article->img ? "<img src='{$article->img}' style='max-width:100px;'>" : '';
+            TD::make('img', 'Image')->render(function (Review $review) {
+                return $review->img ? "<img src='{$review->img}' style='max-width:100px;'>" : '';
             }),
-            TD::make('action')->render(function (Article $article) {
+            TD::make('action')->render(function (Review $review) {
                 return
                     '<div class="d-flex gap-2">'
                     . ModalToggle::make()
                         ->icon('bs.pencil-square')
-                        ->modal('editArticle')
-                        ->method('updateArticle')
-                        ->modalTitle('Edit Article')
+                        ->modal('edit')
+                        ->method('update')
+                        ->modalTitle('Edit Review')
                         ->asyncParameters([
-                            'article' => $article->id,
+                            'review' => $review->id,
                         ])->render()
                     . Button::make()
                         ->icon('bs.trash')
                         ->confirm('Are you sure you want to delete this review?')
-                        ->method('delete', ['article' => $article->id])
+                        ->method('delete', ['review' => $review->id])
                         ->render()
                     . '</div>';
             }),

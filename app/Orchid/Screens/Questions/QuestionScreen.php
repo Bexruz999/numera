@@ -6,6 +6,7 @@ use App\Models\Question;
 use App\Orchid\Layouts\Questions\QuestionTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Orchid\Screen\Action;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
@@ -22,7 +23,7 @@ class QuestionScreen extends Screen
     public function query(): iterable
     {
         return [
-            'questions' => \App\Models\Question::with('translations')->get(),
+            'questions' => Question::orderby('order')->with('translations')->get(),
         ];
     }
 
@@ -41,7 +42,7 @@ class QuestionScreen extends Screen
     /**
      * The screen's action buttons.
      *
-     * @return \Orchid\Screen\Action[]
+     * @return Action[]
      */
     public function commandBar(): iterable
     {
@@ -63,6 +64,7 @@ class QuestionScreen extends Screen
     {
         return [
             QuestionTable::class,
+
             Layout::modal('createQuestion', [
                 Layout::tabs([
                     'Uz' => Layout::rows([
@@ -82,27 +84,39 @@ class QuestionScreen extends Screen
                             ->required(),
                     ]),
                 ]),
-            ])->title('Create Question')->method('createQuestion'),
+            ])->title('Create Question')
+                ->method('createQuestion'),
+
             Layout::modal('editQuestion', [
                 Layout::tabs([
-                    'Uz' => Layout::rows([
-                        Input::make('question.uz.question')
+                    'Edit Uz' => Layout::rows([
+                        Input::make('question.question.uz')
                             ->title('Savol (Uz)')
                             ->required(),
-                        Input::make('question.uz.answer')
+                        Input::make('question.answer.uz')
                             ->title('Javob (Uz)')
                             ->required(),
                     ]),
-                    'Ru' => Layout::rows([
-                        Input::make('question.ru.question')
+                    'Edit Ru' => Layout::rows([
+                        Input::make('question.question.ru')
                             ->title('Savol (Ru)')
                             ->required(),
-                        Input::make('question.ru.answer')
+                        Input::make('question.answer.ru')
                             ->title('Javob (Ru)')
                             ->required(),
                     ]),
                 ]),
-            ])->title('Edit Question')->async('asyncGetQuestion')->method('updateQuestion'),
+
+                Layout::rows([
+                    Input::make('question.order')
+                        ->title('Order')
+                        ->type('number')
+                        ->help('Set the order of the question in the list')
+                        ->required(),
+                ])
+            ])->title('Edit Question')
+                ->async('asyncGetQuestion')
+                ->method('updateQuestion'),
         ];
     }
 
@@ -135,15 +149,16 @@ class QuestionScreen extends Screen
      */
     public function updateQuestion(Request $request)
     {
-        $id = $request->input('question.id');
+        $id = $request->get('question');
         $data = $request->input('question', []);
 
         $question = Question::findOrFail($id);
 
         foreach (['uz', 'ru'] as $locale) {
-            $question->translateOrNew($locale)->question = $data[$locale]['question'] ?? '';
-            $question->translateOrNew($locale)->answer = $data[$locale]['answer'] ?? '';
+            $question->translateOrNew($locale)->question = $data['question'][$locale] ?? '';
+            $question->translateOrNew($locale)->answer = $data['answer'][$locale] ?? '';
         }
+        $question->order = $data['order'] ?? 1; // Ensure order is set
         $question->save();
 
         Toast::info('Question updated successfully!');
@@ -169,5 +184,26 @@ class QuestionScreen extends Screen
         $id = $request->input('question');
         $question = Question::findOrFail($id);
         $question->delete();
+        Toast::info('Question deleted successfully!');
+    }
+
+    public function asyncGetQuestion(Question $question): array
+    {
+        // Prepare the article data in the structure expected by the form
+        $data = [
+            'question' => [
+                'uz' => $question->translate('uz')->question ?? '',
+                'ru' => $question->translate('ru')->question ?? '',
+            ],
+            'answer' => [
+                'uz' => $question->translate('uz')->answer ?? '',
+                'ru' => $question->translate('ru')->answer ?? '',
+            ],
+            'order' => $question->order ?? 1,
+        ];
+
+        return [
+            'question' => $data
+        ];
     }
 }

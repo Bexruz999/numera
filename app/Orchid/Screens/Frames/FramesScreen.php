@@ -172,4 +172,10 @@ class FramesScreen extends Screen
         ];
         return ['frame' => $data];
     }
+
+    public function delete(Frame $frame): void
+    {
+        $frame->delete();
+        Toast::info('Review deleted successfully!');
+    }
 }

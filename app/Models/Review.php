@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 
-class Article extends Model implements TranslatableContract
+class Review extends Model implements TranslatableContract
 {
     use HasFactory, AsSource, Translatable;
 
-    public $translatedAttributes  = ['title', 'description', 'type'];
+    public $translatedAttributes  = ['title', 'description', 'matrix'];
 
     protected $fillable = [
         'title',
         'description',
+        'matrix',
         'img',
     ];
 
