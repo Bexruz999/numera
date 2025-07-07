@@ -2,14 +2,12 @@
 
 namespace App\Orchid\Screens\History;
 
-use App\Models\Article;
 use App\Models\History;
 use App\Orchid\Layouts\History\HistoryTable;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Screen;
-use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
@@ -49,6 +47,7 @@ class HistoryScreen extends Screen
                 ->modal('create')
                 ->method('create')
                 ->icon('bs.plus')
+                ->modalTitle('Create History')
         ];
     }
 
@@ -119,7 +118,7 @@ class HistoryScreen extends Screen
                             ->placeholder('Enter article description (uz)')
                             ->required(),
                         Input::make('history.position.uz')
-                            ->title('Type')
+                            ->title('Position')
                             ->placeholder('Select the type of the article')
                             ->required(),
                     ]),
@@ -131,7 +130,7 @@ class HistoryScreen extends Screen
                             ->title('Description (RU)')
                             ->placeholder('Enter article description (ru)'),
                         Input::make('history.position.ru')
-                            ->title('Type')
+                            ->title('Position')
                             ->placeholder('Select the type of the article')
                             ->required(),
                     ]),

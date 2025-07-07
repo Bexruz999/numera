@@ -2,9 +2,9 @@
 
 namespace App\Orchid\Screens\Frames;
 
-use Illuminate\Http\Request;
 use App\Models\Frame;
 use App\Orchid\Layouts\Frames\FrameTable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
@@ -31,6 +31,7 @@ class FramesScreen extends Screen
      * @return string|null
      */
     public $description = 'Manage your frames';
+
     public function name(): ?string
     {
         return 'Frames' . ' ' . App::currentLocale();
@@ -48,6 +49,7 @@ class FramesScreen extends Screen
                 ->icon('plus')
                 ->modal('createFrame')
                 ->method('createFrame')
+                ->modalTitle('Create Frame')
         ];
     }
 
@@ -65,7 +67,7 @@ class FramesScreen extends Screen
                     Picture::make('frame.img')->targetRelativeUrl()
                 ]),
                 Layout::tabs([
-                    'Uz' => Layout::rows([
+                    'Create Uz' => Layout::rows([
                         Input::make('frame.name.uz')
                             ->title('Name (UZ)')
                             ->required(),
@@ -75,7 +77,7 @@ class FramesScreen extends Screen
                             ->title('Text (UZ)')
                             ->required()
                     ]),
-                    'Ru' => Layout::rows([
+                    'Create Ru' => Layout::rows([
                         Input::make('frame.name.ru')
                             ->title('Name (RU)')
                             ->required(),
@@ -98,7 +100,8 @@ class FramesScreen extends Screen
                             ->title('Name (UZ)')
                             ->required(),
                         Input::make('frame.title.uz')
-                            ->title('Title (UZ)'),
+                            ->title('Title (UZ)')
+                            ->required(),
                         Input::make('frame.text.uz')
                             ->title('Text (UZ)')
                             ->required()
@@ -108,7 +111,8 @@ class FramesScreen extends Screen
                             ->title('Name (RU)')
                             ->required(),
                         Input::make('frame.title.ru')
-                            ->title('Title (RU)'),
+                            ->title('Title (RU)')
+                            ->required(),
                         Input::make('frame.text.ru')
                             ->title('Text (RU)')
                             ->required()

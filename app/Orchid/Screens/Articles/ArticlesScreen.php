@@ -50,11 +50,9 @@ class ArticlesScreen extends Screen
                 ->modal('createArticle')
                 ->icon('bs.plus')
                 ->method('createArticle')
-            ,
-            // Add more actions as needed
+                ->modalTitle('Create Article'),
         ];
     }
-
     /**
      * The screen's layout elements.
      *
