@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('locked')->default(false);
             $table->string('type')->default('text'); // e.g., 'text', 'number', 'boolean', 'select', etc.
             $table->json('value')->nullable(); // Store the value as a string for flexibility
+            $table->json('options')->nullable();
             $table->timestamps();
         });
     }
