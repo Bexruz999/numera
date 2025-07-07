@@ -14603,6 +14603,25 @@
             <div class="story__title title">Реальные истории</div>
             <div class="story__swiper swiper-container">
                 <div class="story__wrapper swiper-wrapper">
+                    @foreach($histories as $history)
+                        <div class="story__slide swiper-slide">
+                            <div class="story__slide_img">
+                                <img src="{{ asset($history->img) }}" alt="#" />
+                            </div>
+                            <div class="story__slide_content">
+                                <div class="story__slide_name">{{$history->translate($locale)?->name }}</div>
+                                <div class="story__slide_position">
+                                    {{ $history->translate($locale)?->position}}
+                                </div>
+                                <div class="story__slide_text">
+                                    <p>
+                                        {{ $history->translate($locale)?->description }}
+                                    </p>
+                                    <span>Читать дальше</span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                     <div class="story__slide swiper-slide">
                         <div class="story__slide_img">
                             <img src="../img/jpg/story02.jpg" alt="#" />

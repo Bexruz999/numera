@@ -50,11 +50,9 @@ class ArticlesScreen extends Screen
                 ->modal('createArticle')
                 ->icon('bs.plus')
                 ->method('createArticle')
-            ,
-            // Add more actions as needed
+                ->modalTitle('Create Article'),
         ];
     }
-
     /**
      * The screen's layout elements.
      *
@@ -175,7 +173,6 @@ class ArticlesScreen extends Screen
 
     public function asyncGetArticle(Article $article): array
     {
-        // Prepare the article data in the structure expected by the form
         $data = [
             'img' => $article->img,
             'title' => [

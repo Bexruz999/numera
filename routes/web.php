@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;  // Add this
-use App\Http\Controllers\PostController;  // Add this
 
 Route::get('/', function () {
     return view('orchid.custom-tabs');

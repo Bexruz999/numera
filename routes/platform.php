@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 
 use App\Orchid\Screens\Articles\ArticlesScreen;
+use App\Orchid\Screens\Consultations\ConsultationScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -61,6 +62,10 @@ Route::screen('/question', QuestionScreen::class)
 //Reviews
 Route::screen('/reviews', ReviewScreen::class)
     ->name('platform.reviews');
+
+//Consultations
+Route::screen('/consultations', ConsultationScreen::class)
+    ->name('platform.consultations');
 
 
 ///////////////////////////////////////////////////////////////

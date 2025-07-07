@@ -4,6 +4,7 @@ namespace App\Orchid\Layouts\History;
 
 use App\Models\Article;
 use App\Models\History;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -18,7 +19,7 @@ class HistoryTable extends Table
      *
      * @var string
      */
-    protected $target = 'history';
+    protected $target = 'histories';
 
     /**
      * Get the table cells to be displayed.
@@ -30,7 +31,9 @@ class HistoryTable extends Table
         return [
             TD::make('id', 'ID'),
             TD::make('name', 'Nomi'),
-
+            TD::make('img', 'Image')->render(function (History $history) {
+                return $history->img ? "<img src='{$history->img}' style='max-width:50px;'>" : '';
+            }),
             TD::make('action')->render(function (History $history) {
                 return
                     '<div class="d-flex gap-2">'
@@ -42,14 +45,10 @@ class HistoryTable extends Table
                         ->asyncParameters([
                             'history' => $history->id,
                         ])->render()
-                    . ModalToggle::make()
+                    . Button::make()
                         ->icon('bs.trash')
-                        ->modal('delete')
-                        ->method('delete')
-                        ->modalTitle('Delete')
-                        ->asyncParameters([
-                            'history' => $history->id,
-                        ])->render()
+                        ->confirm('bla bla ?')
+                        ->method('delete', ['history' => $history->id])
                     . '</div>';
             }),
         ];

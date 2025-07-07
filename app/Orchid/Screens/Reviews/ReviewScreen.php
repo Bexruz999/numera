@@ -6,9 +6,7 @@ use App\Models\Review;
 use App\Orchid\Layouts\Reviews\ReviewTable;
 use Illuminate\Support\Facades\App;
 use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Label;
 use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Screen;
@@ -51,6 +49,7 @@ class ReviewScreen extends Screen
                 ->modal('create')
                 ->method('create')
                 ->icon('plus')
+                ->modalTitle('Create Review')
         ];
     }
 
@@ -68,8 +67,7 @@ class ReviewScreen extends Screen
                     Picture::make('review.img')
                         ->title('Image')
                         ->targetRelativeUrl()
-                        ->required()
-                        ->help('Upload an image for the review'),
+                        ->required(),
                 ]),
                 Layout::tabs([
                     'Create UZ' => Layout::rows([
@@ -92,10 +90,12 @@ class ReviewScreen extends Screen
                     'Create RU' => Layout::rows([
                         Input::make('review.title.ru')
                             ->title('Title (RU)')
-                            ->placeholder('Enter review title (ru)'),
+                            ->placeholder('Enter review title (ru)')
+                            ->required(),
                         Input::make('review.description.ru')
                             ->title('Description (RU)')
-                            ->placeholder('Enter review description (ru)'),
+                            ->placeholder('Enter review description (ru)')
+                            ->required(),
                         Matrix::make('review.matrix.ru')
                             ->help('Matrix for RU')
                             ->columns([
@@ -136,10 +136,12 @@ class ReviewScreen extends Screen
                     'Edit RU' => Layout::rows([
                         Input::make('review.title.ru')
                             ->title('Title (RU)')
-                            ->placeholder('Enter review title (ru)'),
+                            ->placeholder('Enter review title (ru)')
+                            ->required(),
                         Input::make('review.description.ru')
                             ->title('Description (RU)')
-                            ->placeholder('Enter review description (ru)'),
+                            ->placeholder('Enter review description (ru)')
+                            ->required(),
                         Matrix::make('review.matrix.ru')
                             ->help('Matrix for RU')
                             ->columns([
@@ -175,7 +177,8 @@ class ReviewScreen extends Screen
         foreach (['uz', 'ru'] as $locale) {
             $review->translateOrNew($locale)->title = $data['title'][$locale] ?? null;
             $review->translateOrNew($locale)->description = $data['description'][$locale] ?? null;
-            $review->translateOrNew($locale)->matrix = $data['matrix'][$locale] ? json_encode($data['matrix'][$locale]) : null;
+            $matrixValue = $data["matrix"][$locale] ?? [];
+            $review->translateOrNew($locale)->matrix = json_encode($matrixValue ?: []);
         }
 
         $review->save();
@@ -196,14 +199,22 @@ class ReviewScreen extends Screen
                 'ru' => $review->translate('ru')->description ?? '',
             ],
             'matrix' => [
-                'uz' => $review->translate('uz')->matrix ?? '',
-                'ru' => $review->translate('ru')->matrix ?? '',
+                'uz' => $this->decode($review->translate('uz')->matrix ?? ''),
+                'ru' => $this->decode($review->translate('ru')->matrix ?? ''),
             ],
         ];
 
         return [
             'review' => $data
         ];
+    }
+
+    private function decode($matrix)
+    {
+        if (empty($matrix)) return [];
+        if (is_array($matrix)) return $matrix;
+        $decoded = json_decode($matrix, true);
+        return (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) ? $decoded : [];
     }
 
     public function update(Review $review): void
@@ -225,7 +236,8 @@ class ReviewScreen extends Screen
         foreach (['uz', 'ru'] as $locale) {
             $review->translateOrNew($locale)->title = $data['title'][$locale] ?? null;
             $review->translateOrNew($locale)->description = $data['description'][$locale] ?? null;
-            $review->translateOrNew($locale)->matrix = $data['matrix'][$locale] ? json_encode($data['matrix'][$locale]) : null;
+            $matrixValue = $data["matrix"][$locale] ?? [];
+            $review->translateOrNew($locale)->matrix = json_encode($matrixValue ?: []);
         }
 
         $review->save();

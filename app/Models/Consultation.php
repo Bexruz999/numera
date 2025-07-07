@@ -8,18 +8,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 
-class History extends Model implements TranslatableContract
+class Consultation extends Model implements TranslatableContract
 {
-    use HasFactory, AsSource, Translatable;
+    use AsSource, HasFactory, Translatable;
 
-    protected $fillable = [
-        'name',
-        'position',
+    public $translatedAttributes = [
+        'title',
         'description',
-        'img',
+        'subtitle',
+        'button',
+        'link',
     ];
 
-    public $translatedAttributes  = ['name', 'description', 'position',];
+    protected $fillable = [
+        'img',
+        'subtitle',
+        'button',
+        'link',
+    ];
 
     public function getImageUrlAttribute(): string
     {

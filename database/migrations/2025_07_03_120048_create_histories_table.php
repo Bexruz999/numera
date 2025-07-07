@@ -21,9 +21,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('history_id')->constrained()->onDelete('cascade');
             $table->string('locale')->index();
-            $table->text('name');
-            $table->text('position');
-            $table->text('description');
+            $table->text('name')->nullable();
+            $table->text('position')->nullable();
+            $table->text('description')->nullable();
         });
     }
 
