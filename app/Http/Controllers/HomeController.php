@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Article;
@@ -11,12 +12,11 @@ class HomeController extends Controller
     // В HomeController
     public function index()
     {
-        $recentPosts = Post::where('is_published', true)
-            ->latest('published_at')
-            ->take(3)
-            ->get();
 
-        return view('pages.index', compact('recentPosts'));
+        $locale = app()->getLocale();
+        $histories = History::all();
+
+        return view('pages.index', ['histories' => $histories, 'locale' => $locale]);
     }
 
     public function about()

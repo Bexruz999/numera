@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Layouts\History;
 
+use App\Models\Article;
 use App\Models\History;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
@@ -18,7 +19,7 @@ class HistoryTable extends Table
      *
      * @var string
      */
-    protected $target = 'history';
+    protected $target = 'histories';
 
     /**
      * Get the table cells to be displayed.
@@ -27,19 +28,11 @@ class HistoryTable extends Table
      */
     protected function columns(): iterable
     {
-        $locale = app()->getLocale();
         return [
-            TD::make('title', 'Title')->sort()->render(function (History $history) use ($locale) {
-                return optional($history->translate($locale))->title;
-            }),
-            TD::make('description', 'Description')->render(function (History $history) use ($locale) {
-                return optional($history->translate($locale))->description;
-            }),
-            TD::make('position', 'Position')->render(function (History $history) use ($locale) {
-                return optional($history->translate($locale))->position;
-            }),
+            TD::make('id', 'ID'),
+            TD::make('name', 'Nomi'),
             TD::make('img', 'Image')->render(function (History $history) {
-                return $history->img ? "<img src='{$history->img}' style='max-width:100px;'>" : '';
+                return $history->img ? "<img src='{$history->img}' style='max-width:50px;'>" : '';
             }),
             TD::make('action')->render(function (History $history) {
                 return
@@ -54,9 +47,8 @@ class HistoryTable extends Table
                         ])->render()
                     . Button::make()
                         ->icon('bs.trash')
-                        ->confirm('Are you sure you want to delete this review?')
+                        ->confirm('bla bla ?')
                         ->method('delete', ['history' => $history->id])
-                        ->render()
                     . '</div>';
             }),
         ];

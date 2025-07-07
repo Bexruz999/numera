@@ -12,12 +12,14 @@ class History extends Model implements TranslatableContract
 {
     use HasFactory, AsSource, Translatable;
 
-    public $translatedAttributes  = ['name', 'description', 'position'];
     protected $fillable = [
-        'title',
+        'name',
+        'position',
         'description',
         'img',
     ];
+
+    public $translatedAttributes  = ['name', 'description', 'position',];
 
     public function getImageUrlAttribute(): string
     {
