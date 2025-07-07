@@ -154,7 +154,41 @@
         <div class="advan__container">
             <div class="advan__grid_swiper swiper-container">
                 <div class="advan__grid swiper-wrapper">
-                    <div class="advan__grid_slide swiper-slide">
+                    @for($i = 0; $i < count($frames); $i = $i+2)
+                        <div class="advan__grid_slide swiper-slide">
+                            <div class="advan__grid_card">
+                                <div class="advan__grid_icon">
+                                    <img src="{{ asset($frames[$i]->img) }}" alt="#"/>
+                                </div>
+                                <div class="advan__grid_title title">
+                                    {{ $frames[$i]->translate($locale)?->name }}
+                                </div>
+                                <div class="advan__grid_subtitle">
+                                    {{ $frames[$i]->translate($locale)?->title }}
+                                </div>
+                                <div class="advan__grid_text text">
+                                    {{ $frames[$i]->translate($locale)?->text }}
+                                </div>
+                            </div>
+                            @if(array_key_exists($i + 1, $frames->keys()->all()))
+                                <div class="advan__grid_card">
+                                    <div class="advan__grid_icon">
+                                        <img src="{{ asset($frames[$i+1]->img) }}" alt="#"/>
+                                    </div>
+                                    <div class="advan__grid_title title">
+                                        {{ $frames[$i + 1]->translate($locale)?->name }}
+                                    </div>
+                                    <div class="advan__grid_subtitle">
+                                        {{ $frames[$i + 1]->translate($locale)?->title }}
+                                    </div>
+                                    <div class="advan__grid_text text">
+                                        {{ $frames[$i + 1]->translate($locale)?->text }}
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    @endfor
+                    {{--<div class="advan__grid_slide swiper-slide">
                         <div class="advan__grid_card">
                             <div class="advan__grid_icon">
                                 <img
@@ -613,7 +647,7 @@
                                 платформами
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
 

@@ -14233,180 +14233,74 @@
             <div class="faq__tag tag">Вопросы</div>
             <div class="faq__columns">
                 <div class="faq__questions">
-                    <div class="faq-item faq__item">
-                        <div class="question">
-                            <span
-                                >Бухгалтер на аутсорсинге точно заменит
-                                мне штатного бухгалтера?</span
-                            >
-                            <svg
-                                width="26"
-                                height="26"
-                                viewBox="0 0 26 26"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
-                                    stroke="#FFC357"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
+                    @foreach($questions as $question)
+                        @if ($loop->odd)
+                            <div class="faq-item faq__item">
+                            <div class="question">
+                            <span>{{ $question->translate($locale)->question }}</span>
+                                <svg
+                                    width="26"
+                                    height="26"
+                                    viewBox="0 0 26 26"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
+                                        stroke="#FFC357"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="answer">
+                                Да, бухгалтер на аутсорсинге может полностью
+                                заменить штатного специалиста. Мы берем на
+                                себя все обязанности по ведению
+                                бухгалтерского учета, сдаче отчетности и
+                                взаимодействию с контролирующими органами.
+                                При этом вы получаете гарантированное
+                                качество услуг и экономию на содержании
+                                штатного сотрудника.
+                            </div>
                         </div>
-                        <div class="answer">
-                            Да, бухгалтер на аутсорсинге может полностью
-                            заменить штатного специалиста. Мы берем на
-                            себя все обязанности по ведению
-                            бухгалтерского учета, сдаче отчетности и
-                            взаимодействию с контролирующими органами.
-                            При этом вы получаете гарантированное
-                            качество услуг и экономию на содержании
-                            штатного сотрудника.
-                        </div>
-                    </div>
-                    <div class="faq-item faq__item">
-                        <div class="question">
-                            <span
-                                >Могу ли я наблюдать за работой
-                                специалистов бухгалтерского
-                                обслуживания?</span
-                            >
-                            <svg
-                                width="26"
-                                height="26"
-                                viewBox="0 0 26 26"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
-                                    stroke="#FFC357"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <div class="answer">
-                            Да, вы получаете персонального бухгалтера и
-                            можете в любой момент запросить информацию
-                            или отчёт. Мы работаем прозрачно и всегда на
-                            связи.
-                        </div>
-                    </div>
-                    <div class="faq-item faq__item">
-                        <div class="question">
-                            <span
-                                >От чего зависит стоимость
-                                бухгалтерского обслуживания и как её
-                                рассчитать?</span
-                            >
-                            <svg
-                                width="26"
-                                height="26"
-                                viewBox="0 0 26 26"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
-                                    stroke="#FFC357"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <div class="answer">
-                            Стоимость зависит от системы
-                            налогообложения, количества сотрудников и
-                            операций. Мы рассчитаем тариф бесплатно
-                            после короткой консультации.
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="faq__questions">
-                    <div class="faq-item faq__item">
-                        <div class="question">
-                            <span
-                                >Что нужно для сдачи отчётности через
-                                интернет?</span
-                            >
-                            <svg
-                                width="26"
-                                height="26"
-                                viewBox="0 0 26 26"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
-                                    stroke="#FFC357"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <div class="answer">
-                            Только электронная цифровая подпись (ЭЦП) и
-                            доступ к eSoliq. Мы поможем всё подключить и
-                            настроить.
-                        </div>
-                    </div>
-                    <div class="faq-item faq__item">
-                        <div class="question">
-                            <span
-                                >Можно ли перенести мои данные из другой
-                                системы (например, 1С), в которой я вёл
-                                учёт ранее?</span
-                            >
-                            <svg
-                                width="26"
-                                height="26"
-                                viewBox="0 0 26 26"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
-                                    stroke="#FFC357"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <div class="answer">
-                            Да, мы бесплатно перенесём данные из 1С,
-                            Excel или других систем при начале
-                            обслуживания.
-                        </div>
-                    </div>
-
-                    <div class="faq-item faq__item">
-                        <div class="question">
-                            <span
-                                >А если бухгалтер допустит ошибку?</span
-                            >
-                            <svg
-                                width="26"
-                                height="26"
-                                viewBox="0 0 26 26"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
-                                    stroke="#FFC357"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <div class="answer">
-                            Если по нашей вине будет штраф — мы оплатим
-                            его за вас. Мы несем полную ответственность
-                            за свою работу.
-                        </div>
-                    </div>
+                    @foreach($questions as $question)
+                        @if ($loop->even)
+                            <div class="faq-item faq__item">
+                                <div class="question">
+                                    <span>{{ $question->translate($locale)->question }}</span>
+                                    <svg
+                                        width="26"
+                                        height="26"
+                                        viewBox="0 0 26 26"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
+                                            stroke="#FFC357"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <div class="answer">
+                                    Да, бухгалтер на аутсорсинге может полностью
+                                    заменить штатного специалиста. Мы берем на
+                                    себя все обязанности по ведению
+                                    бухгалтерского учета, сдаче отчетности и
+                                    взаимодействию с контролирующими органами.
+                                    При этом вы получаете гарантированное
+                                    качество услуг и экономию на содержании
+                                    штатного сотрудника.
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <a href="##" class="faq__button button">Все вопросы</a>
@@ -14622,89 +14516,6 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="story__slide swiper-slide">
-                        <div class="story__slide_img">
-                            <img src="../img/jpg/story02.jpg" alt="#" />
-                        </div>
-                        <div class="story__slide_content">
-                            <div class="story__slide_name">Дилрабо</div>
-                            <div class="story__slide_position">
-                                Владелица салона красоты
-                            </div>
-                            <div class="story__slide_text">
-                                <p>
-                                    «Я обратилась в Numera, когда нужно
-                                    было пересдать бухгалтерскую
-                                    отчётность за 4 месяца. Команда всё
-                                    сделала оперативно и без единой
-                                    ошибки. В налоговой не было никаких
-                                    претензий, и я наконец-то
-                                    почувствовала уверенность в ведении
-                                    бухгалтерии. Рекомендую всем,
-                                    особенно владельцам салонов и сферы
-                                    услуг!»
-                                </p>
-                                <span>Читать дальше</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="story__slide swiper-slide">
-                        <div class="story__slide_img">
-                            <img src="../img/jpg/story01.jpg" alt="#" />
-                        </div>
-                        <div class="story__slide_content">
-                            <div class="story__slide_name">Джасур</div>
-                            <div class="story__slide_position">
-                                Директор супермаркета в Ташкенте
-                            </div>
-                            <div class="story__slide_text">
-                                <p>
-                                    «Наш бухгалтер заявил, что налоговая
-                                    выставила штраф почти на 1 миллиард
-                                    сум. Мы в панике обратились в
-                                    Numera. Их специалисты провели
-                                    аудит, разобрались в ситуации и
-                                    выяснили, что бухгалтер просто
-                                    неправильно понял требования
-                                    налоговой. Нам не только объяснили
-                                    всё по полочкам, но и дали
-                                    рекомендации, как избежать таких
-                                    ситуаций в будущем. Профессиональный
-                                    подход и спокойствие в сложной
-                                    ситуации!»
-                                </p>
-                                <span>Читать дальше</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="story__slide swiper-slide">
-                        <div class="story__slide_img">
-                            <img src="../img/jpg/story03.jpg" alt="#" />
-                        </div>
-                        <div class="story__slide_content">
-                            <div class="story__slide_name">
-                                Мухриддин
-                            </div>
-                            <div class="story__slide_position">
-                                Директор IT-компании
-                            </div>
-                            <div class="story__slide_text">
-                                <p>
-                                    «Наша компания занимается установкой
-                                    программного обеспечения для
-                                    ресторанов и кафе. Закупки в
-                                    основном проходят за наличные, и
-                                    раньше было сложно правильно вести
-                                    учёт. Numera помогли выстроить
-                                    прозрачную систему бухгалтерии,
-                                    особенно в разделе закупок. Теперь
-                                    всё ясно, прозрачно и понятно для
-                                    всех участников процесса.»
-                                </p>
-                                <span>Читать дальше</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="story__tag tag">Отзывы</div>
