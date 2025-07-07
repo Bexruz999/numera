@@ -5,6 +5,7 @@ namespace App\Orchid\Screens\History;
 use App\Models\Article;
 use App\Models\History;
 use App\Orchid\Layouts\History\HistoryTable;
+use Illuminate\Support\Facades\App;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
@@ -34,7 +35,7 @@ class HistoryScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'History';
+        return 'History' . ' ' . App::currentLocale();
     }
 
     /**
@@ -66,33 +67,35 @@ class HistoryScreen extends Screen
                         ->title('Image')
                         ->targetRelativeUrl()
                         ->required()
-                        ->help('Upload an image for the article'),
+                        ->help('Upload an image for the history'),
                 ]),
                 Layout::tabs([
                     'Create UZ' => Layout::rows([
                         Input::make('history.name.uz')
-                            ->title('Ism (UZ)')
-                            ->placeholder('Ism kiriting (uz)')
+                            ->title('Title (UZ)')
+                            ->placeholder('Enter history title (uz)')
                             ->required(),
                         Input::make('history.description.uz')
-                            ->title('description (UZ)')
-                            ->placeholder('Pozitsiyani kiriting (uz)')
+                            ->title('Description (UZ)')
+                            ->placeholder('Enter the description (uz)')
                             ->required(),
                         Input::make('history.position.uz')
                             ->title('Type')
-                            ->placeholder('Select the position of the article')
+                            ->placeholder('Enter the position')
                             ->required(),
                     ]),
                     'Create RU' => Layout::rows([
                         Input::make('history.name.ru')
                             ->title('Title (RU)')
-                            ->placeholder('Enter article title (ru)'),
+                            ->placeholder('Enter history title (ru)')
+                            ->required(),
                         Input::make('history.description.ru')
                             ->title('Description (RU)')
-                            ->placeholder('Enter article description (ru)'),
+                            ->placeholder('Enter the description (ru)')
+                            ->required(),
                         Input::make('history.position.ru')
                             ->title('Type')
-                            ->placeholder('Select the position of the article')
+                            ->placeholder('Enter the position')
                             ->required(),
                     ]),
                 ])
@@ -104,37 +107,39 @@ class HistoryScreen extends Screen
                         ->title('Image')
                         ->targetRelativeUrl()
                         ->required()
-                        ->help('Upload an image for the article'),
+                        ->help('Upload an image for the history'),
                 ]),
                 Layout::tabs([
                     'Uz' => Layout::rows([
                         Input::make('history.name.uz')
                             ->title('Title (UZ)')
-                            ->placeholder('Enter article title (uz)')
+                            ->placeholder('Enter history title (uz)')
                             ->required(),
                         Input::make('history.description.uz')
                             ->title('Description (UZ)')
-                            ->placeholder('Enter article description (uz)')
+                            ->placeholder('Enter the description (uz)')
                             ->required(),
                         Input::make('history.position.uz')
                             ->title('Type')
-                            ->placeholder('Select the type of the article')
+                            ->placeholder('Enter the position')
                             ->required(),
                     ]),
                     'Ru' => Layout::rows([
                         Input::make('history.name.ru')
                             ->title('Title (RU)')
-                            ->placeholder('Enter article title (ru)'),
+                            ->placeholder('Enter history title (ru)')
+                            ->required(),
                         Input::make('history.description.ru')
                             ->title('Description (RU)')
-                            ->placeholder('Enter article description (ru)'),
+                            ->placeholder('Enter the description (ru)')
+                            ->required(),
                         Input::make('history.position.ru')
                             ->title('Type')
-                            ->placeholder('Select the type of the article')
+                            ->placeholder('Enter the position')
                             ->required(),
                     ]),
                 ])
-            ])->async('asyncGet'),
+            ])->async('asyncGet')->method('update'),
 
             HistoryTable::class,
         ];
@@ -163,14 +168,12 @@ class HistoryScreen extends Screen
 
         $history->save();
 
-        Toast::info('Article created successfully!');
+        Toast::info('History created successfully!');
     }
 
     public function asyncGet(History $history): array
     {
         // Prepare the article data in the structure expected by the form
-
-        dd($history);
         $data = [
             'img' => $history->img,
             'name' => [
@@ -192,9 +195,9 @@ class HistoryScreen extends Screen
         ];
     }
 
-    public function update(History $article): void
+    public function update(History $history): void
     {
-        $data = request()->post('article');
+        $data = request()->post('history');
         if (!is_array($data)) {
             parse_str($data, $data);
         }
@@ -203,26 +206,26 @@ class HistoryScreen extends Screen
             'title.uz' => 'required|string|max:255',
             'description.uz' => 'required|string',
             'img' => 'nullable|string',
-            'type.uz' => 'required',
+            'position.uz' => 'required',
         ])->validate();
 
-        $article->img = $validated['img'] ?? null;
+        $history->img = $validated['img'] ?? null;
 
         foreach (['uz', 'ru'] as $locale) {
-            $article->translateOrNew($locale)->title = $data['title'][$locale] ?? null;
-            $article->translateOrNew($locale)->description = $data['description'][$locale] ?? null;
-            $article->translateOrNew($locale)->type = $data['type'][$locale] ?? null;
+            $history->translateOrNew($locale)->name = $data['title'][$locale] ?? null;
+            $history->translateOrNew($locale)->description = $data['description'][$locale] ?? null;
+            $history->translateOrNew($locale)->position = $data['position'][$locale] ?? null;
         }
 
-        $article->save();
+        $history->save();
 
-        Toast::info('Article updated successfully!');
+        Toast::info('History updated successfully!');
     }
 
-    public function delete(History $article): void
+    public function delete(History $history): void
     {
-        $article->delete();
-        Toast::info('Article deleted successfully!');
+        $history->delete();
+        Toast::info('History deleted successfully!');
     }
 
 

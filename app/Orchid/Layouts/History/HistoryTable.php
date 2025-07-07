@@ -2,8 +2,8 @@
 
 namespace App\Orchid\Layouts\History;
 
-use App\Models\Article;
 use App\Models\History;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -27,10 +27,20 @@ class HistoryTable extends Table
      */
     protected function columns(): iterable
     {
+        $locale = app()->getLocale();
         return [
-            TD::make('id', 'ID'),
-            TD::make('name', 'Nomi'),
-
+            TD::make('title', 'Title')->sort()->render(function (History $history) use ($locale) {
+                return optional($history->translate($locale))->title;
+            }),
+            TD::make('description', 'Description')->render(function (History $history) use ($locale) {
+                return optional($history->translate($locale))->description;
+            }),
+            TD::make('position', 'Position')->render(function (History $history) use ($locale) {
+                return optional($history->translate($locale))->position;
+            }),
+            TD::make('img', 'Image')->render(function (History $history) {
+                return $history->img ? "<img src='{$history->img}' style='max-width:100px;'>" : '';
+            }),
             TD::make('action')->render(function (History $history) {
                 return
                     '<div class="d-flex gap-2">'
@@ -42,14 +52,11 @@ class HistoryTable extends Table
                         ->asyncParameters([
                             'history' => $history->id,
                         ])->render()
-                    . ModalToggle::make()
+                    . Button::make()
                         ->icon('bs.trash')
-                        ->modal('delete')
-                        ->method('delete')
-                        ->modalTitle('Delete')
-                        ->asyncParameters([
-                            'history' => $history->id,
-                        ])->render()
+                        ->confirm('Are you sure you want to delete this review?')
+                        ->method('delete', ['history' => $history->id])
+                        ->render()
                     . '</div>';
             }),
         ];

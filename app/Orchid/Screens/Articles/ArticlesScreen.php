@@ -175,7 +175,6 @@ class ArticlesScreen extends Screen
 
     public function asyncGetArticle(Article $article): array
     {
-        // Prepare the article data in the structure expected by the form
         $data = [
             'img' => $article->img,
             'title' => [

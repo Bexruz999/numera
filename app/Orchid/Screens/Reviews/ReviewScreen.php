@@ -6,9 +6,7 @@ use App\Models\Review;
 use App\Orchid\Layouts\Reviews\ReviewTable;
 use Illuminate\Support\Facades\App;
 use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Label;
 use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Screen;
@@ -92,10 +90,12 @@ class ReviewScreen extends Screen
                     'Create RU' => Layout::rows([
                         Input::make('review.title.ru')
                             ->title('Title (RU)')
-                            ->placeholder('Enter review title (ru)'),
+                            ->placeholder('Enter review title (ru)')
+                            ->required(),
                         Input::make('review.description.ru')
                             ->title('Description (RU)')
-                            ->placeholder('Enter review description (ru)'),
+                            ->placeholder('Enter review description (ru)')
+                            ->required(),
                         Matrix::make('review.matrix.ru')
                             ->help('Matrix for RU')
                             ->columns([
@@ -136,10 +136,12 @@ class ReviewScreen extends Screen
                     'Edit RU' => Layout::rows([
                         Input::make('review.title.ru')
                             ->title('Title (RU)')
-                            ->placeholder('Enter review title (ru)'),
+                            ->placeholder('Enter review title (ru)')
+                            ->required(),
                         Input::make('review.description.ru')
                             ->title('Description (RU)')
-                            ->placeholder('Enter review description (ru)'),
+                            ->placeholder('Enter review description (ru)')
+                            ->required(),
                         Matrix::make('review.matrix.ru')
                             ->help('Matrix for RU')
                             ->columns([
