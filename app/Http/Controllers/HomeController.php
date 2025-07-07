@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
+use App\Models\Frame;
 use App\Models\History;
+use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Article;
@@ -15,8 +18,9 @@ class HomeController extends Controller
 
         $locale = app()->getLocale();
         $histories = History::all();
+        $questions = Question::all();
 
-        return view('pages.index', ['histories' => $histories, 'locale' => $locale]);
+        return view('pages.index', ['histories' => $histories, 'locale' => $locale, 'questions' => $questions]);
     }
 
     public function about()
@@ -26,13 +30,16 @@ class HomeController extends Controller
 
     public function services()
     {
-        app()->setlocale('uz');
 
+        $locale = app()->getLocale();
         $articles = Article::all();
+        $frames = Frame::all();
 
         return view('pages.services', [
             'headerClass' => 'about-header',
-            'articles' => $articles
+            'articles' => $articles,
+            'frames' => $frames,
+            'locale' => $locale,
         ]);
     }
 

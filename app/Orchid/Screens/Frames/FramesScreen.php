@@ -62,7 +62,7 @@ class FramesScreen extends Screen
             FrameTable::class,
             Layout::modal('createFrame', [
                 Layout::rows([
-                    Picture::make('frame.img')
+                    Picture::make('frame.img')->targetRelativeUrl()
                 ]),
                 Layout::tabs([
                     'Uz' => Layout::rows([
@@ -90,10 +90,10 @@ class FramesScreen extends Screen
             // --- Edit Modal ---
             Layout::modal('editFrame', [
                 Layout::rows([
-                    Picture::make('frame.img')
+                    Picture::make('frame.img')->targetRelativeUrl()
                 ]),
                 Layout::tabs([
-                    'Uz' => Layout::rows([
+                    'Edit Uz' => Layout::rows([
                         Input::make('frame.name.uz')
                             ->title('Name (UZ)')
                             ->required(),
@@ -103,7 +103,7 @@ class FramesScreen extends Screen
                             ->title('Text (UZ)')
                             ->required()
                     ]),
-                    'Ru' => Layout::rows([
+                    'Edit Ru' => Layout::rows([
                         Input::make('frame.name.ru')
                             ->title('Name (RU)')
                             ->required(),
