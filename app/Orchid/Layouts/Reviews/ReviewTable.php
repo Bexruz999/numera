@@ -36,9 +36,6 @@ class ReviewTable extends Table
             TD::make('description', 'Description')->render(function (Review $review) use ($locale) {
                 return optional($review->translate($locale))->description;
             }),
-            TD::make('matrix', 'Matrix')->render(function (Review $review) use ($locale) {
-                return optional($review->translate($locale))->type;
-            }),
             TD::make('created_at', 'Created At')->sort(),
             TD::make('updated_at', 'Updated At')->sort(),
             TD::make('img', 'Image')->render(function (Review $review) {
