@@ -163,7 +163,7 @@ class ArticlesScreen extends Screen
         foreach (['uz', 'ru'] as $locale) {
             $article->translateOrNew($locale)->title = $data['title'][$locale] ?? null;
             $article->translateOrNew($locale)->description = $data['description'][$locale] ?? null;
-            $article->translateOrNew($locale)->type = $data['type'][$locale] ?? null;
+            $article->translateOrNew($locale)->type = $data['type'][$locale] ? mb_ucfirst($data['type'][$locale]) : null;
         }
 
         $article->save();
@@ -213,7 +213,7 @@ class ArticlesScreen extends Screen
         foreach (['uz', 'ru'] as $locale) {
             $article->translateOrNew($locale)->title = $data['title'][$locale] ?? null;
             $article->translateOrNew($locale)->description = $data['description'][$locale] ?? null;
-            $article->translateOrNew($locale)->type = $data['type'][$locale] ?? null;
+            $article->translateOrNew($locale)->type = $data['type'][$locale] ? mb_ucfirst($data['type'][$locale]) : null;;
         }
 
         $article->save();
