@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Orchid\Layouts\Reviews;
+namespace App\Orchid\Layouts\Slides;
 
-use App\Models\Review;
+use App\Models\Slide;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
-class ReviewTable extends Table
+class SlideTable extends Table
 {
     /**
      * Data source.
@@ -18,7 +18,7 @@ class ReviewTable extends Table
      *
      * @var string
      */
-    protected $target = 'reviews';
+    protected $target = 'slides';
 
     /**
      * Get the table cells to be displayed.
@@ -27,35 +27,25 @@ class ReviewTable extends Table
      */
     protected function columns(): iterable
     {
-        $locale = app()->getLocale();
-
         return [
-            TD::make('title', 'Title')->sort()->render(function (Review $review) use ($locale) {
-                return optional($review->translate($locale))->title;
+            TD::make('img', 'Image')->render(function (Slide $slide) {
+                return $slide->img ? "<img src='{$slide->img}' style='max-width:100px;'>" : '';
             }),
-            TD::make('description', 'Description')->render(function (Review $review) use ($locale) {
-                return optional($review->translate($locale))->description;
-            }),
-            TD::make('created_at', 'Created At')->sort(),
-            TD::make('updated_at', 'Updated At')->sort(),
-            TD::make('img', 'Image')->render(function (Review $review) {
-                return $review->img ? "<img src='{$review->img}' style='max-width:100px;'>" : '';
-            }),
-            TD::make('action')->render(function (Review $review) {
+            TD::make('action')->render(function (Slide $slide) {
                 return
                     '<div class="d-flex gap-2">'
                     . ModalToggle::make()
                         ->icon('bs.pencil-square')
                         ->modal('edit')
                         ->method('update')
-                        ->modalTitle('Edit Review')
+                        ->modalTitle('Edit Slide')
                         ->asyncParameters([
-                            'review' => $review->id,
+                            'slide' => $slide->id,
                         ])->render()
                     . Button::make()
                         ->icon('bs.trash')
                         ->confirm('Are you sure you want to delete this review?')
-                        ->method('delete', ['review' => $review->id])
+                        ->method('delete', ['slide' => $slide->id])
                         ->render()
                     . '</div>';
             }),

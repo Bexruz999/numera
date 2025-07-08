@@ -23,6 +23,7 @@ use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\Frames\FramesScreen;
 use App\Orchid\Screens\SettingsScreen;
+use App\Orchid\Screens\Slides\SlideScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
@@ -60,10 +61,6 @@ Route::screen('/history', HistoryScreen::class)
 Route::screen('/question', QuestionScreen::class)
     ->name('platform.questions');
 
-//Reviews
-Route::screen('/reviews', ReviewScreen::class)
-    ->name('platform.reviews');
-
 //Consultations
 Route::screen('/consultations', ConsultationScreen::class)
     ->name('platform.consultations');
@@ -71,6 +68,10 @@ Route::screen('/consultations', ConsultationScreen::class)
 //Advises
 Route::screen('/advises', AdviseScreen::class)
     ->name('platform.advises');
+
+//Slides
+Route::screen('/slides', SlideScreen::class)
+    ->name('platform.slides');
 
 
 ///////////////////////////////////////////////////////////////

@@ -33,14 +33,9 @@ class ArticleTable extends Table
             TD::make('title', 'Title')->sort()->render(function (Article $article) use ($locale) {
                 return optional($article->translate($locale))->title;
             }),
-            TD::make('description', 'Description')->render(function (Article $article) use ($locale) {
-                return optional($article->translate($locale))->description;
-            }),
             TD::make('type', 'Type')->render(function (Article $article) use ($locale) {
                 return optional($article->translate($locale))->type;
             }),
-            TD::make('created_at', 'Created At')->sort(),
-            TD::make('updated_at', 'Updated At')->sort(),
             TD::make('img', 'Image')->render(function (Article $article) {
                 return $article->img ? "<img src='{$article->img}' style='max-width:100px;'>" : '';
             }),

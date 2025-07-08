@@ -57,14 +57,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.window')
                 ->route('platform.history'),
 
-
             Menu::make('Questions')
                 ->icon('bs.question-circle')
                 ->route('platform.questions'),
-
-            Menu::make('Reviews')
-                ->icon('bs.chat-left-text')
-                ->route('platform.reviews'),
 
             Menu::make('Consultations')
                 ->icon('bs.chat-square-text')
@@ -73,6 +68,10 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Advises')
                 ->icon('bs.lightbulb')
                 ->route('platform.advises'),
+
+            Menu::make('Slides')
+                ->icon('bs.file-slides')
+                ->route('platform.slides'),
 
             Menu::make('Get Started')
                 ->icon('bs.book')
