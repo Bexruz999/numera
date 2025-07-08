@@ -23,12 +23,12 @@
                 </a>
                 <nav class="header__nav active">
                     <ul class="header__nav_list">
-                        <li class="header__nav_item active"><a href="{{ route('home') }}">Главная</a></li>
-                        <li class="header__nav_item"><a href="{{ route('about') }}">О компании</a></li>
-                        <li class="header__nav_item"><a href="{{ route('services') }}">Услуги</a></li>
-                        <li class="header__nav_item"><a href="{{ route('cases') }}">Отзывы</a></li>
-                        <li class="header__nav_item"><a href="{{ route('blog') }}">Блог</a></li>
-                        <li class="header__nav_item"><a href="{{ route('contact') }}">Контакты</a></li>
+                        <li class="header__nav_item active"><a href="{{ route('home') }}">{{ __('tr.home') }}</a></li>
+                        <li class="header__nav_item"><a href="{{ route('about') }}">{{ __('tr.about') }}</a></li>
+                        <li class="header__nav_item"><a href="{{ route('services') }}">{{ __('tr.services') }}</a></li>
+                        <li class="header__nav_item"><a href="{{ route('cases') }}">{{ __('tr.reviews') }}</a></li>
+                        <li class="header__nav_item"><a href="{{ route('blog') }}">{{ __('tr.blog') }}</a></li>
+                        <li class="header__nav_item"><a href="{{ route('contact') }}">{{ __('tr.contact') }}</a></li>
                     </ul>
                     <div class="header__arrow">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">

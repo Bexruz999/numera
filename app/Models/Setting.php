@@ -9,17 +9,20 @@ class Setting extends Model implements \Astrotomic\Translatable\Contracts\Transl
 {
     use Translatable;
 
-    public $translatedAttributes = ['name', 'value', 'options'];
+    public $translatedAttributes = ['value', 'options'];
 
     protected $fillable = [
         'group',
         'locked',
         'type',
+        'name',
     ];
 
     protected $casts = [
         'locked' => 'boolean',
         'options' => 'array',
+        'type' => 'string',
+        'name' => 'string',
     ];
 
     /**

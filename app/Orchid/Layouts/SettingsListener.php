@@ -50,71 +50,20 @@ class SettingsListener extends Listener
                     ->title('Group')
                     ->placeholder('Enter group name')
                     ->required(),
-                Switcher::make('setting.locked')
-                    ->title('Locked')
-                    ->sendTrueOrFalse(),
+                Input::make('setting.name')
+                    ->title('Name')
+                    ->placeholder('Enter name')
+                    ->required(),
             ]),
             Layout::tabs([
                 'Create UZ' => Layout::rows([
-                    Input::make('setting.name.uz')
-                        ->title('Name (UZ)')
-                        ->placeholder('Enter setting name (uz)')
-                        ->required(),
-                    $this->getValueField('uz', $type),
                     $this->getOptionsField('uz', $type),
                 ]),
                 'Create RU' => Layout::rows([
-                    Input::make('setting.name.ru')
-                        ->title('Name (RU)')
-                        ->placeholder('Enter setting name (ru)'),
-                    $this->getValueField('ru', $type),
                     $this->getOptionsField('ru', $type),
                 ]),
             ])
         ];
-    }
-
-    /**
-     * Get value field based on type and locale
-     */
-    protected function getValueField($locale, $type)
-    {
-        $fieldName = "setting.value.$locale";
-        $title = "Value (" . strtoupper($locale) . ")";
-        $placeholder = "Enter setting value ($locale)";
-
-        switch ($type) {
-            case 'text':
-                return Input::make($fieldName)
-                    ->title($title)
-                    ->placeholder($placeholder);
-            case 'textarea':
-                return TextArea::make($fieldName)
-                    ->title($title)
-                    ->placeholder($placeholder);
-            case 'boolean':
-                return Switcher::make($fieldName)
-                    ->title($title)
-                    ->sendTrueOrFalse();
-            case 'image':
-                return Input::make($fieldName)
-                    ->title($title)
-                    ->placeholder($placeholder);
-            case 'select':
-                return TextArea::make($fieldName)
-                    ->title($title)
-                    ->placeholder($placeholder)
-                    ->help('Enter comma-separated values');
-            case 'matrix':
-                return TextArea::make($fieldName)
-                    ->title($title)
-                    ->placeholder($placeholder)
-                    ->help('Enter JSON format data');
-            default:
-                return Input::make($fieldName)
-                    ->title($title)
-                    ->placeholder($placeholder);
-        }
     }
 
     /**

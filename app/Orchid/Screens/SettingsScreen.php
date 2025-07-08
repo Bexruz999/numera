@@ -5,6 +5,7 @@ namespace App\Orchid\Screens;
 use App\Models\Setting;
 use App\Orchid\Layouts\SettingsListener;
 use Orchid\Screen\Action;
+use Orchid\Screen\Fields\Attach;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Fields\Input;
@@ -76,7 +77,12 @@ class SettingsScreen extends Screen
                 $rows[] = Group::make([
                     $this->getDynamicField($setting, 'uz'),
                     $this->getDynamicField($setting, 'ru'),
-                ]);
+                    Button::make()
+                        ->confirm('Are you sure you want to delete this setting?')
+                        ->icon('bs.trash')
+                        ->method('delete')
+                        ->parameters(['setting' => $setting->id])
+                ])->widthColumns('8fr 8fr 1fr')->alignStart();
             }
 
             $rows[] = Button::make(__('Save'))
@@ -125,6 +131,7 @@ class SettingsScreen extends Screen
                     ->disabled($setting->locked);
             case 'image':
                 return Picture::make($fieldName)
+                    ->multiple()
                     ->title("Value ($locale)")
                     ->value($value)
                     ->targetRelativeUrl()
@@ -189,27 +196,20 @@ class SettingsScreen extends Screen
             return;
         }
 
-        // Check if name.uz exists in nested array
-        $nameUz = $data['name']['uz'] ?? null;
-
-        if (!$nameUz) {
-            Toast::error('Name (UZ) is required.');
-            return;
-        }
-
         $validated = validator($data, [
             'group' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'locked' => 'boolean',
+            'name' => 'required|string|max:255',
         ])->validate();
 
         $setting = new Setting();
         $setting->group = $validated['group'];
         $setting->type = $validated['type'];
+        $setting->name = $validated['name'];
         $setting->locked = $validated['locked'] ?? false;
 
         foreach (['uz', 'ru'] as $locale) {
-            $setting->translateOrNew($locale)->name = $data['name'][$locale] ?? null;
             $setting->translateOrNew($locale)->value = $data['value'][$locale] ?? null;
             $setting->translateOrNew($locale)->options = $data['options'][$locale] ?? null;
         }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('group')->index();
             $table->boolean('locked')->default(false);
             $table->string('type')->default('text');
+            $table->string('name');
 
             $table->timestamps();
         });
@@ -26,7 +27,6 @@ return new class extends Migration
             $table->string('locale')->index();
             $table->timestamps();
 
-            $table->string('name');
             $table->json('value')->nullable();
             $table->json('options')->nullable();
 
