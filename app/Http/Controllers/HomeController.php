@@ -59,7 +59,7 @@ class HomeController extends Controller
         $articles = Article::get();
         $article_filters = $articles->map(function ($article) use ($locale) {
             return $article->translate($locale);
-        })->pluck('type');
+        })->pluck('type', 'type');
 
         return view('pages.blog', ['articles' => $articles, 'article_filters' => $article_filters, 'locale' => $locale]);
     }

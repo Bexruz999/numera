@@ -22,7 +22,7 @@
                 и лишнего риска
             </div>
             <a href="##" class="blog__button yellow-button"
-                >Подписаться</a
+            >Подписаться</a
             >
             <div class="blog__below text">
                 Честно, просто и по делу о налогах, отчётности,
@@ -31,9 +31,9 @@
                 и лишнего риска
             </div>
         </div>
-        <img class="blog__star01" src="../img/svg/blog01.svg" alt="#" />
-        <img class="blog__star02" src="../img/svg/blog02.svg" alt="#" />
-        <img class="blog__star03" src="../img/svg/blog02.svg" alt="#" />
+        <img class="blog__star01" src="../img/svg/blog01.svg" alt="#"/>
+        <img class="blog__star02" src="../img/svg/blog02.svg" alt="#"/>
+        <img class="blog__star03" src="../img/svg/blog02.svg" alt="#"/>
     </section>
     <section class="article">
         <div class="article__container">
@@ -43,21 +43,11 @@
                 законах и технологиях, которые помогут вам управлять
                 бизнесом увереннее
             </div>
-            <div class="article__tags">
-                <a href="##" class="article__tag">Все темы</a>
-                <a href="##" class="article__tag">Отчётность</a>
-                <a href="##" class="article__tag">Консультации</a>
-                <a href="##" class="article__tag">Налоги</a>
-                <a href="##" class="article__tag">Кейсы</a>
-                <a href="##" class="article__tag">Цифровизация</a>
-                <a href="##" class="article__tag">Маркетплейсы</a>
-                <a href="##" class="article__tag">Малый бизнес</a>
-                <a href="##" class="article__tag">Бухучёт</a>
-            </div>
 
             <div class="article__tags">
+                <a href="##" class="article__tag">{{ __('tr.all themes') }}</a>
                 @foreach($article_filters as $article_filter)
-                    <a href="##" class="article__tag">{{ $article_filter }}</a>
+                    <a href="##" class="article__tag">{{ mb_ucfirst($article_filter) }}</a>
                 @endforeach
             </div>
 
@@ -65,9 +55,10 @@
                 <div class="latest__wrapper swiper-wrapper">
 
                     @foreach($articles as $article)
-                        <div class="latest__card swiper-slide" data-category="{{ $article->translate($locale)->type}}">
+                        <div class="latest__card swiper-slide"
+                             data-category="{{ mb_lcfirst($article->translate($locale)->type)}}">
                             <div class="latest__card_img">
-                                <img src="{{ asset($article->img) }}" alt="#" />
+                                <img src="{{ asset($article->img) }}" alt="#"/>
                             </div>
                             <div class="latest__card_title">{{ $article->translate($locale)->title }}</div>
                             <div class="latest__card_text">{{ $article->translate($locale)->text }}</div>
@@ -126,7 +117,7 @@
                         </div>
                     @endforeach
 
-                    <div
+                    {{--<div
                         class="latest__card swiper-slide"
                         data-category="consult"
                     >
@@ -397,7 +388,7 @@
                                 <span>09:25</span>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
             <div class="article__cta">
@@ -417,7 +408,7 @@
                     <a
                         href="#form01"
                         class="article__cta_button-btn yellow-button-big"
-                        >Оставить заявку</a
+                    >Оставить заявку</a
                     >
                 </div>
             </div>
@@ -459,7 +450,7 @@
             </div>
             <div class="form__form form--form" id="form01">
                 <div class="form__form_title title">
-                    Остались вопросы?<br />
+                    Остались вопросы?<br/>
                     Свяжитесь с нами
                 </div>
                 <div class="form__form-text text">
@@ -468,16 +459,16 @@
                     или приходите в офис — будем рады помочь.
                 </div>
                 <div class="form__form-box">
-                    <input type="text" placeholder="Имя*" />
-                    <input type="text" placeholder="Фамилия*" />
+                    <input type="text" placeholder="Имя*"/>
+                    <input type="text" placeholder="Фамилия*"/>
                 </div>
                 <input
                     type="email"
                     placeholder="Email-адрес (Необязательно)"
                 />
-                <input type="tel" placeholder="Номер телефона*" />
+                <input type="tel" placeholder="Номер телефона*"/>
                 <a class="form__form_submit yellow-button" href="##"
-                    >Задать вопрос</a
+                >Задать вопрос</a
                 >
             </div>
         </div>
