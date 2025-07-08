@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 
+use App\Orchid\Screens\Advises\AdviseScreen;
 use App\Orchid\Screens\Articles\ArticlesScreen;
 use App\Orchid\Screens\Consultations\ConsultationScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
@@ -66,6 +67,10 @@ Route::screen('/reviews', ReviewScreen::class)
 //Consultations
 Route::screen('/consultations', ConsultationScreen::class)
     ->name('platform.consultations');
+
+//Advises
+Route::screen('/advises', AdviseScreen::class)
+    ->name('platform.advises');
 
 
 ///////////////////////////////////////////////////////////////
