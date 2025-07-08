@@ -70,6 +70,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.chat-square-text')
                 ->route('platform.consultations'),
 
+            Menu::make('Advises')
+                ->icon('bs.lightbulb')
+                ->route('platform.advises'),
+
             Menu::make('Get Started')
                 ->icon('bs.book')
                 ->title('Navigation')
