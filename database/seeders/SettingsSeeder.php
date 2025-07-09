@@ -111,8 +111,8 @@ class SettingsSeeder extends Seeder
                 'service_title' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => 'Har qanday qulay usulda aloqada',
-                        'ru' => 'На связи любым удобным способом',
+                        'uz' => 'Har qanday <br> qulay usulda aloqada',
+                        'ru' => 'На связи <br> любым удобным способом',
                     ],
                 ],
 
@@ -528,7 +528,7 @@ class SettingsSeeder extends Seeder
                 'feed_together_btn_text' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => "Hozir qo'shiling",
+                        'uz' => "Hoziroq qo'shiling",
                         'ru' => 'Присоединиться сейчас',
                     ],
                 ],
@@ -643,14 +643,14 @@ class SettingsSeeder extends Seeder
                     'type' => 'matrix',
                     'translations' => [
                         'uz' => [
-                            ['icon' => 'facebook', 'link' => 'https://facebook.com', 'title' => 'Facebook'],
-                            ['icon' => 'instagram', 'link' => 'https://instagram.com', 'title' => 'Instagram'],
-                            ['icon' => 'telegram', 'link' => 'https://t.me/yourchannel', 'title' => 'Telegram'],
+                            ['icon' => '../img/svg/facebook.svg', 'link' => 'https://facebook.com', 'title' => 'Facebook'],
+                            ['icon' => '../img/svg/instagram.svg', 'link' => 'https://instagram.com', 'title' => 'Instagram'],
+                            ['icon' => '../img/svg/telegram.svg', 'link' => 'https://t.me/yourchannel', 'title' => 'Telegram'],
                         ],
                         'ru' => [
-                            ['icon' => 'facebook', 'link' => 'https://facebook.com', 'title' => 'Facebook'],
-                            ['icon' => 'instagram', 'link' => 'https://instagram.com', 'title' => 'Instagram'],
-                            ['icon' => 'telegram', 'link' => 'https://t.me/yourchannel', 'title' => 'Telegram'],
+                            ['icon' => '../img/svg/facebook.svg', 'link' => 'https://facebook.com', 'title' => 'Facebook'],
+                            ['icon' => '../img/svg/instagram.svg', 'link' => 'https://instagram.com', 'title' => 'Instagram'],
+                            ['icon' => '../img/svg/telegram.svg', 'link' => 'https://t.me/yourchannel', 'title' => 'Telegram'],
                         ],
                     ],
                     'options' => [

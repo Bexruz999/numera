@@ -70,10 +70,7 @@
                             <div class="footer__columns_content-1">
                                 <ul class="footer__columns_list">
                                     <li>
-                                        <a
-                                            class="footer__columns_list-title"
-                                            href="##"
-                                        >
+                                        <a class="footer__columns_list-title" href="#">
                                             <img
                                                 src="../img/svg/socials.svg"
                                                 alt="#"
@@ -81,7 +78,18 @@
                                             <span>{{__('tr.Social networks')}}</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    @foreach($settings['footer.social_networks'] as $setting)
+                                        <li>
+                                            <a href="{{ $setting['link'] }}">
+                                                <img
+                                                    src="{{ $setting['icon'] }}"
+                                                    alt="#"
+                                                />
+                                                <span>{{ $setting['title'] }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                   {{-- <li>
                                         <a href="https://t.me/husaynaliyev">
                                             <img
                                                 src="../img/svg/telegram.svg"
@@ -111,7 +119,7 @@
                                             />
                                             <span>Facebook</span>
                                         </a>
-                                    </li>
+                                    </li>--}}
                                 </ul>
                                 <ul class="footer__columns_list">
                                     <li>
@@ -126,7 +134,14 @@
                                             <span>{{__('tr.Phones')}}</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    @foreach($settings['footer.phones'] as $phone)
+                                        <li>
+                                            <a href="{{ $phone['link'] }}">
+                                                <span>{{ $phone['title'] }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                    {{--<li>
                                         <a href="tel:+998712946062">
                                             <span>+998 71 294 60 62</span>
                                         </a>
@@ -135,31 +150,23 @@
                                         <a href="tel:+998909332420">
                                             <span>+998 90 933 24 20</span>
                                         </a>
-                                    </li>
+                                    </li>--}}
                                 </ul>
-                                <div
-                                    class="footer__columns_rights desktop-only"
-                                >
-                                    © 2022–2025 «Numera.uz»
+                                <div class="footer__columns_rights desktop-only">
+                                    {{$settings['footer.rights']}}
                                 </div>
                             </div>
                             <div class="footer__columns_content-2">
                                 <ul class="footer__column_list">
                                     <li>
-                                        <a
-                                            class="footer__columns_list-title"
-                                            href="##"
-                                        >
-                                            <img
-                                                src="../img/svg/clock.svg"
-                                                alt="#"
-                                            />
+                                        <a class="footer__columns_list-title" href="##">
+                                            <img src="../img/svg/clock.svg" alt="#"/>
                                             <span>{{__('tr.Work schedule:')}}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="##">
-                                            <span>Пн–Пт: 9:00 – 18:00</span>
+                                            <span>{{$settings['footer.work_schedule']}}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -176,7 +183,14 @@
                                             <span>Email</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    @foreach($settings['footer.email'] as $email)
+                                        <li>
+                                            <a href="{{ $email['email'] }}">
+                                                <span>{{ $email['email'] }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                    {{--<li>
                                         <a href="##">
                                             <span>info@numera.uz</span>
                                         </a>
@@ -187,13 +201,13 @@
                                                 >khusankhonaliev@gmail.com</span
                                             >
                                         </a>
-                                    </li>
+                                    </li>--}}
                                 </ul>
                                 <ul class="footer__column_list">
                                     <li>
                                         <a
                                             class="footer__columns_list-title"
-                                            href="##"
+                                            href="#"
                                         >
                                             <img
                                                 src="../img/svg/footer-location.svg"
@@ -203,14 +217,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a
-                                            class="footer__column_list-adress"
-                                            href="##"
-                                        >
-                                            <span
-                                                >г. Ташкент, Яшнабадский район,
-                                                ул. Карасув, 33А</span
-                                            >
+                                        <a class="footer__column_list-address" href="#">
+                                            <span>{{$settings['footer.office_address']}}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -221,7 +229,7 @@
                         </div>
                         <div class="footer__columns_map">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d5995.009854645912!2d69.341487!3d41.297878000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE3JzUyLjQiTiA2OcKwMjAnMjkuNCJF!5e0!3m2!1sru!2s!4v1750238504433!5m2!1sru!2s"
+                                src="{{$settings['footer.map']}}"
                                 width="600"
                                 height="450"
                                 style="border: 0"
