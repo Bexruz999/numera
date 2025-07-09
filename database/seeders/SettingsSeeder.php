@@ -488,6 +488,10 @@ class SettingsSeeder extends Seeder
                             ['text' => 'Контакты', 'link' => '/contact', 'class' => 'button-transparent'],
                         ],
                     ],
+                    'options' => [
+                        'uz' => [['key' => 'text', 'value' => 'Text'], ['key' => 'link', 'value' => 'Link'], ['key' => 'class', 'value' => 'Class']],
+                        'ru' => [['key' => 'text', 'value' => 'Текст'], ['key' => 'link', 'value' => 'Ссылка'], ['key' => 'class', 'value' => 'Класс']],
+                    ],
                 ],
 
                 'feed_together_image_mb' => [
