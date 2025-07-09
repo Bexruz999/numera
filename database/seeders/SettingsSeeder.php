@@ -432,19 +432,51 @@ class SettingsSeeder extends Seeder
                 'social_networks' => [
                     'type' => 'matrix',
                     'translations' => [
-                        'uz' => '{"1":{"icon":"facebook","link":"https://facebook.com","title":"Facebook"},"2":{"icon":"instagram","link":"https://instagram.com","title":"Instagram"},"3":{"icon":"telegram","link":"https://t.me/yourchannel","title":"Telegram"}}',
-                        'ru' => '{"1":{"icon":"facebook","link":"https://facebook.com","title":"Facebook"},"2":{"icon":"instagram","link":"https://instagram.com","title":"Instagram"},"3":{"icon":"telegram","link":"https://t.me/yourchannel","title":"Telegram"}}',
+                        'uz' => [
+                            ['icon' => 'facebook', 'link' => 'https://facebook.com', 'title' => 'Facebook'],
+                            ['icon' => 'instagram', 'link' => 'https://instagram.com', 'title' => 'Instagram'],
+                            ['icon' => 'telegram', 'link' => 'https://t.me/yourchannel', 'title' => 'Telegram'],
+                        ],
+                        'ru' => [
+                            ['icon' => 'facebook', 'link' => 'https://facebook.com', 'title' => 'Facebook'],
+                            ['icon' => 'instagram', 'link' => 'https://instagram.com', 'title' => 'Instagram'],
+                            ['icon' => 'telegram', 'link' => 'https://t.me/yourchannel', 'title' => 'Telegram'],
+                        ],
+                    ],
+                    'options' => [
+                        'uz' => [
+                            ['key' => 'icon', 'value' => 'Icon'],
+                            ['key' => 'link', 'value' => 'Link'],
+                            ['key' => 'title', 'value' => 'Name'],
+                        ],
+                        'ru' => [
+                            ['key' => 'icon', 'value' => 'Icon'],
+                            ['key' => 'link', 'value' => 'Link'],
+                            ['key' => 'title', 'value' => 'Name'],
+                        ],
                     ],
                 ],
                 'phones' => [
                     'type' => 'matrix',
                     'translations' => [
-                        'uz' => '{"1":{"link":"tel:+998712946062","title":"+998 71 294 60 62"},"2":{"link":"tel:+998909332420","title":"+998 90 933 24 20"}}',
-                        'ru' => '{"1":{"link":"tel:+998712946062","title":"+998 71 294 60 62"},"2":{"link":"tel:+998909332420","title":"+998 90 933 24 20"}}',
+                        'uz' => [
+                            ['link' => 'tel:+998712946062', 'title' => '+998 71 294 60 62'],
+                            ['link' => 'tel:+998909332420', 'title' => '+998 90 933 24 20'],
+                        ],
+                        'ru' => [
+                            ['link' => 'tel:+998712946062', 'title' => '+998 71 294 60 62'],
+                            ['link' => 'tel:+998909332420', 'title' => '+998 90 933 24 20'],
+                        ],
                     ],
                     'options' => [
-                        'uz' => '{"1":{"key":"link","value":"Link"},"2":{"key":"number","value":"Number"}}',
-                        'ru' => '{"1":{"key":"link","value":"Ссылка"},"2":{"key":"number","value":"Номер"}}',
+                        'uz' => [
+                            ['key' => 'link', 'value' => 'Link'],
+                            ['key' => 'title', 'value' => 'Nomer'],
+                        ],
+                        'ru' => [
+                            ['key' => 'link', 'value' => 'Link'],
+                            ['key' => 'title', 'value' => 'Номер'],
+                        ],
                     ],
                 ],
 
@@ -493,6 +525,8 @@ class SettingsSeeder extends Seeder
                 ],
                 // Add more settings for the footer group as needed
             ],
+
+
             // Add more groups and their settings as needed
         ];
 
@@ -510,6 +544,7 @@ class SettingsSeeder extends Seeder
                 }
 
                 if (isset($setting['options'])) {
+
                     foreach ($setting['options'] as $ln => $options) {
                         $model->translateOrNew($ln)->options = $options;
                     }
