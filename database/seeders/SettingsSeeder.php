@@ -14,22 +14,265 @@ class SettingsSeeder extends Seeder
     public function run(): void
     {
         $groups = [
-            'about' => [
-                'home_page_title' => [
+
+            'home' => [
+                'main_title' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => 'Bosh sahifa sarlavhasi',
-                        'ru' => 'Заголовок главной страницы',
+                        'uz' => 'Biznesni rivojlantiring [buxgalteriya]ni bizga qoldiring',
+                        'ru' => 'Развивайте бизнес [бухгалтерию] оставьте нам',
                     ],
                 ],
-                'home_page_description' => [
+                'main_description' => [
                     'type' => 'textarea',
                     'translations' => [
-                        'uz' => 'Bosh sahifa tavsifi',
-                        'ru' => 'Описание главной страницы',
+                        'uz' => "Biznes yuritish buxgalteriya hisobini tushunishni anglatmaydi. Biz siz uchun hisoblaymiz, rejalashtiramiz va hisobot beramiz - halol, aniq va o'z vaqtida.",
+                        'ru' => 'Вести бизнес — не значит разбираться в бухгалтерии. Мы считаем, планируем и отчитываемся за вас — честно, точно и вовремя.',
+                    ],
+                ],
+                'main_list' => [
+                    'type' => 'matrix',
+                    'translations' => [
+                        'uz' => [
+                            ['icon' => 'check', 'text' => '100% raqamli buxgalteriya xizmati'],
+                            ['icon' => 'check', 'text' => 'O‘zbekistonning kichik va o‘rta biznesiga ixtisoslashgan'],
+                            ['icon' => 'check', 'text' => 'Kontragentlarni tekshirish va xavflardan himoya qilish'],
+                        ],
+                        'ru' => [
+                            ['icon' => 'check', 'text' => '100% цифровой бухгалтерский сервис'],
+                            ['icon' => 'check', 'text' => 'Специализация на малом и среднем бизнесе Узбекистана '],
+                            ['icon' => 'check', 'text' => 'Проверка контрагентов и защита от рисков'],
+                        ]
+                    ],
+                    'options' => [
+                        'uz' => [['key' => 'icon', 'value' => 'Icon'], ['key' => 'text', 'value' => 'Text']],
+                        'ru' => [['key' => 'icon', 'value' => 'Иконка'], ['key' => 'text', 'value' => 'Текст']],
+                    ],
+                ],
+                'main_btn' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Maslahat olish',
+                        'ru' => 'Получить консультацию',
+                    ],
+                ],
+                'main_btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/contact',
+                        'ru' => '/contact',
+                    ],
+                ],
+                'main_box' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/png/main-3d.png',
+                        'ru' => '../img/png/main-3d.png',
+                    ],
+                ],
+                'main_img' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/jpg/main-img01.jpg',
+                        'ru' => '../img/jpg/main-img01.jpg',
                     ],
                 ],
 
+                'we_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Biz kimmiz va biznesga qanday yordam beramiz',
+                        'ru' => 'Кто мы и чем помогаем бизнесу',
+                    ],
+                ],
+                'we_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Numera — bu O‘zbekistondagi kichik va o‘rta biznes uchun raqamli buxgalteriya hisobini taqdim etuvchi kompaniya. Bizning maqsadimiz — buxgalteriya hisobini shaffof, qulay va ochiq qilish. Biz tadbirkorlarni o'z bizneslarini rivojlantirishga e'tibor qaratishlari uchun ularni muntazam ishlardan ozod qilishga intilamiz.",
+                        'ru' => 'Numera — аутсорсинговая бухгалтерская компания, предоставляющая полный спектр бухгалтерских, налоговых услуг для малого и среднего бизнеса в Узбекистане. Мы специализируемся на ведении бухгалтерского и налогового учёта, подготовке отчётности, сопровождении бухгалтерии бизнеса на маркетплейсах, а также предоставляем уникальные услуги по проверке контрагентов и оптимизации налоговой нагрузки. ',
+                    ],
+                ],
+                'we_img' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/jpg/we02.jpg',
+                        'ru' => '../img/jpg/we02.jpg',
+                    ],
+                ],
+
+                'source_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Biznes uchun foydali Autsorsing',
+                        'ru' => 'Аутсорсинг с пользой для бизнеса',
+                    ],
+                ],
+
+                'service_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Har qanday qulay usulda aloqada',
+                        'ru' => 'На связи любым удобным способом',
+                    ],
+                ],
+
+                'service_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Jamoamiz bilan o'zaro aloqalar \"bir darcha\" tamoyili asosida tashkil etilgan - siz turli mutaxassislarga murojaat qilishingiz yoki o'zingizni qayta-qayta tushuntirishingiz shart emas. vazifa. Siz bilan butun jarayonni muvofiqlashtiradigan, muddatlarni nazorat qiluvchi va har qanday savollarga javob beradigan shaxsiy yordamchi ishlaydi. Siz u bilan xohlagan usulda bog'lanishingiz mumkin: telefon, messenjerlar yoki elektron pochta orqali - sizga eng qulay tarzda.",
+                        'ru' => 'Взаимодействие с нашей командой организовано по принципу “одного окна” — вам не нужно обращаться к разным специалистам или повторно объяснять свою задачу. С вами работает персональный ассистент, который координирует весь процесс, контролирует сроки и отвечает на любые вопросы. Вы можете связаться с ним любым удобным способом: по телефону, через мессенджеры или по электронной почте — как вам удобно.',
+                    ],
+                ],
+
+                'service_items' => [
+                    'type' => 'matrix',
+                    'translations' => [
+                        'uz' => [
+                            ['icon' => 'desk', 'text' => 'Service Desk'],
+                            ['icon' => 'chat', 'text' => 'Messenjerlar'],
+                            ['icon' => 'phone', 'text' => 'Telefon'],
+                            ['icon' => 'email', 'text' => 'Email'],
+                        ],
+                        'ru' => [
+                            ['icon' => 'desk', 'text' => 'Service Desk'],
+                            ['icon' => 'chat', 'text' => 'Мессенджеры'],
+                            ['icon' => 'phone', 'text' => 'Телефон'],
+                            ['icon' => 'email', 'text' => 'Email'],
+                        ]
+                    ],
+                    'options' => [
+                        'uz' => [['key' => 'icon', 'value' => 'Icon'], ['key' => 'text', 'value' => 'Text']],
+                        'ru' => [['key' => 'icon', 'value' => 'Иконка'], ['key' => 'text', 'value' => 'Текст']],
+                    ],
+                ],
+
+                'service__bottom_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Sizning biznesingiz uchun xizmatlarni tanlang',
+                        'ru' => 'Подберите услуги для вашего бизнеса',
+                    ],
+                ],
+
+                'service__bottom_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "\"Biz har qanday miqyosdagi va profildagi kompaniyalarga haqiqiy foyda keltirish uchun ishlaymiz. Tajriba va professionallikka tayanib, biz eng yaxshi yechimlarni topishga yordam beramiz. Keling, siz uchun eng samarali nima bo'lishini birgalikda aniqlaymiz.\"",
+                        'ru' => '"Мы работаем, чтобы приносить реальную пользу компаниям любого масштаба и профиля. Опираясь на опыт и профессионализм, мы помогаем находить лучшие решения. Давайте вместе определим, что будет наиболее эффективным именно для вас."',
+                    ],
+                ],
+
+                'cta_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Numera biznesingizga qanday yordam berishi mumkinligini bilmoqchimisiz?',
+                        'ru' => 'Хотите узнать, как Numera может помочь вашему бизнесу?',
+                    ],
+                ],
+
+                'cta_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Numera buxgalteriya hisobi va ish haqini hisoblashdan tortib soliqlarni optimallashtirish va hamkorlarni tekshirishgacha bo'lgan hamma narsani o'z zimmasiga oladi, biz onlayn ishlaymiz, oddiy tilda gaplashamiz, Biz sizning biznesingizga o'zimiznikidek g'amxo'rlik qilamiz.",
+                        'ru' => 'Numera берёт на себя всё: от учёта и расчёта зарплат до налоговой оптимизации и проверки партнёров, работаем онлайн, говорим на простом языке, заботимся о вашем бизнесе, как о своём.',
+                    ],
+                ],
+
+                'cta_btn' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Bepul maslahat oling',
+                        'ru' => 'Получить бесплатную консультацию',
+                    ],
+                ],
+
+                'cta_btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/contact',
+                        'ru' => '/contact',
+                    ],
+                ],
+
+                'cta_item_title_0' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Turli sohalarda chuqur ekspertiza',
+                        'ru' => 'Глубокая экспертиза в разных сферах',
+                    ],
+                ],
+                'cta_item_text_0' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Yakka tartibdagi tadbirkorlar, MChJlar, soddalashtirilgan soliq tizimi bo'yicha kompaniyalar, ishlab chiqarish, savdo va xizmat ko'rsatish tashkilotlari bilan ishlash tajribasi. Shu jumladan, bozorlarda ishlaydigan biznes bilan.",
+                        'ru' => 'Опыт работы с ИП, ООО, компаниями на УСН, производственными, торговыми и сервисными организациями. В том числе — с бизнесом, работающим на маркетплейсах.',
+                    ],
+                ],
+
+                'cta_item_title_1' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Zamonaviy yondashuv',
+                        'ru' => 'Современный подход',
+                    ],
+                ],
+                'cta_item_text_1' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Jarayonlarni avtomatlashtirish, onlayn xizmatlar bilan ishlash, masofaviy xizmat ko'rsatish, elektron hujjatlar - qulay va tez.",
+                        'ru' => 'Автоматизация процессов, работа с онлайн-сервисами, удалённое обслуживание, документы в электронном виде — удобно и быстро.',
+                    ],
+                ],
+
+                'cta_item_title_2' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Shaxsiy yondashuv',
+                        'ru' => 'Индивидуальный подход',
+                    ],
+                ],
+                'cta_item_text_2' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Har bir mijoz shaxsiy buxgalter va tushunarli hisobotlarni oladi. Biz xizmatlarni \"shtamplash\" bilan shug'ullanmaymiz - biz ularni sizning biznesingizga moslashtiramiz.",
+                        'ru' => 'Каждый клиент получает персонального бухгалтера и понятную отчётность. Мы не «штампуем» услуги — мы адаптируем их под ваш бизнес.',
+                    ],
+                ],
+
+                'cta_item_title_3' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Arzon narxlar',
+                        'ru' => 'Доступные цены',
+                    ],
+                ],
+                'cta_item_text_3' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Biz O'zbekiston bozoridagi eng arzon autsorsing buxgalteriya kompaniyalaridan biri - shaffof va raqobatbardosh narx siyosati.",
+                        'ru' => 'Мы одни из самых доступных аутсорсинговых бухгалтерских компаний на рынке Узбекистана — прозрачная и конкурентоспособная ценовая политика.',
+                    ],
+                ],
+
+                'cta_item_title_4' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Javobgarlik kafolati',
+                        'ru' => 'Гарантия ответственности',
+                    ],
+                ],
+                'cta_item_text_4' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Shartnomadan oldin hamkorlaringizni tahlil qiling: xavflar, ishonchlilik, shaffoflik. Har bir shartnomada ishonch hosil qilish uchun",
+                        'ru' => 'Анализируем ваших партнёров до сделки: риски, благонадёжность, прозрачность. Чтобы вы были уверены в каждом контракте.',
+                    ],
+                ],
+
+                // Add more settings for the home group as needed
+            ],
+
+            'about' => [
                 'buh__subtitle' => [
                     'type' => 'text',
                     'translations' => [
