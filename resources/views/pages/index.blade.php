@@ -11,51 +11,52 @@
 
 @section('content')
     <section class="main">
-                    <div class="main__container">
-                        <div class="main__box">
-                            <img
-                                class="main__box_3d"
-                                src="../img/png/main-3d.png"
-                                alt="#"
-                            />
-                            <div class="main__title title">
-                                Развивайте бизнес <span>бухгалтерию</span> оставьте
-                                нам
-                            </div>
-                            <div class="main__subtitle">
-                                Вести бизнес — не значит разбираться в бухгалтерии.
-                                Мы считаем, планируем и отчитываемся за вас —
-                                честно, точно и вовремя.
-                            </div>
-                            <ul class="main__list">
-                                <li class="main__list_item">
-                                    <img
-                                        src="../img/svg/main-icon01.svg"
-                                        alt="#"
-                                    />100% цифровой бухгалтерский сервис
-                                </li>
-                                <li class="main__list_item">
-                                    <img
-                                        src="../img/svg/main-icon02.svg"
-                                        alt="#"
-                                    />Специализация на малом и среднем бизнесе<br />
-                                    Узбекистана
-                                </li>
-                                <li class="main__list_item">
-                                    <img
-                                        src="../img/svg/main-icon03.svg"
-                                        alt="#"
-                                    />Проверка контрагентов и защита от рисков
-                                </li>
-                            </ul>
-                            <a href="#support-form" class="main__contact"
-                                >Получить консультацию</a
-                            >
-                        </div>
-                        <div class="main__img">
-                            <img src="../img/jpg/main-img01.jpg" alt="#" />
-                        </div>
-                    </div>
+        <div class="main__container">
+            <div class="main__box">
+                <img
+                    class="main__box_3d"
+                    src="{{ $settings['home.main_box'] }}"
+                    alt="#"
+                />
+                <div class="main__title title">
+                    {!! str_replace(['[', ']'], ['<span>', '</span>'], $settings['home.main_title']) !!}
+                </div>
+                <div class="main__subtitle">
+                    {{$settings['home.main_description']}}
+                </div>
+                <ul class="main__list">
+                    @foreach($settings['home.main_list'] as $item)
+                        <li>
+                            <img src="{{ $item['icon'] }}" alt="#"/>
+                            <span>{{ $item['text'] }}</span>
+                        </li>
+                    @endforeach
+                    {{--<li class="main__list_item">
+                        <img
+                            src="../img/svg/main-icon01.svg"
+                            alt="#"
+                        />100% цифровой бухгалтерский сервис
+                    </li>
+                    <li class="main__list_item">
+                        <img
+                            src="../img/svg/main-icon02.svg"
+                            alt="#"
+                        />Специализация на малом и среднем бизнесе<br/>
+                        Узбекистана
+                    </li>
+                    <li class="main__list_item">
+                        <img
+                            src="../img/svg/main-icon03.svg"
+                            alt="#"
+                        />Проверка контрагентов и защита от рисков
+                    </li>--}}
+                </ul>
+                <a href="{{ $settings['home.main_btn_link'] }}" class="main__contact">{{ $settings['home.main_btn'] }}</a>
+            </div>
+            <div class="main__img">
+                <img src="{{ $settings['home.main_img'] }}" alt="#"/>
+            </div>
+        </div>
     </section>
     <section class="we">
         <div class="we__container">
@@ -66,7 +67,7 @@
                     class="we__img_transparent"
                 />
                 <img
-                    src="../img/jpg/we02.jpg"
+                    src="{{ $settings['home.we_img'] }}"
                     alt="#"
                     class="we__img_main"
                 />
@@ -13492,18 +13493,10 @@
             <div class="we__content">
                 <div class="we__numera numera">#Numera</div>
                 <div class="we__title title">
-                    Кто мы и чем помогаем бизнесу
+                    {{ $settings['home.we_title'] }}
                 </div>
                 <div class="we__text text">
-                    Numera — аутсорсинговая бухгалтерская компания,
-                    предоставляющая полный спектр бухгалтерских,
-                    налоговых услуг для малого и среднего бизнеса в
-                    Узбекистане.<br />Мы специализируемся на ведении
-                    бухгалтерского и налогового учёта, подготовке
-                    отчётности, сопровождении бухгалтерии бизнеса на
-                    маркетплейсах, а также предоставляем уникальные
-                    услуги по проверке контрагентов и оптимизации
-                    налоговой нагрузки.
+                   {{ $settings['home.we_text'] }}
                 </div>
             </div>
         </div>
@@ -13513,12 +13506,12 @@
         <div class="source__container">
             <div class="source__numera numera">#Numera</div>
             <div class="source__title title">
-                Аутсорсинг с пользой для бизнеса
+                {{ $settings['home.source_title'] }}
             </div>
             <div class="source__grid">
                 <div class="source__grid_item">
                     <div class="source__grid_item-icon">
-                        <img src="../img/svg/source01.svg" alt="#" />
+                        <img src="../img/svg/source01.svg" alt="#"/>
                     </div>
                     <div class="source__grid_item-name card-title">
                         Учет без ошибок
@@ -13530,7 +13523,7 @@
                 </div>
                 <div class="source__grid_item">
                     <div class="source__grid_item-icon">
-                        <img src="../img/svg/source02.svg" alt="#" />
+                        <img src="../img/svg/source02.svg" alt="#"/>
                     </div>
                     <div class="source__grid_item-name card-title">
                         Минимизируйте риски
@@ -13542,7 +13535,7 @@
                 </div>
                 <div class="source__grid_item">
                     <div class="source__grid_item-icon">
-                        <img src="../img/svg/source03.svg" alt="#" />
+                        <img src="../img/svg/source03.svg" alt="#"/>
                     </div>
                     <div class="source__grid_item-name card-title">
                         Непрерывность работы
@@ -13554,7 +13547,7 @@
                 </div>
                 <div class="source__grid_item">
                     <div class="source__grid_item-icon">
-                        <img src="../img/svg/source04.svg" alt="#" />
+                        <img src="../img/svg/source04.svg" alt="#"/>
                     </div>
                     <div class="source__grid_item-name card-title">
                         Больше выгоды
@@ -13566,7 +13559,7 @@
                 </div>
                 <div class="source__grid_item">
                     <div class="source__grid_item-icon">
-                        <img src="../img/svg/source05.svg" alt="#" />
+                        <img src="../img/svg/source05.svg" alt="#"/>
                     </div>
                     <div class="source__grid_item-name card-title">
                         Бухгалтерия без штата
@@ -13578,7 +13571,7 @@
                 </div>
                 <div class="source__grid_item">
                     <div class="source__grid_item-icon">
-                        <img src="../img/svg/source06.svg" alt="#" />
+                        <img src="../img/svg/source06.svg" alt="#"/>
                     </div>
                     <div class="source__grid_item-name card-title">
                         Ваше время — бизнесу
@@ -13600,22 +13593,28 @@
                         #Numera
                     </div>
                     <div class="service__top_title title">
-                        На связи<br />любым удобным способом
+                        {!! $settings['home.service_title'] !!}
                     </div>
                     <div class="service__top_text text">
-                        Взаимодействие с нашей командой организовано по
-                        принципу “одного окна” — вам не нужно обращаться
-                        к разным специалистам или повторно объяснять
-                        свою задачу. С вами работает персональный
-                        ассистент, который координирует весь процесс,
-                        контролирует сроки и отвечает на любые вопросы.
-                        Вы можете связаться с ним любым удобным
-                        способом: по телефону, через мессенджеры или по
-                        электронной почте — как вам удобно.
+                        {{ $settings['home.service_text'] }}
                     </div>
                 </div>
                 <div class="service__top_grid">
-                    <div class="service__top_grid-item">
+                    @foreach($settings['home.service_items'] as $item)
+                        <div class="service__top_grid-item">
+                            <div class="service__top_grid-icon">
+                                <img
+                                    src="{{ $item['icon'] }}"
+                                    alt="#"
+                                />
+                            </div>
+                            <div class="service__top_grid-num">01</div>
+                            <div class="service__top_grid-name">
+                                {{ $item['text'] }}
+                            </div>
+                        </div>
+                    @endforeach
+                    {{--<div class="service__top_grid-item">
                         <div class="service__top_grid-icon">
                             <img
                                 src="../img/svg/service01.svg"
@@ -13660,7 +13659,7 @@
                         <div class="service__top_grid-name">
                             Телефон
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
             <div class="service__bottom">
@@ -13669,14 +13668,10 @@
                         #Numera
                     </div>
                     <div class="service__bottom_title title">
-                        Подберите услуги для вашего бизнеса
+                        {{ $settings['home.service__bottom_title'] }}
                     </div>
                     <div class="service__bottom_text text">
-                        "Мы работаем, чтобы приносить реальную пользу
-                        компаниям любого масштаба и профиля. Опираясь на
-                        опыт и профессионализм, мы помогаем находить
-                        лучшие решения. Давайте вместе определим, что
-                        будет наиболее эффективным именно для вас."
+                        {{ $settings['home.service__bottom_text'] }}
                     </div>
                 </div>
                 <div class="service__bottom_inputs">
@@ -13762,7 +13757,7 @@
                     </div>
 
                     <a href="##" class="service__bottom_button button"
-                        >Посмотреть услугу</a
+                    >Посмотреть услугу</a
                     >
                 </div>
             </div>
@@ -13773,8 +13768,7 @@
             <div class="cta__box">
                 <div class="cta__tag tag">Консультация</div>
                 <div class="cta__title title">
-                    Хотите узнать, как Numera может помочь вашему
-                    бизнесу?
+                    {{ $settings['home.cta_title'] }}
                     <svg
                         width="21"
                         height="25"
@@ -13800,14 +13794,10 @@
                     </svg>
                 </div>
                 <div class="cta__text text">
-                    Numera берёт на себя всё: от учёта и расчёта зарплат
-                    до налоговой оптимизации и проверки партнёров,
-                    работаем онлайн, говорим на простом языке, заботимся
-                    о вашем бизнесе, как о своём.
+                    {{ $settings['home.cta_text'] }}
                 </div>
-                <a href="#support-form" class="cta__button"
-                    ><img src="../img/svg/phone.svg" alt="#" /> Получить
-                    бесплатную консультацию</a
+                <a href="{{ $settings['home.cta_btn_link'] }}" class="cta__button"
+                ><img src="../img/svg/phone.svg" alt="#"/>{{ $settings['home.cta_btn'] }}</a
                 >
             </div>
             <div class="cta__top_container swiper-container">
@@ -13823,7 +13813,7 @@
                             работающим на маркетплейсах.
                         </div>
                         <div class="cta__top_slide-icon">
-                            <img src="../img/png/cta01.png" alt="#" />
+                            <img src="../img/png/cta01.png" alt="#"/>
                         </div>
                     </div>
                     <div class="cta__top_slide swiper-slide">
@@ -13837,7 +13827,7 @@
                             Современный подход
                         </div>
                         <div class="cta__top_slide-icon">
-                            <img src="../img/png/cta02.png" alt="#" />
+                            <img src="../img/png/cta02.png" alt="#"/>
                         </div>
                     </div>
                 </div>
@@ -13861,7 +13851,7 @@
                         class="cta__bottom_slide cta__bottom_slide-2 swiper-slide"
                     >
                         <div class="cta__bottom_slide-title">
-                            Доступные<br />цены
+                            Доступные<br/>цены
                         </div>
                         <div class="cta__bottom_slide-text text">
                             Мы одни из самых доступных аутсорсинговых
@@ -13870,10 +13860,10 @@
                             политика.
                         </div>
                         <div class="cta__bottom_slide-star-1">
-                            <img src="../img/png/cta03.png" alt="#" />
+                            <img src="../img/png/cta03.png" alt="#"/>
                         </div>
                         <div class="cta__bottom_slide-star-2">
-                            <img src="../img/png/cta04.png" alt="#" />
+                            <img src="../img/png/cta04.png" alt="#"/>
                         </div>
                     </div>
                     <div
@@ -13965,13 +13955,13 @@
                                 <li><a href="##">Строительство</a></li>
                                 <li>
                                     <a href="##"
-                                        >Управляющие компании и ТСЖ</a
+                                    >Управляющие компании и ТСЖ</a
                                     >
                                 </li>
                                 <li><a href="##">Общепит</a></li>
                                 <li>
                                     <a href="##"
-                                        >Мини-кафе, пекарни, вендинг</a
+                                    >Мини-кафе, пекарни, вендинг</a
                                     >
                                 </li>
                             </ul>
@@ -13987,7 +13977,7 @@
                                 </p>
                             </label>
                             <div class="calc__inputs_production">
-                                <input type="number" value="0" />
+                                <input type="number" value="0"/>
                                 <label for="##">Производство</label>
                             </div>
                         </div>
@@ -13997,7 +13987,7 @@
                                 <p>Примерный или прогнозируемый</p>
                             </label>
                             <div class="calc__inputs_production">
-                                <input type="number" value="0" />
+                                <input type="number" value="0"/>
                                 <label for="##">UZS</label>
                             </div>
                         </div>
@@ -14132,7 +14122,7 @@
                             placeholder="Расскажите, чем можем помочь?"
                         ></textarea>
                         <div class="calc__inputs_textarea-send">
-                            <img src="../img/svg/send.svg" alt="#" />
+                            <img src="../img/svg/send.svg" alt="#"/>
                         </div>
                     </div>
                 </div>
@@ -14146,7 +14136,7 @@
                     <div class="calc__content_box">
                         <div class="calc__content_content">
                             <div class="calc__content_content-title">
-                                Полное<br />обслуживание
+                                Полное<br/>обслуживание
                             </div>
                             <div class="calc__content_content-subtitle">
                                 Бухгалтерский, налоговый и кадровый учёт
@@ -14179,7 +14169,7 @@
                                 />
                             </div>
                             <label>
-                                <input type="checkbox" id="autoRenew" />
+                                <input type="checkbox" id="autoRenew"/>
                                 Соглашаюсь на автопродление текущего
                                 тарифа
                             </label>
@@ -14188,14 +14178,14 @@
                                     id="payNow"
                                     class="calc__content_pay"
                                     href="##"
-                                    >Оплатить сейчас</a
+                                >Оплатить сейчас</a
                                 >
                                 <a
                                     id="needHelp"
                                     class="calc__content_cons button"
                                     href="##"
                                     class="button"
-                                    >Нужна консультация</a
+                                >Нужна консультация</a
                                 >
                             </div>
                             <div class="calc__content_info">
@@ -14221,11 +14211,11 @@
         <div class="map__container">
             <div class="map__title title">Нам доверяют!</div>
         </div>
-        <img src="../img/png/map01.png" alt="#" class="map__bg01" />
-        <img src="../img/png/map02.png" alt="#" class="map__bg02" />
-        <img src="../img/png/map03.png" alt="#" class="map__bg03" />
-        <img src="../img/png/map04.png" alt="#" class="map__bg04" />
-        <img src="../img/png/map05.png" alt="#" class="map__bg05" />
+        <img src="../img/png/map01.png" alt="#" class="map__bg01"/>
+        <img src="../img/png/map02.png" alt="#" class="map__bg02"/>
+        <img src="../img/png/map03.png" alt="#" class="map__bg03"/>
+        <img src="../img/png/map04.png" alt="#" class="map__bg04"/>
+        <img src="../img/png/map05.png" alt="#" class="map__bg05"/>
     </section>
     <section class="faq">
         <div class="faq__container">
@@ -14236,34 +14226,34 @@
                     @foreach($questions as $question)
                         @if ($loop->odd)
                             <div class="faq-item faq__item">
-                            <div class="question">
-                            <span>{{ $question->translate($locale)->question }}</span>
-                                <svg
-                                    width="26"
-                                    height="26"
-                                    viewBox="0 0 26 26"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
-                                        stroke="#FFC357"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                    />
-                                </svg>
+                                <div class="question">
+                                    <span>{{ $question->translate($locale)->question }}</span>
+                                    <svg
+                                        width="26"
+                                        height="26"
+                                        viewBox="0 0 26 26"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M6.93335 13.4331H19.9333M13.4333 19.9331V13.4331L13.4333 6.93311"
+                                            stroke="#FFC357"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <div class="answer">
+                                    Да, бухгалтер на аутсорсинге может полностью
+                                    заменить штатного специалиста. Мы берем на
+                                    себя все обязанности по ведению
+                                    бухгалтерского учета, сдаче отчетности и
+                                    взаимодействию с контролирующими органами.
+                                    При этом вы получаете гарантированное
+                                    качество услуг и экономию на содержании
+                                    штатного сотрудника.
+                                </div>
                             </div>
-                            <div class="answer">
-                                Да, бухгалтер на аутсорсинге может полностью
-                                заменить штатного специалиста. Мы берем на
-                                себя все обязанности по ведению
-                                бухгалтерского учета, сдаче отчетности и
-                                взаимодействию с контролирующими органами.
-                                При этом вы получаете гарантированное
-                                качество услуг и экономию на содержании
-                                штатного сотрудника.
-                            </div>
-                        </div>
                         @endif
                     @endforeach
                 </div>
@@ -14311,7 +14301,7 @@
             <div class="support__columns">
                 <div class="support__columns-content">
                     <div class="support__title title">
-                        Поддержка <br />
+                        Поддержка <br/>
                         для роста бизнеса
                     </div>
                     <div class="support__columns-list">
@@ -14344,7 +14334,7 @@
                                 </svg>
                             </div>
                             <span
-                                >г. Ташкент, Яшнабадский район, ул.
+                            >г. Ташкент, Яшнабадский район, ул.
                                 Карасув, 33А</span
                             >
                         </a>
@@ -14482,10 +14472,10 @@
                         />
                         <a href="##" id="contactSend">
                             Отправить
-                            <img src="../img/svg/form.svg" alt="#" />
+                            <img src="../img/svg/form.svg" alt="#"/>
                         </a>
                     </div>
-                    <img src="../img/png/form-qr.png" alt="#" />
+                    <img src="../img/png/form-qr.png" alt="#"/>
                 </div>
             </div>
         </div>
@@ -14499,7 +14489,7 @@
                     @foreach($histories as $history)
                         <div class="story__slide swiper-slide">
                             <div class="story__slide_img">
-                                <img src="{{ asset($history->img) }}" alt="#" />
+                                <img src="{{ asset($history->img) }}" alt="#"/>
                             </div>
                             <div class="story__slide_content">
                                 <div class="story__slide_name">{{$history->translate($locale)?->name }}</div>
