@@ -35,14 +35,9 @@ class ConsultationTable extends Table
             TD::make('title', 'Title')->render(function (Consultation $consultation) use ($locale) {
                 return optional($consultation->translate($locale))->title;
             }),
-            TD::make('description', 'Description')->render(function (Consultation $consultation) use ($locale) {
-                return optional($consultation->translate($locale))->description;
-            }),
             TD::make('subtitle', 'Subtitle')->render(function (Consultation $consultation) use ($locale) {
                 return optional($consultation->translate($locale))->subtitle;
             }),
-            TD::make('created_at', 'Created At')->sort(),
-            TD::make('updated_at', 'Updated At')->sort(),
             TD::make('img', 'Image')->render(function (Consultation $consultation) {
                 return $consultation->img ? "<img src='{$consultation->img}' style='max-width:100px;'>" : '';
             }),

@@ -36,10 +36,6 @@ class FrameTable extends Table
                 $locale = app()->getLocale();
                 return $frame->translate($locale)?->title ?? '';
             }),
-            TD::make('text', 'Description')->render(function (Frame $frame) {
-                $locale = app()->getLocale();
-                return $frame->translate($locale)?->text ?? '';
-            }),
             TD::make('img', 'Image')->render(function ($frame) {
                 return $frame->img ? "<img src='{$frame->img}' style='max-width:100px;'>" : '';
             }),

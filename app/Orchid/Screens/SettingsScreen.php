@@ -2,22 +2,22 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\Setting;
 use App\Orchid\Layouts\SettingsListener;
 use Orchid\Screen\Action;
 use Orchid\Screen\Fields\Group;
-use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Select;
-use Orchid\Support\Color;
-use Orchid\Support\Facades\Layout;
-use Illuminate\Support\Facades\DB;
+use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Illuminate\Http\Request;
+use Orchid\Support\Color;
+use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
 class SettingsScreen extends Screen
@@ -29,29 +29,8 @@ class SettingsScreen extends Screen
      */
     public function query(): iterable
     {
-        // Sort by group ASC, then by id ASC
-        $settings = DB::table('settings')
-            ->orderBy('group')
-            ->orderBy('id')
-            ->get();
-        $grouped = [];
-        $values = [];
-        foreach ($settings as $setting) {
-            $grouped[$setting->group][] = $setting;
-            $decodedValue = json_decode($setting->value, true);
-            $values[$setting->group][$setting->name] = $decodedValue;
-        }
         return [
-            'settings' => $settings,
-            'grouped' => $grouped,
-            'values' => $values,
-            'new_setting' => [
-                'group' => '',
-                'name' => '',
-                'locked' => false,
-                'type' => '',
-                'options' => '',
-            ],
+            'settings' => Setting::all()->groupBy('group')
         ];
     }
 
@@ -62,7 +41,7 @@ class SettingsScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Settings';
+        return __('Settings');
     }
 
     /**
@@ -72,7 +51,13 @@ class SettingsScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            ModalToggle::make('Create Setting')
+                ->modal('createSetting')
+                ->icon('bs.plus')
+                ->method('createSetting')
+                ->modalTitle('Create Setting'),
+        ];
     }
 
     /**
@@ -82,238 +67,254 @@ class SettingsScreen extends Screen
      */
     public function layout(): iterable
     {
-        // Sort by group ASC, then by id ASC
-        $grouped = DB::table('settings')
-            ->orderBy('group')
-            ->orderBy('id')
-            ->get()
-            ->groupBy('group');
+        $settingsGroups = Setting::all()->groupBy('group');
         $tabs = [];
-        foreach ($grouped as $group => $settings) {
-            $fields = [];
+
+        foreach ($settingsGroups as $group => $settings) {
+            $rows = [];
             foreach ($settings as $setting) {
-                $field = $this->getSingleDynamicField($setting);
-                if (!$setting->locked) {
-                    // Render field and delete button as a single horizontal group using a custom array
-                    $fields[] = $this->fieldWithDeleteButtonRow($field, $setting, $group);
-                } else {
-                    $fields[] = $field;
-                }
+                $rows[] = Group::make([
+                    $this->getDynamicField($setting, 'uz'),
+                    $this->getDynamicField($setting, 'ru'),
+                    Button::make()
+                        ->confirm('Are you sure you want to delete this setting?')
+                        ->icon('bs.trash')
+                        ->method('delete')
+                        ->parameters(['setting' => $setting->id])
+                ])->widthColumns('8fr 8fr 1fr')->alignStart();
             }
-            $tabs[$group] = Layout::rows([
-                ...$fields,
-                Button::make('Save')
-                    ->method('saveSettings')
-                    ->parameters(['group' => $group])
-                    ->type(Color::SECONDARY),
-            ]);
+
+            $rows[] = Button::make(__('Save'))
+                ->method('saveSettings')
+                ->parameters(['group' => $group])
+                ->type(Color::SUCCESS);
+
+            $tabs[$group] = Layout::rows($rows);
         }
 
         return [
             Layout::tabs($tabs),
-            Layout::rows([
-                ModalToggle::make('Create Setting')
-                    ->modal('createSettingModal')
-                    ->method('createSetting')
-                    ->type(Color::DARK),
-            ]),
-            Layout::modal('createSettingModal', [
+
+            Layout::modal('createSetting', [
                 SettingsListener::class,
-            ])
-                ->title('Create New Setting')
-                ->applyButton('Create')
-                ->closeButton('Cancel'),
+            ])->title('Create Setting')->applyButton('Create'),
         ];
     }
 
-    /**
-     * Helper to render a field and a delete button in a single row.
-     */
-    protected function fieldWithDeleteButtonRow($field, $setting, $group)
-    {
-        return Group::make([
-            $field,
-            Button::make()
-                ->confirm('Are you sure you want to delete "' . $setting->name . '"?')
-                ->method('deleteSetting')
-                ->parameters(['id' => $setting->id, 'group' => $group])
-                ->type(Color::DARK)
-                ->icon('trash')
-                ->class('btn icon-link btn-dark mb-1'),
-        ])->alignEnd();
-    }
 
-    protected function getSingleDynamicField($setting)
+    /**
+     * Get dynamic field based on setting type and locale
+     */
+    protected function getDynamicField(Setting $setting, $locale)
     {
-        $fieldName = 'values.' . $setting->group . '.' . $setting->name;
-        $decodedValue = json_decode($setting->value, true);
+        $fieldName = 'settings.' . $setting->id . '.value.' . $locale;
+        $translation = $setting->translate($locale);
+        $value = $translation ? $translation->value : '';
+
         switch ($setting->type) {
-            case 'text':
-                $field = Input::make($fieldName)
-                    ->title($setting->name)
-                    ->placeholder($setting->name)
-                    ->value($decodedValue);
-                break;
             case 'textarea':
-                $field = TextArea::make($fieldName)
-                    ->title($setting->name)
-                    ->placeholder($setting->name)
-                    ->value($decodedValue);
-                break;
+                return TextArea::make($fieldName)
+                    ->title("$setting->name ($locale)")
+                    ->value($value)
+                    ->disabled($setting->locked);
             case 'boolean':
-                $field = Switcher::make($fieldName)
-                    ->title($setting->name)
-                    ->value($decodedValue)
-                    ->sendTrueOrFalse(); // Ensure it always sends a value, even when unchecked
-                break;
+                return Switcher::make($fieldName)
+                    ->title("$setting->name ($locale)")
+                    ->value($value)
+                    ->sendTrueOrFalse()
+                    ->disabled($setting->locked);
             case 'image':
-                $field = Picture::make($fieldName)
-                    ->title($setting->name)
-                    ->value($decodedValue)
-                    ->targetRelativeUrl(); // Save relative URLs instead of absolute URLs with domain
-                break;
+                return Picture::make($fieldName)
+                    ->multiple()
+                    ->title("$setting->name ($locale)")
+                    ->value($value)
+                    ->targetRelativeUrl()
+                    ->disabled($setting->locked);
             case 'select':
                 $options = [];
-                if (!empty($setting->options)) {
-                    $options = json_decode($setting->options, true) ?: [];
-                }
-                $field = Select::make($fieldName)
-                    ->title($setting->name)
-                    ->options($options)
-                    ->value($decodedValue);
-                break;
-            case 'matrix':
-                $optionsArray = [];
-                if (!empty($setting->options)) {
-                    $options = json_decode($setting->options, true) ?: [];
-                    foreach ($options as $key => $value) {
-                        // Ensure options are in the correct format for Matrix
-                        $optionsArray[$value] = $key;
+                if ($translation && $translation->options) {
+                    $optionsData = $translation->options;
+                    if (is_string($optionsData)) {
+                        $optionsData = json_decode($optionsData, true);
+                    }
+                    if (is_array($optionsData)) {
+                        foreach ($optionsData as $option) {
+                            if (isset($option['key']) && isset($option['value'])) {
+                                $options[$option['key']] = $option['value'];
+                            }
+                        }
                     }
                 }
-
-                $field = Matrix::make($fieldName)
-                    ->title($setting->name)
-                    ->columns($optionsArray)
-                    ->value(is_array($decodedValue) ? $decodedValue : []);
-                break;
+                return Select::make($fieldName)
+                    ->title("$setting->name ($locale)")
+                    ->options($options)
+                    ->value($value)
+                    ->disabled($setting->locked);
+            case 'matrix':
+                $columns = [];
+                if ($translation && $translation->options) {
+                    $optionsData = $translation->options;
+                    if (is_string($optionsData)) {
+                        $optionsData = json_decode($optionsData, true);
+                    }
+                    if (is_array($optionsData)) {
+                        foreach ($optionsData as $option) {
+                            if (isset($option['key']) && isset($option['value'])) {
+                                $columns[$option['value']] = $option['key'];
+                            }
+                        }
+                    }
+                }
+                return Matrix::make($fieldName)
+                    ->title("$setting->name ($locale)")
+                    ->columns($columns)
+                    ->value(is_array($value) ? $value : [])
+                    ->disabled($setting->locked);
+            case 'text':
             default:
-                $field = Input::make($fieldName)
-                    ->title($setting->name)
-                    ->placeholder($setting->name)
-                    ->value($decodedValue);
+                return Input::make($fieldName)
+                    ->title("$setting->name ($locale)")
+                    ->value($value)
+                    ->disabled($setting->locked);
         }
-        if ($setting->locked) {
-            $field->disabled();
-        }
-        return $field;
     }
 
-    /**
-     * @param Request $request
-     */
-    public function createSetting(Request $request)
+    public function createSetting(): void
     {
-        // Only run if 'new_setting' is present and not empty
-        $data = $request->get('new_setting');
-        if (!$data || empty($data['name'])) {
+        $data = request()->post('setting');
+        if (!is_array($data)) {
+            parse_str($data, $data);
+        }
+
+        if (!$data || !is_array($data)) {
+            Toast::error('Invalid data provided.');
             return;
         }
 
-        $request->validate([
-            'new_setting.group' => 'required',
-            'new_setting.name' => 'required',
-            'new_setting.type' => 'required',
-        ]);
+        $validated = validator($data, [
+            'group' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'locked' => 'boolean',
+            'name' => 'required|string|max:255',
+        ])->validate();
 
-        // Process options for select and matrix types
-        $options = null;
-        if (($data['type'] === 'select' || $data['type'] === 'matrix') && !empty($data['options'])) {
-            $optionsArray = [];
-            // Handle Matrix format
-            $optionsData = is_array($data['options']) ? $data['options'] : [];
-            foreach ($optionsData as $option) {
-                if (isset($option['key']) && isset($option['value'])) {
-                    $optionsArray[$option['key']] = $option['value'];
-                }
-            }
-            $options = json_encode($optionsArray);
+        $setting = new Setting();
+        $setting->group = $validated['group'];
+        $setting->type = $validated['type'];
+        $setting->name = $validated['name'];
+        $setting->locked = $validated['locked'] ?? false;
+
+        foreach (['uz', 'ru'] as $locale) {
+            $setting->translateOrNew($locale)->value = $data['value'][$locale] ?? null;
+            $setting->translateOrNew($locale)->options = $data['options'][$locale] ?? null;
         }
 
-        DB::table('settings')->insert([
-            'group' => $data['group'],
-            'name' => $data['name'],
-            'locked' => !empty($data['locked']),
-            'type' => $data['type'],
-            'options' => $options,
-            'value' => json_encode(''),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $setting->save();
 
-        Toast::info('Setting created successfully.');
+        Toast::info('Setting created successfully!');
     }
 
-    /**
-     * @param Request $request
-     */
+    public function asyncGetSetting(Setting $setting): array
+    {
+        $data = [
+            'group' => $setting->group,
+            'type' => $setting->type,
+            'locked' => $setting->locked,
+            'name' => [
+                'uz' => $setting->translate('uz')->name ?? '',
+                'ru' => $setting->translate('ru')->name ?? '',
+            ],
+            'value' => [
+                'uz' => $setting->translate('uz')->value ?? '',
+                'ru' => $setting->translate('ru')->value ?? '',
+            ],
+            'options' => [
+                'uz' => $setting->translate('uz')->options ?? '',
+                'ru' => $setting->translate('ru')->options ?? '',
+            ],
+        ];
+
+        return [
+            'setting' => $data
+        ];
+    }
+
+    public function updateSetting(Setting $setting): void
+    {
+        $data = request()->post('setting');
+        if (!is_array($data)) {
+            parse_str($data, $data);
+        }
+
+        if (!$data || !is_array($data)) {
+            Toast::error('Invalid data provided.');
+            return;
+        }
+
+        // Check if name.uz exists in nested array
+        $nameUz = $data['name']['uz'] ?? null;
+
+        if (!$nameUz) {
+            Toast::error('Name (UZ) is required.');
+            return;
+        }
+
+        $validated = validator($data, [
+            'group' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'locked' => 'boolean',
+        ])->validate();
+
+        $setting->group = $validated['group'];
+        $setting->type = $validated['type'];
+        $setting->locked = $validated['locked'] ?? false;
+
+        foreach (['uz', 'ru'] as $locale) {
+            $setting->translateOrNew($locale)->name = $data['name'][$locale] ?? null;
+            $setting->translateOrNew($locale)->value = $data['value'][$locale] ?? null;
+            $setting->translateOrNew($locale)->options = $data['options'][$locale] ?? null;
+        }
+
+        $setting->save();
+
+        Toast::info('Setting updated successfully!');
+    }
+
     public function saveSettings(Request $request)
     {
-        // Only run if 'values' is present and not empty
         $group = $request->input('group');
-        $values = $request->input('values.' . $group, []);
-        if (!$group || !is_array($values)) {  // Removed empty() check to allow for saving empty values
+        $settingsData = $request->input('settings', []);
+
+        if (!$group || !is_array($settingsData)) {
             return;
         }
 
-        $settings = DB::table('settings')->where('group', $group)->get();
-        foreach ($settings as $setting) {
-            if ($setting->locked) {
+        foreach ($settingsData as $settingId => $data) {
+            $setting = Setting::find($settingId);
+            if (!$setting || $setting->locked || $setting->group !== $group) {
                 continue;
             }
 
-            // Special handling for boolean settings - if not present in values, it means it was unchecked
-            if ($setting->type === 'boolean' && !array_key_exists($setting->name, $values)) {
-                DB::table('settings')
-                    ->where('id', $setting->id)
-                    ->update([
-                        'value' => json_encode(false),
-                        'updated_at' => now(),
-                    ]);
-                continue;
-            }
-
-            if (array_key_exists($setting->name, $values)) {
-                $value = $values[$setting->name];
-
-                // For image type, ensure we're saving relative paths
-                if ($setting->type === 'image' && is_string($value) && str_contains($value, 'localhost')) {
-                    // Convert absolute URL to relative path
-                    $value = parse_url($value, PHP_URL_PATH);
+            foreach (['uz', 'ru'] as $locale) {
+                if (isset($data['name'][$locale])) {
+                    $setting->translateOrNew($locale)->name = $data['name'][$locale];
                 }
-
-                DB::table('settings')
-                    ->where('id', $setting->id)
-                    ->update([
-                        'value' => json_encode($value),
-                        'updated_at' => now(),
-                    ]);
+                if (isset($data['value'][$locale])) {
+                    $setting->translateOrNew($locale)->value = $data['value'][$locale];
+                }
             }
+
+            $setting->save();
         }
 
-        Toast::info('Settings saved successfully.');
+        Toast::info(__('Settings saved successfully.'));
     }
 
-    /**
-     * Delete a setting by id.
-     */
-    public function deleteSetting(Request $request)
+    public function delete(Setting $setting): void
     {
-        $id = $request->input('id');
-        $setting = DB::table('settings')->where('id', $id)->first();
-        if ($setting && !$setting->locked) {
-            DB::table('settings')->where('id', $id)->delete();
-            Toast::info('Setting deleted.');
+        if (!$setting->locked) {
+            $setting->delete();
+            Toast::info('Setting deleted successfully!');
         } else {
             Toast::warning('Cannot delete locked setting.');
         }
