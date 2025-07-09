@@ -48,12 +48,16 @@ class SettingsSeeder extends Seeder
                     'type' => 'matrix',
                     'translations' => [
                         'uz' => [
-                            ['icon' => 'flash', 'text' => 'Бухгалтерия нового поколения'],
-                            ['icon' => 'check', 'text' => 'Профессионализм и забота'],
+                            ['icon' => '../img/svg/flash.svg', 'text' => 'Yangi avlod buxgalteriya hisobi'],
+                            ['icon' => '../img/svg/charge.svg', 'text' => 'Biz muntazam ishlarni avtomatlashtiramiz - vaqtingizni tejaymiz'],
+                            ['icon' => '../img/svg/danger.svg', 'text' => 'Biz aniq ishlaymiz. Biz halol hisobot beramiz'],
+                            ['icon' => '../img/svg/crown.svg', 'text' => 'Siz uchun individual, shablonga muvofiq emas'],
                         ],
                         'ru' => [
-                            ['icon' => 'flash', 'text' => 'Бухгалтерия нового поколения'],
-                            ['icon' => 'check', 'text' => 'Профессионализм и забота'],
+                            ['icon' => '../img/svg/flash.svg', 'text' => 'Бухгалтерия нового поколения'],
+                            ['icon' => '../img/svg/charge.svg', 'text' => 'Автоматизируем рутину — экономим ваше время'],
+                            ['icon' => '../img/svg/danger.svg', 'text' => 'Работаем чётко. Отчитываемся честно'],
+                            ['icon' => '../img/svg/crown.svg', 'text' => 'Индивидуально под вас, не по шаблону'],
                         ]
                     ],
                     'options' => [
@@ -64,7 +68,7 @@ class SettingsSeeder extends Seeder
                 'buh__text' => [
                     'type' => 'textArea',
                     'translations' => [
-                        'uz' => 'Мы здесь, чтобы сделать бухгалтерию простой и понятной Честность, профессионализм и забота — основа нашей работы',
+                        'uz' => 'Biz buxgalteriya hisobini sodda va tushunarli qilish uchun shu yerdamiz. Halollik, professionallik va g`amxo`rlik bizning ishimizning asosidir.',
                         'ru' => 'Мы здесь, чтобы сделать бухгалтерию простой и понятной Честность, профессионализм и забота — основа нашей работы',
                     ],
                 ],
@@ -118,16 +122,18 @@ class SettingsSeeder extends Seeder
                     'type' => 'matrix',
                     'translations' => [
                         'uz' => [
-                            ['icon' => 'check', 'text' => "Halollik va shaffoflik - biz yashirin to'lovlarsiz ishlaymiz va har doim mijoz bilan ochiqmiz."],
-                            ['icon' => 'check', 'text' => "Professionallik va mas'uliyat - har bir Numera buxgalteri ishonchli mutaxassisdir."],
-                            ['icon' => 'check', 'text' => "Mijozlarga yo'naltirilganlik - bu har bir biznesning vazifalariga individual yondashuv va jalb qilish."],
-                            ['icon' => 'check', 'text' => "Innovatsiya va samaradorlik - biz tez va aniq ishlash uchun zamonaviy texnologiyalardan foydalanamiz."],
+                            ['icon' => '../img/svg/shield.svg', 'text' => "Halollik va shaffoflik - biz yashirin to'lovlarsiz ishlaymiz va har doim mijoz bilan ochiqmiz."],
+                            ['icon' => '../img/svg/octagon.svg', 'text' => "Professionallik va mas'uliyat - har bir Numera buxgalteri ishonchli mutaxassisdir."],
+                            ['icon' => '../img/svg/done.svg', 'text' => "Mijozlarga yo'naltirilganlik - bu har bir biznesning vazifalariga individual yondashuv va jalb qilish."],
+                            ['icon' => '../img/svg/lock.svg', 'text' => "Maxfiylik - ma'lumotlaringiz doimo xavfsiz."],
+                            ['icon' => '../img/svg/hash.svg', 'text' => "Innovatsiya va samaradorlik - biz tez va aniq ishlash uchun zamonaviy texnologiyalardan foydalanamiz."],
                         ],
                         'ru' => [
-                            ['icon' => 'check', 'text' => 'Честность и прозрачность — мы работаем без скрытых платежей и всегда открыты перед клиентом.'],
-                            ['icon' => 'check', 'text' => 'Профессионализм и ответственность — каждый бухгалтер Numera — это эксперт, которому можно доверять.'],
-                            ['icon' => 'check', 'text' => 'Клиентоориентированность — индивидуальный подход и вовлечённость в задачи каждого бизнеса.'],
-                            ['icon' => 'check', 'text' => 'Инновации и эффективность — мы используем современные технологии, чтобы работать быстро и точно.'],
+                            ['icon' => '../img/svg/shield.svg', 'text' => 'Честность и прозрачность — мы работаем без скрытых платежей и всегда открыты перед клиентом.'],
+                            ['icon' => '../img/svg/octagon.svg', 'text' => 'Профессионализм и ответственность — каждый бухгалтер Numera — это эксперт, которому можно доверять.'],
+                            ['icon' => '../img/svg/done.svg', 'text' => 'Клиентоориентированность — индивидуальный подход и вовлечённость в задачи каждого бизнеса.'],
+                            ['icon' => '../img/svg/lock.svg', 'text' => 'Конфиденциальность — ваши данные всегдa в безопасности.'],
+                            ['icon' => '../img/svg/hash.svg', 'text' => 'Инновации и эффективность — мы используем современные технологии, чтобы работать быстро и точно.'],
                         ]
                     ],
                     'options' => [
