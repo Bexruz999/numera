@@ -13905,9 +13905,9 @@
                 <div class="calc__tarifs_item">
                     Частичное обслуживание
                 </div>
-                <div class="calc__tarifs_item calc__tarifs_about">
+                <a href="{{ route('services') }}" class="calc__tarifs_item calc__tarifs_about">
                     Подробнее о тарифах
-                </div>
+                </a>
             </div>
             <div class="calc__columns">
                 <div class="calc__inputs">
@@ -14303,7 +14303,6 @@
                     @endforeach
                 </div>
             </div>
-            <a href="##" class="faq__button button">Все вопросы</a>
         </div>
     </section>
     <section class="support">

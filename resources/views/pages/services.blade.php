@@ -27,7 +27,7 @@
                     <div class="feed__top_rate-text">
                         Нас выбирают бизнесы по всей стране!
                     </div>
-                    <a href="##" class="feed__top_rate-btn">
+                    <div class="feed__top_rate-btn">
                         <svg
                             width="60"
                             height="60"
@@ -58,7 +58,7 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                    </a>
+                    </div>
                 </div>
                 <div class="feed__top_content">
                     <div class="feed__top_content-numera numera">
@@ -95,7 +95,7 @@
                         Вместе — сильнее. Станьте частью партнёрской
                         сети Numera
                     </div>
-                    <a href="##" class="feed__bottom_together-button"
+                    <a href="https://t.me/numeraservices" class="feed__bottom_together-button"
                         >Присоединиться сейчас</a
                     >
                     <img

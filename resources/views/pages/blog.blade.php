@@ -21,7 +21,7 @@
                 Читайте, чтобы управлять бизнесом уверенно — без догадок
                 и лишнего риска
             </div>
-            <a href="##" class="blog__button yellow-button"
+            <a href="https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw" class="blog__button yellow-button"
             >Подписаться</a
             >
             <div class="blog__below text">

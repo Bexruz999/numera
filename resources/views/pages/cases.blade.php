@@ -30,298 +30,34 @@
             <img src="../img/png/case-bg01.png" alt="#" />
         </div>
     </section>
-    <section class="partners">
-        <div class="partners__container">
-            <div class="partners__swiper swiper-container">
-                <div class="partners__wrapper swiper-wrapper">
-                    <div class="partners__slide swiper-slide">
-                        <div class="partners__slide_about">
-                            <img
-                                src="../img/jpg/partners01.jpg"
-                                alt="#"
-                            />
-                            <div class="partners__slide_about-content">
-                                <span>Agro Kontinent</span>
-                                <p>
-                                    Одна из ведущих семенных и
-                                    агрохимических компаний Узбекистана
-                                </p>
+    <section class="story">
+        <div class="story__container">
+            <div class="story__numera numera">#Numera</div>
+            <div class="story__title title">Реальные истории</div>
+            <div class="story__swiper swiper-container">
+                <div class="story__wrapper swiper-wrapper">
+                    @foreach($histories as $history)
+                        <div class="story__slide swiper-slide">
+                            <div class="story__slide_img">
+                                <img src="{{ asset($history->img) }}" alt="#" />
                             </div>
-                        </div>
-                        <div class="partners__slide_list">
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Компания:</span> Agro
-                                    Kontinent
+                            <div class="story__slide_content">
+                                <div class="story__slide_name">{{$history->translate($locale)?->name }}</div>
+                                <div class="story__slide_position">
+                                    {{ $history->translate($locale)?->position}}
                                 </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Задача:</span> Восстановление
-                                    бухгалтерского учёта за 2 года
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Решение:</span> Подключили
-                                    аудит, оптимизировали налоги, навели
-                                    порядок
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Результат:</span> Компания
-                                    избежала штрафов и сэкономила 34 млн
-                                    сум
+                                <div class="story__slide_text">
+                                    <p>
+                                        {{ $history->translate($locale)?->description }}
+                                    </p>
+                                    <span>Читать дальше</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="partners__slide swiper-slide">
-                        <div class="partners__slide_about">
-                            <img
-                                src="../img/jpg/partners01.jpg"
-                                alt="#"
-                            />
-                            <div class="partners__slide_about-content">
-                                <span>Agro Kontinent</span>
-                                <p>
-                                    Одна из ведущих семенных и
-                                    агрохимических компаний Узбекистана
-                                </p>
-                            </div>
-                        </div>
-                        <div class="partners__slide_list">
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Компания:</span> Agro
-                                    Kontinent
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Задача:</span> Восстановление
-                                    бухгалтерского учёта за 2 года
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Решение:</span> Подключили
-                                    аудит, оптимизировали налоги, навели
-                                    порядок
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Результат:</span> Компания
-                                    избежала штрафов и сэкономила 34 млн
-                                    сум
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="partners__slide swiper-slide">
-                        <div class="partners__slide_about">
-                            <img
-                                src="../img/jpg/partners01.jpg"
-                                alt="#"
-                            />
-                            <div class="partners__slide_about-content">
-                                <span>Agro Kontinent</span>
-                                <p>
-                                    Одна из ведущих семенных и
-                                    агрохимических компаний Узбекистана
-                                </p>
-                            </div>
-                        </div>
-                        <div class="partners__slide_list">
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Компания:</span> Agro
-                                    Kontinent
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Задача:</span> Восстановление
-                                    бухгалтерского учёта за 2 года
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Решение:</span> Подключили
-                                    аудит, оптимизировали налоги, навели
-                                    порядок
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Результат:</span> Компания
-                                    избежала штрафов и сэкономила 34 млн
-                                    сум
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="partners__swiper swiper-container">
-                <div class="partners__wrapper swiper-wrapper">
-                    <div class="partners__slide swiper-slide">
-                        <div class="partners__slide_about">
-                            <img
-                                src="../img/jpg/partners01.jpg"
-                                alt="#"
-                            />
-                            <div class="partners__slide_about-content">
-                                <span>Agro Kontinent</span>
-                                <p>
-                                    Одна из ведущих семенных и
-                                    агрохимических компаний Узбекистана
-                                </p>
-                            </div>
-                        </div>
-                        <div class="partners__slide_list">
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Компания:</span> Agro
-                                    Kontinent
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Задача:</span> Восстановление
-                                    бухгалтерского учёта за 2 года
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Решение:</span> Подключили
-                                    аудит, оптимизировали налоги, навели
-                                    порядок
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Результат:</span> Компания
-                                    избежала штрафов и сэкономила 34 млн
-                                    сум
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="partners__slide swiper-slide">
-                        <div class="partners__slide_about">
-                            <img
-                                src="../img/jpg/partners01.jpg"
-                                alt="#"
-                            />
-                            <div class="partners__slide_about-content">
-                                <span>Agro Kontinent</span>
-                                <p>
-                                    Одна из ведущих семенных и
-                                    агрохимических компаний Узбекистана
-                                </p>
-                            </div>
-                        </div>
-                        <div class="partners__slide_list">
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Компания:</span> Agro
-                                    Kontinent
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Задача:</span> Восстановление
-                                    бухгалтерского учёта за 2 года
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Решение:</span> Подключили
-                                    аудит, оптимизировали налоги, навели
-                                    порядок
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Результат:</span> Компания
-                                    избежала штрафов и сэкономила 34 млн
-                                    сум
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="partners__slide swiper-slide">
-                        <div class="partners__slide_about">
-                            <img
-                                src="../img/jpg/partners01.jpg"
-                                alt="#"
-                            />
-                            <div class="partners__slide_about-content">
-                                <span>Agro Kontinent</span>
-                                <p>
-                                    Одна из ведущих семенных и
-                                    агрохимических компаний Узбекистана
-                                </p>
-                            </div>
-                        </div>
-                        <div class="partners__slide_list">
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Компания:</span> Agro
-                                    Kontinent
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Задача:</span> Восстановление
-                                    бухгалтерского учёта за 2 года
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Решение:</span> Подключили
-                                    аудит, оптимизировали налоги, навели
-                                    порядок
-                                </div>
-                            </div>
-                            <div class="partners__slide_item">
-                                <img src="../img/svg/bag.svg" alt="#" />
-                                <div class="partners__slide_item-text">
-                                    <span>Результат:</span> Компания
-                                    избежала штрафов и сэкономила 34 млн
-                                    сум
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="story__tag tag">Отзывы</div>
         </div>
     </section>
     <section class="trust">
