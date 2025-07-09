@@ -16,4 +16,9 @@ return [
     'office_address' => 'Office address',
     'address_text' => 'Tashkent, Yashnabad district, Karasuv street, 33A',
     'rights' => '© 2022–2025 «Numera.uz»',
+    'Talk to the accountant' => 'Talk to the accountant',
+    'Social networks' => 'Social networks',
+    'Phones' => 'Phones',
+    'Work schedule:' => 'Work schedule:',
+    'Office address' => 'Office address',
 ];

@@ -16,4 +16,10 @@ return [
     'office_address' => 'Адрес офиса',
     'address_text' => 'г. Ташкент, Яшнабадский район, ул. Карасув, 33А',
     'rights' => '© 2022–2025 «Numera.uz»',
+    'Talk to the accountant' => 'Поговорить с бухгалтером',
+    'Social networks' => 'Соц. сети',
+    'Phones' => 'Телефоны',
+    'Work schedule:' => 'График работы:',
+    'Office address' => 'Адрес офиса',
+
 ];

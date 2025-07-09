@@ -78,7 +78,7 @@ class SlideScreen extends Screen
                 ]),
             ])
             ->async('async')
-            ->title('Edit Slide'),
+            ->title('Edit Slide')->method('update'),
         ];
     }
 
@@ -108,10 +108,10 @@ class SlideScreen extends Screen
         }
 
         $validated = validator($data, [
+            'id' => 'nullable|integer|exists:slides,id',
             'img' => 'required|string',
         ])->validate();
 
-        $slide = Slide::findOrFail($validated['id']);
         $slide->img = $validated['img'] ?? null;
         $slide->save();
 
