@@ -5,7 +5,6 @@ namespace App\Orchid\Screens;
 use App\Models\Setting;
 use App\Orchid\Layouts\SettingsListener;
 use Orchid\Screen\Action;
-use Orchid\Screen\Fields\Attach;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Fields\Input;
@@ -113,26 +112,21 @@ class SettingsScreen extends Screen
         $value = $translation ? $translation->value : '';
 
         switch ($setting->type) {
-            case 'text':
-                return Input::make($fieldName)
-                    ->title("Value ($locale)")
-                    ->value($value)
-                    ->disabled($setting->locked);
             case 'textarea':
                 return TextArea::make($fieldName)
-                    ->title("Value ($locale)")
+                    ->title("$setting->name ($locale)")
                     ->value($value)
                     ->disabled($setting->locked);
             case 'boolean':
                 return Switcher::make($fieldName)
-                    ->title("Value ($locale)")
+                    ->title("$setting->name ($locale)")
                     ->value($value)
                     ->sendTrueOrFalse()
                     ->disabled($setting->locked);
             case 'image':
                 return Picture::make($fieldName)
                     ->multiple()
-                    ->title("Value ($locale)")
+                    ->title("$setting->name ($locale)")
                     ->value($value)
                     ->targetRelativeUrl()
                     ->disabled($setting->locked);
@@ -152,7 +146,7 @@ class SettingsScreen extends Screen
                     }
                 }
                 return Select::make($fieldName)
-                    ->title("Value ($locale)")
+                    ->title("$setting->name ($locale)")
                     ->options($options)
                     ->value($value)
                     ->disabled($setting->locked);
@@ -172,13 +166,14 @@ class SettingsScreen extends Screen
                     }
                 }
                 return Matrix::make($fieldName)
-                    ->title("Value ($locale)")
+                    ->title("$setting->name ($locale)")
                     ->columns($columns)
                     ->value(is_array($value) ? $value : [])
                     ->disabled($setting->locked);
+            case 'text':
             default:
                 return Input::make($fieldName)
-                    ->title("Value ($locale)")
+                    ->title("$setting->name ($locale)")
                     ->value($value)
                     ->disabled($setting->locked);
         }
