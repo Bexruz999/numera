@@ -17,16 +17,19 @@
                 {!! str_replace(['[', ']'], ['<span>', '</span>'], $settings['about.buh__title']) !!}
             </div>
             <ul class="buh__list">
-                <li>
+                @foreach($settings['about.buh__list'] as $item)
+                    <li>
+                        <img src="{{ $item['icon'] }}" alt="#" />
+                        <span>{{ $item['text'] }}</span>
+                    </li>
+                @endforeach
+{{--                <li>
                     <img src="../img/svg/flash.svg" alt="#" />
                     <span>Бухгалтерия нового поколения</span>
                 </li>
                 <li>
                     <img src="../img/svg/charge.svg" alt="#" />
-                    <span
-                        >Автоматизируем рутину — экономим ваше
-                        время</span
-                    >
+                    <span>Автоматизируем рутину — экономим вашe время</span>
                 </li>
                 <li>
                     <img src="../img/svg/danger.svg" alt="#" />
@@ -35,12 +38,10 @@
                 <li>
                     <img src="../img/svg/crown.svg" alt="#" />
                     <span>Индивидуально под вас, не по шаблону</span>
-                </li>
+                </li>--}}
             </ul>
             <div class="buh__text text">
-                Мы здесь, чтобы сделать бухгалтерию простой и понятной
-                Честность, профессионализм и забота — основа нашей
-                работы
+                {{$settings['about.buh__text']}}
             </div>
             <a
                 href="/index.html#support-form"
@@ -67,23 +68,18 @@
             <div class="mission__grid">
                 <div class="mission__grid-about">
                     <div class="mission__grid-about_title title">
-                        Наша миссия
+                        {{$settings['about_mission.title_l']}}
                     </div>
                     <div class="mission__grid-about_text text">
-                        Сделать бухгалтерию прозрачной, удобной и
-                        доступной для малого и среднего бизнеса в
-                        Узбекистане. Мы стремимся освободить
-                        предпринимателей от рутины, чтобы они могли
-                        сосредоточиться на росте и развитии своего дела.
+                        {{$settings['about_mission.text_l']}}
                     </div>
                 </div>
                 <div class="mission__grid-about">
                     <div class="mission__grid-about_title title">
-                        Миссия и ценности
+                        {{$settings['about_mission.title_r']}}
                     </div>
                     <div class="mission__grid-about_text text">
-                        В центре нашей работы — честность,
-                        профессионализм и забота о клиенте.
+                        {{$settings['about_mission.text_r']}}
                     </div>
                 </div>
                 <div class="mission__bg">
@@ -91,10 +87,17 @@
                 </div>
                 <div class="mission__grid-about">
                     <div class="mission__grid-about_title title">
-                        Наши ценности:
+                        {{$settings['about_mission.our_values_title']}}
                     </div>
                     <ul class="mission__grid_list text">
-                        <li>
+                        @foreach($settings['about_mission.our_values_list'] as $value)
+                            <li>
+                                <img src="{{ $value['icon'] }}" alt="#" />
+                                <span>{{ $value['text'] }}</span>
+                            </li>
+
+                        @endforeach
+                        {{--<li>
                             <img src="../img/svg/shield.svg" alt="#" />
                             <span
                                 >Честность и прозрачность — мы работаем
@@ -132,7 +135,7 @@
                                 используем современные технологии, чтобы
                                 работать быстро и точно.</span
                             >
-                        </li>
+                        </li>--}}
                     </ul>
                 </div>
             </div>
@@ -142,16 +145,14 @@
         <div class="team__container">
             <div class="team__title-box">
                 <div class="team__title-box_subtitle">
-                    Мы — команда молодых и амбициозных бухгалтеров,
-                    консультантов и управляющих. Каждый из нас верит,
-                    что бухгалтерия может быть простой и понятной.
+                    {{$settings['about_mission.team_text']}}
                 </div>
                 <div class="team__title-box_titles">
                     <div class="team__title-box_about numera">
                         #about
                     </div>
                     <div class="team__title-box_title title">
-                        Свяжитесь с нашей командой
+                        {{$settings['about_mission.team_title']}}
                     </div>
                 </div>
             </div>
@@ -415,25 +416,17 @@
             </div>
             <div class="team__history">
                 <div class="team__img">
-                    <img src="../img/jpg/history01.jpg" alt="#" />
+                    <img src="{{$settings['about_mission.history_bg']}}" alt="#" />
                 </div>
                 <div class="team__content">
                     <div class="team__content_numera numera">
                         #about
                     </div>
                     <div class="team__history_title title">
-                        История Numera
+                        {{$settings['about_mission.history_title']}}
                     </div>
                     <div class="team__history_text text">
-                        Numera родилась из простой, но мощной идеи —
-                        бухгалтерия не должна быть головной болью. Мы
-                        начали с нуля, чтобы сломать стереотипы о
-                        скучных отчётах и непонятных цифрах. Сегодня мы
-                        — команда, которая делает бухгалтерию
-                        прозрачной, удобной и по-настоящему полезной. Мы
-                        ещё молоды, но уже сопровождаем десятки бизнесов
-                        по всей стране и уверенно движемся вперёд — шаг
-                        за шагом, счёт за счётом.
+                        {{$settings['about_mission.history_text']}}
                     </div>
                 </div>
             </div>
