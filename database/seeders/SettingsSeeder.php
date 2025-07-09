@@ -591,6 +591,46 @@ class SettingsSeeder extends Seeder
                     ],
                 ],
 
+                'start_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Bugun professionallar bilan ishlashni boshlang',
+                        'ru' => 'Начните работать с профессионалами уже сегодня',
+                    ],
+                ],
+
+                'start_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Buxgalteriya hisobi tartibini o'tmishda qoldirish vaqti keldi. Sizning biznesingiz haqida qayg'uradigan mutaxassislardan keng qamrovli xizmat oling. Siz kompaniyangizning o'sishi va rivojlanishi bilan xotirjam shug'ullanishingiz uchun barcha hisob-kitoblarni, hisobotlarni va muddatlarni nazorat qilishni o'z zimmamizga olamiz.",
+                        'ru' => 'Пора оставить рутину бухучёта в прошлом. Получите комплексное обслуживание от специалистов, которые действительно заботятся о вашем бизнесе. Мы возьмём на себя все расчёты, отчётность и контроль за сроками, чтобы вы могли спокойно заниматься ростом и развитием вашей компании',
+                    ],
+                ],
+
+                'start_btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Maslahat oling',
+                        'ru' => 'Получить консультацию',
+                    ],
+                ],
+
+                'start_btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/contact',
+                        'ru' => '/contact',
+                    ],
+                ],
+
+                'latest_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Eng so'nggi yangiliklardan xabardor bo'ling.",
+                        'ru' => 'Будьте в курсе последних новостей.',
+                    ],
+                ]
+
                 // Add more settings for the services group as needed
             ],
 
