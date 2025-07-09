@@ -34,14 +34,14 @@ class SettingsSeeder extends Seeder
                     'type' => 'matrix',
                     'translations' => [
                         'uz' => [
-                            ['icon' => 'check', 'text' => '100% raqamli buxgalteriya xizmati'],
-                            ['icon' => 'check', 'text' => 'O‘zbekistonning kichik va o‘rta biznesiga ixtisoslashgan'],
-                            ['icon' => 'check', 'text' => 'Kontragentlarni tekshirish va xavflardan himoya qilish'],
+                            ['icon' => '../img/svg/main-icon01.svg', 'text' => '100% raqamli buxgalteriya xizmati'],
+                            ['icon' => '../img/svg/main-icon02.svg', 'text' => 'O‘zbekistonning kichik va o‘rta biznesiga ixtisoslashgan'],
+                            ['icon' => '../img/svg/main-icon03.svg', 'text' => 'Kontragentlarni tekshirish va xavflardan himoya qilish'],
                         ],
                         'ru' => [
-                            ['icon' => 'check', 'text' => '100% цифровой бухгалтерский сервис'],
-                            ['icon' => 'check', 'text' => 'Специализация на малом и среднем бизнесе Узбекистана '],
-                            ['icon' => 'check', 'text' => 'Проверка контрагентов и защита от рисков'],
+                            ['icon' => '../img/svg/main-icon01.svg', 'text' => '100% цифровой бухгалтерский сервис'],
+                            ['icon' => '../img/svg/main-icon02.svg', 'text' => 'Специализация на малом и среднем бизнесе Узбекистана '],
+                            ['icon' => '../img/svg/main-icon03.svg', 'text' => 'Проверка контрагентов и защита от рисков'],
                         ]
                     ],
                     'options' => [
@@ -128,16 +128,16 @@ class SettingsSeeder extends Seeder
                     'type' => 'matrix',
                     'translations' => [
                         'uz' => [
-                            ['icon' => 'desk', 'text' => 'Service Desk'],
-                            ['icon' => 'chat', 'text' => 'Messenjerlar'],
-                            ['icon' => 'phone', 'text' => 'Telefon'],
-                            ['icon' => 'email', 'text' => 'Email'],
+                            ['icon' => '../img/svg/service01.svg', 'text' => 'Service Desk'],
+                            ['icon' => '../img/svg/service02.svg', 'text' => 'Messenjerlar'],
+                            ['icon' => '../img/svg/service03.svg', 'text' => 'Telefon'],
+                            ['icon' => '../img/svg/service04.svg', 'text' => 'Email'],
                         ],
                         'ru' => [
-                            ['icon' => 'desk', 'text' => 'Service Desk'],
-                            ['icon' => 'chat', 'text' => 'Мессенджеры'],
-                            ['icon' => 'phone', 'text' => 'Телефон'],
-                            ['icon' => 'email', 'text' => 'Email'],
+                            ['icon' => '../img/svg/service01.svg', 'text' => 'Service Desk'],
+                            ['icon' => '../img/svg/service02.svg', 'text' => 'Мессенджеры'],
+                            ['icon' => '../img/svg/service03.svg', 'text' => 'Телефон'],
+                            ['icon' => '../img/svg/service04.svg', 'text' => 'Email'],
                         ]
                     ],
                     'options' => [
