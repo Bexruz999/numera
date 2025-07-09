@@ -22,11 +22,9 @@
                         <img src="../img/svg/star.svg" alt="#" />
                         <img src="../img/svg/half-star.svg" alt="#" />
                     </div>
-                    <div class="feed__top_rate-num">100+</div>
-                    <div class="feed__top_rate-title">Отзывы...</div>
-                    <div class="feed__top_rate-text">
-                        Нас выбирают бизнесы по всей стране!
-                    </div>
+                    <div class="feed__top_rate-num">{{ $settings['services.feed_number']}}</div>
+                    <div class="feed__top_rate-title">{{ $settings['services.feed_title']}}</div>
+                    <div class="feed__top_rate-text">{{ $settings['services.feed_text']}}</div>
                     <div class="feed__top_rate-btn">
                         <svg
                             width="60"
@@ -65,15 +63,10 @@
                         #services
                     </div>
                     <div class="feed__top_content-title title">
-                        Бухгалтерия под контролем. Растите — мы берём
-                        рутину на себя
+                        {{ $settings['services.title']}}
                     </div>
                     <div class="feed__top_content-text text">
-                        Мы предоставляем комплексное бухгалтерское
-                        сопровождение для малого и среднего бизнеса. Все
-                        наши услуги нацелены на то, чтобы вы могли
-                        сосредоточиться на главном — росте своего
-                        бизнеса, не отвлекаясь на бумажную рутину.
+                        {{ $settings['services.text']}}
                     </div>
                     <div class="feed__top_content-buttons">
                         <a
@@ -92,20 +85,19 @@
             <div class="feed__bottom">
                 <div class="feed__bottom_together">
                     <div class="feed__bottom_together-title">
-                        Вместе — сильнее. Станьте частью партнёрской
-                        сети Numera
+                        {{ $settings['services.feed_together_title']}}
                     </div>
-                    <a href="https://t.me/numeraservices" class="feed__bottom_together-button"
-                        >Присоединиться сейчас</a
+                    <a href="{{ $settings['services.feed_together_btn_link']}}" class="feed__bottom_together-button"
+                        >{{ $settings['services.feed_together_btn_text']}}</a
                     >
                     <img
                         class="desktop-only"
-                        src="../img/png/bottom01.png"
+                        src="{{ $settings['services.feed_together_image']}}"
                         alt="#"
                     />
                     <img
                         class="mobile-only"
-                        src="../img/png/bottom-mobile01.png"
+                        src="{{ $settings['services.feed_together_image_mb']}}"
                         alt=""
                     />
                     <svg
@@ -145,7 +137,7 @@
                     </svg>
                 </div>
                 <div class="feed__bottom_video">
-                    <img src="../img/jpg/video02.jpg" alt="#" />
+                    <img src="{{ $settings['services.feed_video']}}" alt="#" />
                 </div>
             </div>
         </div>
@@ -654,30 +646,26 @@
             <div class="advan__work">
                 <div class="advan__work_images">
                     <div class="advan__work_img">
-                        <img src="../img/jpg/work01.jpg" alt="#" />
+                        <img src="{{ $settings['services.advan_img_1']}}" alt="#" />
                     </div>
                     <div class="advan__work_img">
-                        <img src="../img/jpg/work02.jpg" alt="#" />
+                        <img src="{{ $settings['services.advan_img_2']}}" alt="#" />
                     </div>
                     <div class="advan__work_img">
-                        <img src="../img/jpg/work03.jpg" alt="#" />
+                        <img src="{{ $settings['services.advan_img_3']}}" alt="#" />
                     </div>
                 </div>
                 <div class="advan__work_content">
                     <div class="advan__work_title title">
-                        Работаем с любой сферой бизнеса
+                        {{ $settings['services.advan_title']}}
                     </div>
                     <div class="advan__work_text text">
-                        В нашем штате более 300 экспертов с большим
-                        опытом. Даже если у вас необычный бизнес, у нас
-                        точно найдется специалист в вашей сфере. Мы
-                        предоставляем услуги компаниям из самых разных
-                        отраслей экономики.
+                        {{ $settings['services.advan_text']}}
                     </div>
                     <a
-                        href="/index.html#support-form"
+                        href="{{ $settings['services.advan_btn_link']}}"
                         class="advan__work_btn yellow-button"
-                        >Связаться с экспертом</a
+                        >{{ $settings['services.advan_btn_text']}}</a
                     >
                 </div>
             </div>
@@ -907,20 +895,15 @@
         <div class="start__container">
             <div class="start__numera numera">#services</div>
             <div class="start__title title-big">
-                Начните работать с профессионалами уже сегодня
+                {{ $settings['services.start_title']}}
             </div>
             <div class="start__text text">
-                Пора оставить рутину бухучёта в прошлом. Получите
-                комплексное обслуживание от специалистов, которые
-                действительно заботятся о вашем бизнесе. Мы возьмём на
-                себя все расчёты, отчётность и контроль за сроками,
-                чтобы вы могли спокойно заниматься ростом и развитием
-                вашей компании
+                {{ $settings['services.start_text']}}
             </div>
             <a
-                href="/index.html#support-form"
+                href="{{ $settings['services.start_btn_link']}}"
                 class="start__button yellow-button-big"
-                >Получить консультацию</a
+                >{{ $settings['services.start_btn_text']}}</a
             >
         </div>
     </section>
@@ -928,7 +911,7 @@
         <div class="latest__container">
             <div class="latest__numera numera">#services</div>
             <div class="latest__title title">
-                Будьте в курсе последних новостей.
+                {{ $settings['services.latest_title']}}
             </div>
             <div class="latest__swiper swiper-container">
                 <div class="latest__wrapper swiper-wrapper">

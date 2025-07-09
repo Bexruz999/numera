@@ -13804,13 +13804,10 @@
                 <div class="cta__top_wrapper swiper-wrapper">
                     <div class="cta__top_slide swiper-slide">
                         <div class="cta__top_slide-title title">
-                            Глубокая экспертиза в разных сферах
+                            {{ $settings['home.cta_item_title_0'] }}
                         </div>
                         <div class="cta__top_slide-text text">
-                            Опыт работы с ИП, ООО, компаниями на УСН,
-                            производственными, торговыми и сервисными
-                            организациями. В том числе — с бизнесом,
-                            работающим на маркетплейсах.
+                            {{ $settings['home.cta_item_text_0'] }}
                         </div>
                         <div class="cta__top_slide-icon">
                             <img src="../img/png/cta01.png" alt="#"/>
@@ -13818,13 +13815,10 @@
                     </div>
                     <div class="cta__top_slide swiper-slide">
                         <div class="cta__top_slide-text text">
-                            Автоматизация процессов, работа с
-                            онлайн-сервисами, удалённое обслуживание,
-                            документы в электронном виде — удобно и
-                            быстро.
+                            {{ $settings['home.cta_item_text_1'] }}
                         </div>
                         <div class="cta__top_slide-title title">
-                            Современный подход
+                            {{ $settings['home.cta_item_title_1'] }}
                         </div>
                         <div class="cta__top_slide-icon">
                             <img src="../img/png/cta02.png" alt="#"/>
@@ -13838,26 +13832,20 @@
                         class="cta__bottom_slide cta__bottom_slide-1 swiper-slide"
                     >
                         <div class="cta__bottom_slide-title">
-                            Индивидуальный подход
+                            {{ $settings['home.cta_item_title_2'] }}
                         </div>
                         <div class="cta__bottom_slide-text text">
-                            Каждый клиент получает персонального
-                            бухгалтера и понятную отчётность. Мы не
-                            «штампуем» услуги — мы адаптируем их под ваш
-                            бизнес.
+                            {{ $settings['home.cta_item_text_2'] }}
                         </div>
                     </div>
                     <div
                         class="cta__bottom_slide cta__bottom_slide-2 swiper-slide"
                     >
                         <div class="cta__bottom_slide-title">
-                            Доступные<br/>цены
+                            {{ $settings['home.cta_item_title_3'] }}
                         </div>
                         <div class="cta__bottom_slide-text text">
-                            Мы одни из самых доступных аутсорсинговых
-                            бухгалтерских компаний на рынке Узбекистана
-                            — прозрачная и конкурентоспособная ценовая
-                            политика.
+                            {{ $settings['home.cta_item_text_3'] }}
                         </div>
                         <div class="cta__bottom_slide-star-1">
                             <img src="../img/png/cta03.png" alt="#"/>
@@ -13870,12 +13858,10 @@
                         class="cta__bottom_slide cta__bottom_slide-3 swiper-slide"
                     >
                         <div class="cta__bottom_slide-title">
-                            Гарантия ответственности
+                            {{ $settings['home.cta_item_title_4'] }}
                         </div>
                         <div class="cta__bottom_slide-text text">
-                            Анализируем ваших партнёров до сделки:
-                            риски, благонадёжность, прозрачность. Чтобы
-                            вы были уверены в каждом контракте.
+                            {{ $settings['home.cta_item_text_4'] }}
                         </div>
                     </div>
                 </div>
