@@ -12,9 +12,9 @@
 @section('content')
     <section class="buh">
         <div class="buh__container">
-            <div class="buh__subtitle">О компании</div>
+            <div class="buh__subtitle">{{ $settings['about.buh__subtitle'] }}</div>
             <div class="buh__title title">
-                Цифровая <span>бухгалтерия</span> без визитов и бумаги
+                {!! str_replace(['[', ']'], ['<span>', '</span>'], $settings['about.buh__title']) !!}
             </div>
             <ul class="buh__list">
                 <li>

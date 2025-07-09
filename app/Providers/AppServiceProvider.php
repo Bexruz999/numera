@@ -20,12 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $settings = [];
 
-        foreach (Setting::all() as $setting) {
-            $settings["$setting->group.$setting->name"] = $setting->getContent();
-        }
-
-        view()->share('settings', $settings);
     }
 }

@@ -6,21 +6,34 @@ use App\Models\Faq;
 use App\Models\Frame;
 use App\Models\History;
 use App\Models\Question;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Article;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $settings = [];
+
+        $locale = app()->getLocale();
+        foreach (Setting::all() as $setting) {
+            $settings["$setting->group.$setting->name"] = $setting->translate($locale) ? $setting->translate($locale)->value : null;
+        }
+
+        view()->share('settings', $settings);
+        view()->share('locale', $locale);
+    }
+
     // В HomeController
     public function index()
     {
 
-        $locale = app()->getLocale();
         $histories = History::all();
         $questions = Question::all();
 
-        return view('pages.index', ['histories' => $histories, 'locale' => $locale, 'questions' => $questions]);
+        return view('pages.index', ['histories' => $histories, 'questions' => $questions]);
     }
 
     public function about()
@@ -30,8 +43,6 @@ class HomeController extends Controller
 
     public function services()
     {
-
-        $locale = app()->getLocale();
         $articles = Article::all();
         $frames = Frame::all();
 
@@ -39,7 +50,6 @@ class HomeController extends Controller
             'headerClass' => 'about-header',
             'articles' => $articles,
             'frames' => $frames,
-            'locale' => $locale,
         ]);
     }
 
@@ -61,6 +71,6 @@ class HomeController extends Controller
             return $article->translate($locale);
         })->pluck('type', 'type');
 
-        return view('pages.blog', ['articles' => $articles, 'article_filters' => $article_filters, 'locale' => $locale]);
+        return view('pages.blog', ['articles' => $articles, 'article_filters' => $article_filters]);
     }
 }

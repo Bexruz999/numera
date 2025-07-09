@@ -33,14 +33,14 @@ class SettingsSeeder extends Seeder
                 'buh__subtitle' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => 'Buh sarlavhasi',
-                        'ru' => 'Подзаголовок Buh',
+                        'uz' => 'Kompaniya haqida',
+                        'ru' => 'О компании',
                     ],
                 ],
                 'buh__title' => [
                     'type' => 'textArea',
                     'translations' => [
-                        'uz' => 'Цифровая [бухгалтерия] без визитов и бумаги',
+                        'uz' => "Tashriflar va qog'ozsiz raqamli [buxgalteriya] hisobi",
                         'ru' => 'Цифровая [бухгалтерия] без визитов и бумаги',
                     ],
                 ],
