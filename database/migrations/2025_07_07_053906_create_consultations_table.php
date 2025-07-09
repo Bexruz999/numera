@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->string('locale')->index();
             $table->string('title');
             $table->string('subtitle')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->json('button')->nullable();
             $table->string('link')->nullable();
         });

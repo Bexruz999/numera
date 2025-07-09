@@ -428,6 +428,172 @@ class SettingsSeeder extends Seeder
                 ],
             ],
 
+            'services' => [
+                'title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Buxgalteriya hisobi nazorat ostida. O'sish - biz muntazam ishlarni o'z zimmamizga olamiz",
+                        'ru' => 'Бухгалтерия под контролем. Растите — мы берём рутину на себя',
+                    ],
+                ],
+                'text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Biz kichik va o'rta biznes uchun keng qamrovli buxgalteriya xizmatlarini taqdim etamiz. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan, qog'ozbozlik bilan chalg'itmasdan.Biz taqdim etamiz kichik va o'rta biznes uchun buxgalteriya hisobining keng qamrovli yordami. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan bo'lib, qog'oz ishlariga chalg'imasdan.",
+                        'ru' => 'Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.',
+                    ],
+                ],
+
+                'feed_number' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '100+',
+                        'ru' => '100+',
+                    ],
+                ],
+
+                'feed_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Sharhlar...',
+                        'ru' => 'Отзывы...',
+                    ],
+                ],
+
+                'feed_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Bizni butun mamlakat bo'ylab korxonalar tanlaydi!",
+                        'ru' => 'Нас выбирают бизнесы по всей стране!',
+                    ],
+                ],
+
+                'feed_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/cases',
+                        'ru' => '/cases',
+                    ],
+                ],
+
+                'feed_btns' => [
+                    'type' => 'matrix',
+                    'translations' => [
+                        'uz' => [
+                            ['text' => 'Получить консультацию', 'link' => '/services', 'class' => 'yellow-button'],
+                            ['text' => 'Kontaktlar', 'link' => '/contact', 'class' => 'button-transparent'],
+                        ],
+                        'ru' => [
+                            ['text' => 'Получить консультацию', 'link' => '/services', 'class' => 'yellow-button'],
+                            ['text' => 'Контакты', 'link' => '/contact', 'class' => 'button-transparent'],
+                        ],
+                    ],
+                ],
+
+                'feed_together_image_mb' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/png/bottom-mobile01.png',
+                        'ru' => '../img/png/bottom-mobile01.png',
+                    ],
+                ],
+                'feed_together_image' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/png/bottom01.png',
+                        'ru' => '../img/png/bottom01.png',
+                    ],
+                ],
+
+                'feed_together_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Birgalikda kuchliroq. Numera hamkorlik tarmog'ining bir qismiga aylaning",
+                        'ru' => 'Вместе — сильнее. Станьте частью партнёрской сети Numera',
+                    ],
+                ],
+
+                'feed_together_btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'https://t.me/numeraservices',
+                        'ru' => 'https://t.me/numeraservices',
+                    ],
+                ],
+
+                'feed_together_btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Hozir qo'shiling",
+                        'ru' => 'Присоединиться сейчас',
+                    ],
+                ],
+
+                'feed_video' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '../img/jpg/video02.jpg',
+                        'ru' => '../img/jpg/video02.jpg',
+                    ],
+                ],
+
+                'advan_img_1' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/jpg/work01.jpg',
+                        'ru' => '../img/jpg/work01.jpg',
+                    ],
+                ],
+                'advan_img_2' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/jpg/work02.jpg',
+                        'ru' => '../img/jpg/work02.jpg',
+                    ],
+                ],
+                'advan_img_3' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/jpg/work03.jpg',
+                        'ru' => '../img/jpg/work03.jpg',
+                    ],
+                ],
+
+                'advan_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Biz biznesning har qanday sohasi bilan ishlaymiz',
+                        'ru' => 'Работаем с любой сферой бизнеса',
+                    ],
+                ],
+
+                'advan_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Bizning shtabimizda katta tajribaga ega 300 dan ortiq mutaxassislar mavjud. Agar sizda g'ayrioddiy biznesingiz bo'lsa ham, bizda sizning sohangizda mutaxassis bor. Biz iqtisodiyotning turli sohalaridagi kompaniyalarga xizmat ko'rsatamiz.",
+                        'ru' => 'В нашем штате более 300 экспертов с большим опытом. Даже если у вас необычный бизнес, у нас точно найдется специалист в вашей сфере. Мы предоставляем услуги компаниям из самых разных отраслей экономики.',
+                    ],
+                ],
+
+                'advan_btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Mutaxassis bilan bog'laning",
+                        'ru' => 'Связаться с экспертом',
+                    ],
+                ],
+
+                'advan_btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/contact',
+                        'ru' => '/contact',
+                    ],
+                ],
+
+                // Add more settings for the services group as needed
+            ],
+
             'footer' => [
                 'social_networks' => [
                     'type' => 'matrix',
