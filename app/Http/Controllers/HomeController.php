@@ -61,7 +61,7 @@ class HomeController extends Controller
     public function cases()
     {
         $histories = History::all();
-        return view('pages.cases', ['headerClass' => 'about-header', 'histories' => $histories, 'locale' => app()->getLocale()]);
+        return view('pages.cases', ['headerClass' => 'about-header', 'histories' => $histories]);
     }
 
     public function blog()
