@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consultation;
 use App\Models\Faq;
 use App\Models\Frame;
 use App\Models\History;
@@ -45,6 +46,7 @@ class HomeController extends Controller
     {
         $articles = Article::all();
         $frames = Frame::all();
+        $consultations = Consultation::all();
 
         return view('pages.services', [
             'headerClass' => 'about-header',

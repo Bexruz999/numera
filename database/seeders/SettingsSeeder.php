@@ -490,7 +490,7 @@ class SettingsSeeder extends Seeder
                     ],
                     'options' => [
                         'uz' => [['key' => 'text', 'value' => 'Text'], ['key' => 'link', 'value' => 'Link'], ['key' => 'class', 'value' => 'Class']],
-                        'ru' => [['key' => 'text', 'value' => 'Текст'], ['key' => 'link', 'value' => 'Ссылка'], ['key' => 'class', 'value' => 'Класс']],
+                        'ru' => [['key' => 'text', 'value' => 'Text'], ['key' => 'link', 'value' => 'Link'], ['key' => 'class', 'value' => 'Class']],
                     ],
                 ],
 
