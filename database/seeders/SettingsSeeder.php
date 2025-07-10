@@ -436,8 +436,8 @@ class SettingsSeeder extends Seeder
                 'text' => [
                     'type' => 'textArea',
                     'translations' => [
-                        'uz' => "Biz kichik va o'rta biznes uchun keng qamrovli buxgalteriya xizmatlarini taqdim etamiz. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan, qog'ozbozlik bilan chalg'itmasdan.Biz taqdim etamiz kichik va o'rta biznes uchun buxgalteriya hisobining keng qamrovli yordami. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan bo'lib, qog'oz ishlariga chalg'imasdan.",
-                        'ru' => 'Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.',
+                        'uz' => "Biz kichik va o'rta biznes uchun keng qamrovli buxgalteriya xizmatlarini taqdim etamiz. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan bo'lib, qog'oz ishlariga chalg'imasdan.",
+                            'ru' => 'Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.',
                     ],
                 ],
 
@@ -477,12 +477,12 @@ class SettingsSeeder extends Seeder
                     'type' => 'matrix',
                     'translations' => [
                         'uz' => [
-                            ['text' => 'Получить консультацию', 'link' => '/services', 'class' => 'yellow-button'],
-                            ['text' => 'Kontaktlar', 'link' => '/contact', 'class' => 'button-transparent'],
+                            ['text' => 'Maslahat olish', 'link' => '/index.html#support-form', 'class' => 'feed__top_content-yellow-btn yellow-button'],
+                            ['text' => 'Kontaktlar', 'link' => '/contact.html', 'class' => 'feed__top_content-contact-btn button-transparent'],
                         ],
                         'ru' => [
-                            ['text' => 'Получить консультацию', 'link' => '/services', 'class' => 'yellow-button'],
-                            ['text' => 'Контакты', 'link' => '/contact', 'class' => 'button-transparent'],
+                            ['text' => 'Получить консультацию', 'link' => 'index.html#support-form', 'class' => 'feed__top_content-yellow-btn yellow-button'],
+                            ['text' => 'Контакты', 'link' => '/contact.html', 'class' => 'feed__top_content-contact-btn button-transparent'],
                         ],
                     ],
                     'options' => [
@@ -639,14 +639,14 @@ class SettingsSeeder extends Seeder
                 'title' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => 'Siz uyalmaydigan natijalar - faqat faxrlanish uchun',
+                        'uz' => "Siz o'yalmaydigan natijalar - faqat faxrlanish uchun",
                         'ru' => 'Результаты, за которые не нужно краснеть — только гордиться',
                     ],
                 ],
                 'text' => [
                     'type' => 'textArea',
                     'translations' => [
-                        'uz' => "Здесь мы делимся историями наших клиентов — от старта до системного роста. Настоящие кейсы и живые отзывы — о доверии, точности и спокойствии, которое даёт сервис Numera",
+                        'uz' => "Bu yerda biz mijozlarimizning boshidan tizimli o'sishgacha bo'lgan hikoyalarini baham ko'ramiz. Haqiqiy holatlar va jonli sharhlar - Numera xizmati ishonch, aniqlik va xotirjamlik haqida",
                         'ru' => 'Здесь мы делимся историями наших клиентов — от старта до системного роста. Настоящие кейсы и живые отзывы — о доверии, точности и спокойствии, которое даёт сервис Numera',
                     ],
                 ],
@@ -702,8 +702,8 @@ class SettingsSeeder extends Seeder
                 'want_btn_link' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => '/contact',
-                        'ru' => '/contact',
+                        'uz' => '/index.html#support-form',
+                        'ru' => '/index.html#support-form',
                     ],
                 ],
 
@@ -739,8 +739,8 @@ class SettingsSeeder extends Seeder
                 'btn_link' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => 'https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw',
-                        'ru' => 'https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw',
+                        'uz' => 'https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw" class="blog__button yellow-button',
+                        'ru' => 'https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw" class="blog__button yellow-button',
                     ],
                 ],
 
@@ -795,15 +795,15 @@ class SettingsSeeder extends Seeder
                 'cta_btn_link' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => '/blog',
-                        'ru' => '/blog',
+                        'uz' => '#form01',
+                        'ru' => '#form01',
                     ],
                 ],
 
                 'fc_title' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => "Ha, bu o'sha forma",
+                        'uz' => "Ha, bu aynan o'sha forma",
                         'ru' => 'Да, это та самая форма',
                     ],
                 ],
@@ -846,7 +846,7 @@ class SettingsSeeder extends Seeder
                 'title' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => 'Biz bilan bog\'laning',
+                        'uz' => "Biz bilan bog'laning",
                         'ru' => 'Свяжитесь с нами',
                     ],
                 ],
@@ -869,8 +869,8 @@ class SettingsSeeder extends Seeder
                 'btn_link' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => '/contact',
-                        'ru' => '/contact',
+                        'uz' => '/index.html#support-form',
+                        'ru' => '/index.html#support-form',
                     ],
                 ],
 

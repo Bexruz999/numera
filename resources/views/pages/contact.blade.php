@@ -12,17 +12,15 @@
 @section('content')
     <section class="contact">
         <div class="contact__container">
-            <div class="contact__title title">Свяжитесь с нами</div>
+            <div class="contact__title title">{{$settings['contact.title']}}</div>
             <div class="contact__text text">
-                У вас есть вопросы по бухгалтерии, услугам или
-                сотрудничеству? Мы готовы помочь — просто напишите,
-                позвоните или приходите к нам в офис.
+                {{$settings['contact.text']}}
             </div>
             <a href="#contact" class="contact__button yellow-button"
-                >Связаться</a
+                >{{$settings['contact.btn_text']}}</a
             >
             <img
-                src="../img/png/contactbg01.png"
+                src="{{$settings['contact.image']}}"
                 alt="#"
                 class="contact__bg01"
             />
@@ -104,12 +102,23 @@
                                     stroke-width="1.5"
                                 />
                             </svg>
-                            <span>Соц. сети</span>
+                            <span>{{__('tr.Social networks')}}</span>
                         </div>
                         <ul class="operator__contact_item-list">
-                            <a href="##">Telegram</a>
+                            @foreach($settings['footer.social_networks'] as $setting)
+                                <li>
+                                    <a href="{{ $setting['link'] }}">
+                                        <img
+                                            src="{{ $setting['icon'] }}"
+                                            alt="#"
+                                        />
+                                        <span>{{ $setting['title'] }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                         {{--   <a href="##">Telegram</a>
                             <a href="##">Instagram</a>
-                            <a href="##">Facebook</a>
+                            <a href="##">Facebook</a>--}}
                         </ul>
                     </div>
                     <div class="operator__contacts_item">
@@ -139,11 +148,18 @@
                                     fill="white"
                                 />
                             </svg>
-                            <span>Телефоны</span>
+                            <span>{{__('tr.Phones')}}</span>
                         </div>
                         <ul class="operator__contact_item-list">
-                            <a href="##">+998 90 933 24 20</a>
-                            <a href="##">+998 71 294 60 62</a>
+                            @foreach($settings['footer.phones'] as $phone)
+                                <li>
+                                    <a href="{{ $phone['link'] }}">
+                                        <span>{{ $phone['title'] }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                            {{--<a href="##">+998 90 933 24 20</a>
+                            <a href="##">+998 71 294 60 62</a>--}}
                         </ul>
                     </div>
                     <div class="operator__contacts_item">
@@ -175,17 +191,24 @@
                                     stroke-width="1.5"
                                 />
                             </svg>
-                            <span>Эл.почта</span>
+                            <span>Email</span>
                         </div>
                         <ul class="operator__contact_item-list">
-                            <a href="##">info@numera.uz</a>
-                            <a href="##">khusankhonaliev@gmail.com</a>
+                            @foreach($settings['footer.email'] as $email)
+                                <li>
+                                    <a href="{{ $email['email'] }}">
+                                        <span>{{ $email['email'] }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                            {{--<a href="##">info@numera.uz</a>
+                            <a href="##">khusankhonaliev@gmail.com</a>--}}
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="operator__bg">
-                <img src="../img/jpg/operatorbg01.jpg" alt="#" />
+                <img src="{{$settings['contact.form_image']}}" alt="#" />
             </div>
         </div>
     </section>

@@ -13,19 +13,15 @@
     <section class="result">
         <div class="result__container">
             <div class="result__title title-big">
-                Результаты, за которые не нужно краснеть — только
-                гордиться
+                {{$settings['cases.title']}}
             </div>
             <div class="result__text text">
-                Здесь мы делимся историями наших клиентов — от старта до
-                системного роста. Настоящие кейсы и живые отзывы — о
-                доверии, точности и спокойствии, которое даёт сервис
-                Numera
+                {{$settings['cases.text']}}
             </div>
             <a
                 href="/index.html#support-form"
                 class="result__button yellow-button"
-                >Получить консультацию</a
+                >{{$settings['cases.btn_text']}}</a
             >
             <img src="../img/png/case-bg01.png" alt="#" />
         </div>
@@ -33,7 +29,7 @@
     <section class="story">
         <div class="story__container">
             <div class="story__numera numera">#Numera</div>
-            <div class="story__title title">Реальные истории</div>
+            <div class="story__title title">{{$settings['cases.story_title']}}</div>
             <div class="story__swiper swiper-container">
                 <div class="story__wrapper swiper-wrapper">
                     @foreach($histories as $history)
@@ -62,7 +58,7 @@
     </section>
     <section class="trust">
         <div class="trust__container">
-            <div class="trust__title title">Нам доверяют!</div>
+            <div class="trust__title title">{{$settings['cases.trust_title']}}</div>
 
             <div class="trust__swiper swiper-container">
                 <div class="trust__wrapper swiper-wrapper">
@@ -103,17 +99,15 @@
     <section class="want">
         <div class="want__container">
             <div class="want__title title">
-                Хотите такой же результат?
+                {{$settings['cases.want_title']}}
             </div>
             <div class="want__text text">
-                Сэкономьте время, нервы и деньги. Мы возьмём на себя
-                весь учёт, отчётность и расчёты, чтобы вы могли спокойно
-                заниматься бизнесом. Первичная консультация — бесплатно
+                {{$settings['cases.want_text']}}
             </div>
             <a
                 href="/index.html#support-form"
                 class="want__button yellow-button-big"
-                >Оставить заявку</a
+                >{{$settings['cases.want_btn_text']}}</a
             >
         </div>
     </section>
