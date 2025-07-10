@@ -268,8 +268,6 @@ class SettingsSeeder extends Seeder
                         'ru' => 'Анализируем ваших партнёров до сделки: риски, благонадёжность, прозрачность. Чтобы вы были уверены в каждом контракте.',
                     ],
                 ],
-
-                // Add more settings for the home group as needed
             ],
 
             'about' => [
@@ -322,7 +320,6 @@ class SettingsSeeder extends Seeder
                         'ru' => 'Изображение для светлого фона Buh',
                     ],
                 ],
-                // Add more settings for the home group as needed
             ],
 
             'about_mission' => [
@@ -856,20 +853,42 @@ class SettingsSeeder extends Seeder
                 'text' => [
                     'type' => 'textArea',
                     'translations' => [
-                        'uz' => "Bizning jamoamizga qo'shiling va biznesingizni rivojlantirishga yordam beradigan mutaxassislar bilan ishlang. Biz sizning biznesingiz uchun eng yaxshi yechimlarni topishga yordam beramiz.",
-                        'ru' => 'Присоединяйтесь к нашей команде и работайте с экспертами, которые помогут развивать ваш бизнес. Мы поможем найти лучшие решения для вашего бизнеса.',
+                        'uz' => "Buxgalteriya hisobi, xizmatlar yoki hamkorlik bo'yicha savollaringiz bormi? Biz yordam berishga tayyormiz - shunchaki yozing, qo'ng'iroq qiling yoki ofisimizga keling.",
+                        'ru' => 'У вас есть вопросы по бухгалтерии, услугам или сотрудничеству? Мы готовы помочь — просто напишите, позвоните или приходите к нам в офис.',
                     ],
                 ],
 
-                'form_title' => [
+                'btn_text' => [
                     'type' => 'text',
                     'translations' => [
-                        'uz' => "Maslahat olish uchun ariza qoldiring",
-                        'ru' => 'Оставьте заявку на консультацию',
+                        'uz' => "Bog'lanish",
+                        'ru' => 'Связаться',
                     ],
                 ],
 
-                // Add more settings for the contact group as needed
+                'btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/contact',
+                        'ru' => '/contact',
+                    ],
+                ],
+
+                'image' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/png/contactbg01.png',
+                        'ru' => '../img/png/contactbg01.png',
+                    ],
+                ],
+
+                'form_image' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/jpg/operatorbg01.jpg',
+                        'ru' => '../img/jpg/operatorbg01.jpg',
+                    ],
+                ],
             ],
 
             'footer' => [
@@ -967,11 +986,7 @@ class SettingsSeeder extends Seeder
                         'ru' => 'https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d5995.009854645912!2d69.341487!3d41.297878000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE3JzUyLjQiTiA2OcKwMjAnMjkuNCJF!5e0!3m2!1sru!2s!4v1750238504433!5m2!1sru!2s',
                     ],
                 ],
-                // Add more settings for the footer group as needed
             ],
-
-
-            // Add more groups and their settings as needed
         ];
 
         foreach ($groups as $gn => $group) {
