@@ -10,6 +10,7 @@ use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -74,9 +75,8 @@ class ConsultationScreen extends Screen
                         Input::make('consultation.title.uz')
                             ->title('Title (UZ)')
                             ->required(),
-                        Input::make('consultation.description.uz')
-                            ->title('Description (UZ)')
-                            ->required(),
+                        TextArea::make('consultation.description.uz')
+                            ->title('Description (UZ)'),
                         Input::make('consultation.subtitle.uz')
                             ->title('Subtitle (UZ)'),
                         Matrix::make('consultation.button.uz')
@@ -91,11 +91,9 @@ class ConsultationScreen extends Screen
                     ]),
                     'Create RU' => Layout::rows([
                         Input::make('consultation.title.ru')
-                            ->title('Title (RU)')
-                            ->required(),
-                        Input::make('consultation.description.ru')
-                            ->title('Description (RU)')
-                            ->required(),
+                            ->title('Title (RU)'),
+                        TextArea::make('consultation.description.ru')
+                            ->title('Description (RU)'),
                         Input::make('consultation.subtitle.ru')
                             ->title('Subtitle (RU)'),
                         Matrix::make('consultation.button.ru')
@@ -114,6 +112,7 @@ class ConsultationScreen extends Screen
             Layout::modal('edit', [
                 Layout::rows([
                     Picture::make('consultation.img')
+                        ->targetRelativeUrl()
                         ->title('Image')
                         ->required(),
                 ]),
@@ -122,9 +121,8 @@ class ConsultationScreen extends Screen
                         Input::make('consultation.title.uz')
                             ->title('Title (UZ)')
                             ->required(),
-                        Input::make('consultation.description.uz')
-                            ->title('Description (UZ)')
-                            ->required(),
+                        TextArea::make('consultation.description.uz')
+                            ->title('Description (UZ)'),
                         Input::make('consultation.subtitle.uz')
                             ->title('Subtitle (UZ)'),
                         Matrix::make('consultation.button.uz')
@@ -141,9 +139,8 @@ class ConsultationScreen extends Screen
                         Input::make('consultation.title.ru')
                             ->title('Title (RU)')
                             ->required(),
-                        Input::make('consultation.description.ru')
-                            ->title('Description (RU)')
-                            ->required(),
+                        TextArea::make('consultation.description.ru')
+                            ->title('Description (RU)'),
                         Input::make('consultation.subtitle.ru')
                             ->title('Subtitle (RU)'),
                         Matrix::make('consultation.button.ru')
@@ -157,7 +154,8 @@ class ConsultationScreen extends Screen
                             ->title('Link (RU)'),
                     ]),
                 ]),
-            ])->title('Edit Consultation')
+            ])
+                ->title('Edit Consultation')
                 ->method('update')
                 ->async('async'),
         ];
@@ -212,7 +210,7 @@ class ConsultationScreen extends Screen
 
         $validated = validator($data, [
             'title.uz' => 'required|string',
-            'description.uz' => 'required|string',
+            'description.uz' => 'nullable|string',
             'img' => 'required|string',
             'subtitle.uz' => 'string|nullable',
             'link.uz' => 'string|nullable',
@@ -244,7 +242,7 @@ class ConsultationScreen extends Screen
 
         $validated = validator($data, [
             'title.uz' => 'required|string',
-            'description.uz' => 'required|string',
+            'description.uz' => 'nullable|string',
             'img' => 'required|string',
             'link.uz' => 'string|nullable',
             'subtitle.uz' => 'string|nullable',

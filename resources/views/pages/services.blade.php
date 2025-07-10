@@ -761,114 +761,44 @@
         </div>
         <div class="consult__container">
             <div class="consult__info">
-                <div class="consult__info_item">
-                    <div class="consult__info_item-img">
-                        <img src="../img/jpg/info01.jpg" alt="#" />
-                    </div>
-                    <div class="consult__info_item-content">
-                        <div class="consult__info_item-title title">
-                            Бухгалтерия без головной боли
+
+                @foreach($consultations as $consult)
+                    @php
+                        $btn = Arr::get(json_decode($consult->translate($locale)->button, true), '1', null);
+                    @endphp
+                    <div class="consult__info_item">
+                        <div class="consult__info_item-img">
+                            <img src="{{ asset($consult->img) }}" alt="#" />
                         </div>
-                        <div class="consult__info_item-subtitle">
-                            Бухгалтерия, которая говорит на языке
-                            бизнеса
-                        </div>
-                        <div class="consult__info_item-text text">
-                            Профессиональное ведение бухгалтерского и
-                            налогового учёта под реальные задачи вашего
-                            бизнеса. Мы фиксируем, контролируем и
-                            упорядочиваем финансы, чтобы вы могли
-                            уверенно масштабироваться
-                        </div>
-                    </div>
-                </div>
-                <div class="consult__info_item">
-                    <div class="consult__info_item-img">
-                        <img src="../img/jpg/info02.jpg" alt="#" />
-                    </div>
-                    <div class="consult__info_item-content">
-                        <div class="consult__info_item-title title">
-                            Сдача отчётности
-                        </div>
-                        <div class="consult__info_item-subtitle">
-                            Отчёты вовремя. Всегда.
-                        </div>
-                        <div class="consult__info_item-text text">
-                            Забудьте про дедлайны, формы и платформы. Мы
-                            подаём всю отчётность за вас — точно,
-                            своевременно и без ошибок. Всё, что нужно, —
-                            доверить это нам один раз
+                        <div class="consult__info_item-content">
+                            @if($consult->link)
+                                <div class="consult__info_item-numera numera">
+                                    {{ $consult->link }}
+                                </div>
+                            @endif
+                            <div class="consult__info_item-title title">
+                                {{ $consult->translate($locale)?->title }}
+                            </div>
+                            <div class="consult__info_item-subtitle">
+                                {{ $consult->translate($locale)?->subtitle }}
+                            </div>
+                            @if($consult->description)
+                                <div class="consult__info_item-text text">
+                                    {{ $consult->translate($locale)?->description }}
+                                </div>
+                            @endif
+                            @if($btn)
+                                <a
+                                    href="{{ $btn['Link'] }}"
+                                    class="consult__info_item-btn {{ $btn['Color'] }}"
+                                >
+                                    {{ $btn['Name'] }}
+                                </a>
+                            @endif
                         </div>
                     </div>
-                </div>
-                <div class="consult__info_item">
-                    <div class="consult__info_item-img">
-                        <img src="../img/jpg/info03.jpg" alt="#" />
-                    </div>
-                    <div class="consult__info_item-content">
-                        <div class="consult__info_item-title title">
-                            Консультации
-                        </div>
-                        <div class="consult__info_item-subtitle">
-                            Бухгалтерия — без догадок и сомнений
-                        </div>
-                        <div class="consult__info_item-text text">
-                            Есть вопрос? Мы дадим понятный ответ. Наши
-                            эксперты объяснят сложные вещи простым
-                            языком — от налоговой оптимизации до
-                            правильной модели учёта. Примем участие в
-                            принятии финансовых решений
-                        </div>
-                    </div>
-                </div>
-                <div class="consult__info_item">
-                    <div class="consult__info_item-img">
-                        <img src="../img/jpg/info04.jpg" alt="#" />
-                    </div>
-                    <div class="consult__info_item-content">
-                        <div class="consult__info_item-title title">
-                            Аутсорсинг «под ключ»
-                        </div>
-                        <div class="consult__info_item-subtitle">
-                            Вся бухгалтерия — в одних надёжных руках
-                        </div>
-                        <div class="consult__info_item-text text">
-                            Полный цикл бухгалтерского сопровождения: от
-                            открытия компании до сдачи отчётов и
-                            кадрового учёта. Всё под ключ, с гарантией,
-                            прозрачностью и поддержкой от выделенной
-                            команды
-                        </div>
-                    </div>
-                </div>
-                <div class="consult__info_item">
-                    <div class="consult__info_item-img">
-                        <img src="../img/jpg/info05.jpg" alt="#" />
-                    </div>
-                    <div class="consult__info_item-content">
-                        <div class="consult__info_item-numera numera">
-                            #services
-                        </div>
-                        <div class="consult__info_item-title title">
-                            Не знаете, с чего начать?
-                        </div>
-                        <div
-                            class="consult__info_item-subtitle consult__info_item-cta"
-                        >
-                            Оставьте заявку — мы разберёмся в вашем
-                            бизнесе и подскажем подходящее решение.
-                        </div>
-                        <a
-                            href="#three"
-                            class="consult__info_item-btn yellow-button"
-                        >
-                            Узнать, что подойдёт именно вам
-                        </a>
-                    </div>
-                </div>
-                <div
-                    class="consult__info_item consult__info_item--last"
-                >
+                @endforeach
+                <div class="consult__info_item consult__info_item--last" >
                     <div class="consult__info_item-img">
                         <img src="../img/jpg/info06.jpg" alt="#" />
                     </div>

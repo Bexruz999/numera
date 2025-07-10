@@ -50,6 +50,7 @@ class HomeController extends Controller
             'headerClass' => 'about-header',
             'articles' => $articles,
             'frames' => $frames,
+            'consultations' => $consultations,
         ]);
     }
 
