@@ -987,7 +987,13 @@ class SettingsSeeder extends Seeder
                     ],
                 ],
             ],
+
+            'form' => [
+                
+            ]
         ];
+
+
 
         foreach ($groups as $gn => $group) {
             foreach ($group as $key => $setting) {

@@ -73,6 +73,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.file-slides')
                 ->route('platform.slides'),
 
+            Menu::make('Commands')
+                ->icon('bs.command')
+                ->route('platform.commands'),
+
             Menu::make('Get Started')
                 ->icon('bs.book')
                 ->title('Navigation')
