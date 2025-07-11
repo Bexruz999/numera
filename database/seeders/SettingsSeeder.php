@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Setting;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SettingsSeeder extends Seeder
@@ -437,7 +436,7 @@ class SettingsSeeder extends Seeder
                     'type' => 'textArea',
                     'translations' => [
                         'uz' => "Biz kichik va o'rta biznes uchun keng qamrovli buxgalteriya xizmatlarini taqdim etamiz. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan bo'lib, qog'oz ishlariga chalg'imasdan.",
-                            'ru' => 'Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.',
+                        'ru' => 'Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.',
                     ],
                 ],
 
@@ -675,6 +674,14 @@ class SettingsSeeder extends Seeder
                     ],
                 ],
 
+                'history_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Haqiqiy hikoyalar',
+                        'ru' => 'Реальные истории',
+                    ],
+                ],
+
                 'want_title' => [
                     'type' => 'text',
                     'translations' => [
@@ -707,9 +714,13 @@ class SettingsSeeder extends Seeder
                     ],
                 ],
 
-
-
-                // Add more settings for the cases group as needed
+                'trust_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Bizga ishonishadi',
+                        'ru' => 'Нам доверяют',
+                    ],
+                ],
             ],
 
             'blog' => [
@@ -989,10 +1000,9 @@ class SettingsSeeder extends Seeder
             ],
 
             'form' => [
-                
-            ]
-        ];
 
+            ],
+        ];
 
 
         foreach ($groups as $gn => $group) {

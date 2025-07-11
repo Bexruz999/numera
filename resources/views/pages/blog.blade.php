@@ -419,7 +419,7 @@
                         {{$settings['blog.fc_cta_text']}}
                     </div>
                     <img
-                        src="{{$settings['blog.fc_bg_image']}}"
+                        src="{{$settings['blog.fc_cta_image']}}"
                         alt="#"
                         class="form__content_bg-message"
                     />

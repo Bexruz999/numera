@@ -29,7 +29,7 @@
     <section class="story">
         <div class="story__container">
             <div class="story__numera numera">#Numera</div>
-            <div class="story__title title">{{$settings['cases.story_title']}}</div>
+            <div class="story__title title">{{$settings['cases.history_title']}}</div>
             <div class="story__swiper swiper-container">
                 <div class="story__wrapper swiper-wrapper">
                     @foreach($histories as $history)
