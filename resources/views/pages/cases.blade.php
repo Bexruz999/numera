@@ -66,36 +66,11 @@
 
             <div class="trust__swiper swiper-container">
                 <div class="trust__wrapper swiper-wrapper">
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust01.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust02.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust03.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust04.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust05.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust01.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust02.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust03.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust04.jpg" alt="#" />
-                    </div>
-                    <div class="trust__slide swiper-slide">
-                        <img src="../img/jpg/trust05.jpg" alt="#" />
-                    </div>
+                    @foreach($slides->concat($slides) as $slide)
+                        <div class="trust__slide swiper-slide">
+                            <img src="{{ asset($slide->img) }}" alt="#" />
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

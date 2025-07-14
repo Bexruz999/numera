@@ -13500,7 +13500,7 @@
                 </div>
             </div>
         </div>
-        <div class="we__tag tag">О компании</div>
+        <div class="we__tag tag">{{ $settings['home.tag__about'] }}</div>
     </section>
     <section class="source">
         <div class="source__container">
@@ -13509,81 +13509,22 @@
                 {{ $settings['home.source_title'] }}
             </div>
             <div class="source__grid">
-                <div class="source__grid_item">
-                    <div class="source__grid_item-icon">
-                        <img src="../img/svg/source01.svg" alt="#"/>
+                @foreach($benefits as $benefit)
+                    <div class="source__grid_item">
+                        <div class="source__grid_item-icon">
+                            <img src="{{ asset($benefit->img) }}" alt="#"/>
+                        </div>
+                        <div class="source__grid_item-name card-title">
+                            {{ $benefit->translate($locale)->title }}
+                        </div>
+                        <div class="source__grid_item-text min-text">
+                            {{ $benefit->translate($locale)->text }}
+                        </div>
                     </div>
-                    <div class="source__grid_item-name card-title">
-                        Учет без ошибок
-                    </div>
-                    <div class="source__grid_item-text min-text">
-                        Сократите количество ошибок благодаря работе с
-                        опытными сотрудниками
-                    </div>
-                </div>
-                <div class="source__grid_item">
-                    <div class="source__grid_item-icon">
-                        <img src="../img/svg/source02.svg" alt="#"/>
-                    </div>
-                    <div class="source__grid_item-name card-title">
-                        Минимизируйте риски
-                    </div>
-                    <div class="source__grid_item-text min-text">
-                        Забудьте про штрафы и переплату налогов.
-                        Профессиональная ответственность застрахована.
-                    </div>
-                </div>
-                <div class="source__grid_item">
-                    <div class="source__grid_item-icon">
-                        <img src="../img/svg/source03.svg" alt="#"/>
-                    </div>
-                    <div class="source__grid_item-name card-title">
-                        Непрерывность работы
-                    </div>
-                    <div class="source__grid_item-text min-text">
-                        Работа не остановится, если бухгалтер вдруг
-                        заболеет, уйдет в отпуск или уволится
-                    </div>
-                </div>
-                <div class="source__grid_item">
-                    <div class="source__grid_item-icon">
-                        <img src="../img/svg/source04.svg" alt="#"/>
-                    </div>
-                    <div class="source__grid_item-name card-title">
-                        Больше выгоды
-                    </div>
-                    <div class="source__grid_item-text min-text">
-                        Наши услуги обойдутся дешевле, чем штатные
-                        специалисты
-                    </div>
-                </div>
-                <div class="source__grid_item">
-                    <div class="source__grid_item-icon">
-                        <img src="../img/svg/source05.svg" alt="#"/>
-                    </div>
-                    <div class="source__grid_item-name card-title">
-                        Бухгалтерия без штата
-                    </div>
-                    <div class="source__grid_item-text min-text">
-                        Избавьтесь от рутины и занимайтесь действительно
-                        важными задачами
-                    </div>
-                </div>
-                <div class="source__grid_item">
-                    <div class="source__grid_item-icon">
-                        <img src="../img/svg/source06.svg" alt="#"/>
-                    </div>
-                    <div class="source__grid_item-name card-title">
-                        Ваше время — бизнесу
-                    </div>
-                    <div class="source__grid_item-text min-text">
-                        Освободите время и ресурсы для стратегических
-                        задач: управления, развития и масштабирования
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-        <div class="source__tag tag">Услуги</div>
+        <div class="source__tag tag">{{ $settings['home.tag__services'] }}</div>
     </section>
     <section class="service">
         <div class="service__container">
@@ -13678,10 +13619,10 @@
                     <div class="dropdown">
                         <div class="dropdown__input">
                             <div class="dropdown__label">
-                                Интересующая услуга:
+                                {{ $settings['home.service__dropdown_title'] }}
                             </div>
                             <div class="dropdown__title">
-                                <span>Выберите услугу</span>
+                                <span>{{ $settings['home.service__dropdown_choose'] }}</span>
                                 <img
                                     src="../img/svg/vector-down.svg"
                                     alt="#"
@@ -13689,36 +13630,22 @@
                             </div>
                         </div>
                         <ul class="dropdown_list">
-                            <li class="dropdown__item">
-                                Комплексное бухгалтерское облуживание
-                            </li>
-                            <li class="dropdown__item">
-                                Восстановление бухгалтерии
-                            </li>
-                            <li class="dropdown__item">
-                                Корректировка и пересдача отчётности
-                            </li>
-                            <li class="dropdown__item">
-                                Экспресс-аудит бухгалтерии
-                            </li>
-                            <li class="dropdown__item">
-                                Разработка учётной политики по
-                                бухгалтерскому учёту
-                            </li>
-                            <li class="dropdown__item">
-                                Расчёт зарплаты и кадровый учёт
-                            </li>
-                            <li class="dropdown__item">Другое</li>
+
+                            @foreach($settings['home.service__dropdown_options'] as $item)
+                                <li class="dropdown__item">
+                                    {{ $item['option'] }}
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="dropdown">
                         <div class="dropdown__input">
                             <div class="dropdown__label">
-                                Размер компании:
+                                {{ $settings['home.service__dropdown_size'] }}
                             </div>
                             <div class="dropdown__title">
-                                <span>Количество сотрудников</span>
+                                <span>{{ $settings['home.service__dropdown_employees'] }}</span>
                                 <img
                                     src="../img/svg/vector-down.svg"
                                     alt="#"
@@ -13726,19 +13653,21 @@
                             </div>
                         </div>
                         <ul class="dropdown_list">
-                            <li class="dropdown__item">1-10</li>
-                            <li class="dropdown__item">11-50</li>
-                            <li class="dropdown__item">51 и больше</li>
+                            @foreach($settings['home.service__options_size'] as $item)
+                                <li class="dropdown__item">
+                                    {{ $item['option'] }}
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="dropdown">
                         <div class="dropdown__input">
                             <div class="dropdown__label">
-                                Ваша должность:
+                                {{ $settings['home.service__dropdown_position'] }}
                             </div>
                             <div class="dropdown__title">
-                                <span>Выберите должность</span>
+                                <span>{{ $settings['home.service__dropdown_choose-position'] }}</span>
                                 <img
                                     src="../img/svg/vector-down.svg"
                                     alt="#"
@@ -13746,18 +13675,18 @@
                             </div>
                         </div>
                         <ul class="dropdown_list">
-                            <li class="dropdown__item">Маркетолог</li>
-                            <li class="dropdown__item">
-                                Предприниматель
-                            </li>
-                            <li class="dropdown__item">
-                                Менеджер проекта
-                            </li>
+                            @foreach($settings['home.service__options_position'] as $item)
+                                <li class="dropdown__item">
+                                    {{ $item['option'] }}
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
+
+                    <input autocomplete="phone" name="phone" type="text" placeholder="Ваш номер"/>
 
                     <a href="##" class="service__bottom_button button"
-                    >Посмотреть услугу</a
+                    >Получить консультацию</a
                     >
                 </div>
             </div>
@@ -13766,7 +13695,7 @@
     <section class="cta">
         <div class="cta__container">
             <div class="cta__box">
-                <div class="cta__tag tag">Консультация</div>
+                <div class="cta__tag tag">{{ $settings['home.tag__consult'] }}</div>
                 <div class="cta__title title">
                     {{ $settings['home.cta_title'] }}
                     <svg
@@ -13872,94 +13801,80 @@
         <div class="calc__container">
             <div class="calc__numera numera">#Numera</div>
             <div class="calc__title title">
-                Рассчитайте стоимость бухгалтерского обслуживания
+                {{ $settings['home.calc__title'] }}
             </div>
             <div class="calc__tarifs">
                 <div class="calc__tarifs_item active">
-                    Полное обслуживание
+                    {{ $settings['home.calc__tarifs_part'] }}
                 </div>
                 <div class="calc__tarifs_item">
-                    Частичное обслуживание
+                    {{ $settings['home.calc__tarifs_tarif'] }}
                 </div>
                 <a href="{{ route('services') }}" class="calc__tarifs_item calc__tarifs_about">
-                    Подробнее о тарифах
+                    {{ $settings['home.calc__tarifs_full'] }}
                 </a>
             </div>
             <div class="calc__columns">
                 <div class="calc__inputs">
                     <div class="calc__inputs_box">
                         <div class="calc__inputs_box-input">
-                            <label for="#">Форма собственности</label>
+                            <label for="#">{{ $settings['home.dropdown__title-form'] }}</label>
                             <div class="dropdown-simple">
                                 <a href="##">
-                                    <span>ИП</span>
+                                    <span>{{ $settings['home.dropdown__simple-text'] }}</span>
                                     <img
                                         src="../img/svg/vector-down.svg"
                                         alt="#"
                                     />
                                 </a>
                                 <ul class="dropdown-simple_list">
-                                    <li><a href="##">ИП</a></li>
-                                    <li><a href="##">ООО</a></li>
-                                    <li><a href="##">АО</a></li>
-                                    <li><a href="##">НКО</a></li>
+                                    @foreach($settings['home.service__options_property'] as $item)
+                                        <li><a href="##">{{ $item['option'] }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                         <div class="calc__inputs_box-input">
-                            <label for="#">Организационная форма</label>
+                            <label for="#">{{ $settings['home.dropdown__simple-organise'] }}</label>
                             <div class="dropdown-simple">
                                 <a href="##">
-                                    <span>ИП</span>
+                                    <span>{{ $settings['home.dropdown__simple-text'] }}</span>
                                     <img
                                         src="../img/svg/vector-down.svg"
                                         alt="#"
                                     />
                                 </a>
                                 <ul class="dropdown-simple_list">
-                                    <li><a href="##">УСН</a></li>
-                                    <li><a href="##">ОСНО</a></li>
-                                    <li><a href="##">ПАТЕНТ</a></li>
+                                    @foreach($settings['home.service__options_from'] as $item)
+                                        <li><a href="##">{{ $item['option'] }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="calc__inputs_form">
-                        <label for="#">Основной вид деятельности</label>
+                        <label for="#">{{ $settings['home.dropdown__title-main'] }}</label>
                         <div class="dropdown-simple">
                             <a href="##">
-                                <span>ИП</span>
+                                <span>{{ $settings['home.dropdown__simple-text'] }}</span>
                                 <img
                                     src="../img/svg/vector-down.svg"
                                     alt="#"
                                 />
                             </a>
                             <ul class="dropdown-simple_list">
-                                <li><a href="##">Услуги и ИТ</a></li>
-                                <li><a href="##">Торговля</a></li>
-                                <li><a href="##">Производство</a></li>
-                                <li><a href="##">Строительство</a></li>
-                                <li>
-                                    <a href="##"
-                                    >Управляющие компании и ТСЖ</a
-                                    >
-                                </li>
-                                <li><a href="##">Общепит</a></li>
-                                <li>
-                                    <a href="##"
-                                    >Мини-кафе, пекарни, вендинг</a
-                                    >
-                                </li>
+                                @foreach($settings['home.service__options_main'] as $item)
+                                    <li><a href="##">{{ $item['option'] }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="calc__inputs_box calc__inputs_box--2">
                         <div class="calc__inputs_box-item">
                             <label for="##">
-                                <span>Кол-во сотрудников*</span>
+                                <span>{{ $settings['home.dropdown__title-employees'] }}</span>
                                 <p>
-                                    Включая работающих по ГПД и
-                                    генерального директора
+                                    {{ $settings['home.dropdown__subtitle-employees'] }}
                                 </p>
                             </label>
                             <div class="calc__inputs_production">
@@ -13969,8 +13884,8 @@
                         </div>
                         <div class="calc__inputs_box-item">
                             <label for="##">
-                                <span>Оборот в месяц</span>
-                                <p>Примерный или прогнозируемый</p>
+                                <span>{{ $settings['home.dropdown__title-monthly'] }}</span>
+                                <p>{{ $settings['home.dropdown__subtitle-monthly'] }}</p>
                             </label>
                             <div class="calc__inputs_production">
                                 <input type="number" value="0"/>
@@ -14030,7 +13945,7 @@
                                     stroke-linejoin="round"
                                 />
                             </svg>
-                            <span>Очистить все поля</span>
+                            <span>{{ $settings['home.calc__inputs_copy'] }}</span>
                         </a>
                         <a href="##">
                             <svg
@@ -14083,29 +13998,22 @@
                                     stroke-linejoin="round"
                                 />
                             </svg>
-                            <span>Копировать данные</span>
+                            <span>{{ $settings['home.calc__inputs_copy'] }}</span>
                         </a>
                     </div>
                     <div class="calc__inputs_text text">
-                        Нажимая кнопку «Оплатить сейчас», я подтверждаю,
-                        что все введённые мной данные соответствуют
-                        действительности и будут использоваться для
-                        расчета стоимости обслуживания. Я ознакомлен(-а)
-                        с тем, что сумма абонентской платы может быть
-                        пересмотрена только при изменении
-                        предоставленных данных и подлежит пересчету в
-                        индивидуальном порядке.
+                        {{ $settings['home.calc__inputs_text'] }}
                     </div>
                     <div class="calc__inputs_textarea">
                         <label for="##">
-                            <span>Не уверены в тарифе? </span>
+                            <span>{{ $settings['home.calc__inputs_label'] }} </span>
                             <p>
-                                Получите профессиональную консультацию
+                                {{ $settings['home.calc__inputs_subtitle'] }}
                             </p>
                         </label>
                         <textarea
                             name="#"
-                            placeholder="Расскажите, чем можем помочь?"
+                            placeholder="{{ $settings['home.calc__inputs_textarea'] }}"
                         ></textarea>
                         <div class="calc__inputs_textarea-send">
                             <img src="../img/svg/send.svg" alt="#"/>
@@ -14114,19 +14022,18 @@
                 </div>
                 <div class="calc__content">
                     <div class="calc__content_months">
-                        <span class="active">3 мес</span>
-                        <span>6 мес</span>
-                        <span>9 мес</span>
+                        <span class="active">3 {{ $settings['home.calc__content_month'] }}</span>
+                        <span>6 {{ $settings['home.calc__content_month'] }}</span>
+                        <span>9 {{ $settings['home.calc__content_month'] }}</span>
                         <span>год</span>
                     </div>
                     <div class="calc__content_box">
                         <div class="calc__content_content">
                             <div class="calc__content_content-title">
-                                Полное<br/>обслуживание
+                                {{ $settings['home.calc__content_content'] }}
                             </div>
                             <div class="calc__content_content-subtitle">
-                                Бухгалтерский, налоговый и кадровый учёт
-                                с расчётом зарплаты
+                                {{ $settings['home.calc__content_content-subtitle'] }}
                             </div>
                             <div></div>
                             <div class="calc__content_content-price">
@@ -14139,13 +14046,13 @@
                             <input
                                 type="text"
                                 id="userName"
-                                placeholder="Имя"
+                                placeholder="{{ $settings['home.input_name'] }}"
                             />
                             <div class="calc__content_inputs-box">
                                 <input
                                     type="email"
                                     id="userEmail"
-                                    placeholder="Email (Необязательно)"
+                                    placeholder="{{ $settings['home.input_email'] }}"
                                 />
                                 <input
                                     type="tel"
@@ -14156,36 +14063,28 @@
                             </div>
                             <label>
                                 <input type="checkbox" id="autoRenew"/>
-                                Соглашаюсь на автопродление текущего
-                                тарифа
+                                {{ $settings['home.input_checkbox'] }}
                             </label>
                             <div class="calc__content_buttons">
                                 <a
                                     id="payNow"
                                     class="calc__content_pay"
                                     href="##"
-                                >Оплатить сейчас</a
+                                >{{ $settings['home.button-pay'] }}</a
                                 >
                                 <a
                                     id="needHelp"
                                     class="calc__content_cons button"
                                     href="##"
                                     class="button"
-                                >Нужна консультация</a
+                                >{{ $settings['home.button-consult'] }}</a
                                 >
                             </div>
                             <div class="calc__content_info">
-                                Нажимая на кнопку «Нужна консультация»,
-                                «Оплатить сейчас», я даю Согласие
-                                на обработку и Согласие
-                                на распространение персональных данных.
+                                {{ $settings['home.calc__content_info-1'] }}
                             </div>
                             <div class="calc__content_info">
-                                Нажимая на кнопку «Оплатить сейчас»,
-                                я принимаю Публичную оферту о заключении
-                                абонентского договора об оказании услуг
-                                бухгалтерского сопровождения полностью
-                                и без оговорок.
+                                {{ $settings['home.calc__content_info-2'] }}
                             </div>
                         </div>
                     </div>
@@ -14195,7 +14094,7 @@
     </section>
     <section class="map">
         <div class="map__container">
-            <div class="map__title title">Нам доверяют!</div>
+            <div class="map__title title">{{ $settings['home.map__title'] }}</div>
         </div>
         <img src="../img/png/map01.png" alt="#" class="map__bg01"/>
         <img src="../img/png/map02.png" alt="#" class="map__bg02"/>
@@ -14205,8 +14104,8 @@
     </section>
     <section class="faq">
         <div class="faq__container">
-            <div class="faq__title title">Ответим на вопросы</div>
-            <div class="faq__tag tag">Вопросы</div>
+            <div class="faq__title title">{{ $settings['home.faq__title'] }}</div>
+            <div class="faq__tag tag">{{ $settings['home.tag__question'] }}</div>
             <div class="faq__columns">
                 <div class="faq__questions">
                     @foreach($questions as $question)
@@ -14283,12 +14182,11 @@
     </section>
     <section class="support">
         <div class="support__container">
-            <div class="support__tag tag">Контакты</div>
+            <div class="support__tag tag">{{ $settings['home.tag__kontaktlar'] }}</div>
             <div class="support__columns">
                 <div class="support__columns-content">
                     <div class="support__title title">
-                        Поддержка <br/>
-                        для роста бизнеса
+                        {{ $settings['home.support__title'] }}
                     </div>
                     <div class="support__columns-list">
                         <a href="##" class="support__columns-item">
@@ -14320,8 +14218,7 @@
                                 </svg>
                             </div>
                             <span
-                            >г. Ташкент, Яшнабадский район, ул.
-                                Карасув, 33А</span
+                            >{{ $settings['home.support__address'] }}</span
                             >
                         </a>
 
@@ -14382,11 +14279,11 @@
                                     />
                                 </svg>
                             </div>
-                            <span>+998 90 933 24 20</span>
+                            <span>{{ $settings['home.support__phone'] }}</span>
                         </a>
 
                         <a
-                            href="mailto:info@numera.uz"
+                            href="{{ $settings['home.support__mail'] }}"
                             class="support__columns-item"
                         >
                             <div class="support__columns-item_img">
@@ -14419,7 +14316,7 @@
                                     />
                                 </svg>
                             </div>
-                            <span>info@numera.uz</span>
+                            <span>{{ $settings['home.support__mail'] }}</span>
                         </a>
                     </div>
                 </div>
@@ -14428,36 +14325,36 @@
                         id="support-form"
                         class="support__columns-form_title title"
                     >
-                        Свяжитесь с нами:
+                        {{ $settings['home.support__form'] }}
                     </div>
                     <div class="support__columns-form_subtitle">
-                        Есть вопросы? Пишите — мы всегда на связи.
+                        {{ $settings['home.support__form_subtitle'] }}
                     </div>
                     <div class="support__columns_inputs">
                         <div class="support__columns_inputbox">
                             <input
                                 type="text"
                                 id="contactName"
-                                placeholder="Имя"
+                                placeholder="{{ $settings['home.input_name'] }}"
                             />
                             <input
                                 type="text"
                                 id="contactSurname"
-                                placeholder="Фамилия"
+                                placeholder="{{ $settings['home.input__family'] }}"
                             />
                         </div>
                         <input
                             type="tel"
                             id="contactPhone"
-                            placeholder="Номер телефона"
+                            placeholder="{{ $settings['home.input__phone'] }}"
                         />
                         <input
                             type="email"
                             id="contactEmail"
-                            placeholder="Email-адрес (Необязательно)"
+                            placeholder="{{ $settings['home.input_email'] }}"
                         />
                         <a href="##" id="contactSend">
-                            Отправить
+                            {{ $settings['home.input__send'] }}
                             <img src="../img/svg/form.svg" alt="#"/>
                         </a>
                     </div>
@@ -14469,7 +14366,7 @@
     <section class="story">
         <div class="story__container">
             <div class="story__numera numera">#Numera</div>
-            <div class="story__title title">Реальные истории</div>
+            <div class="story__title title">{{ $settings['home.story__title'] }}</div>
             <div class="story__swiper swiper-container">
                 <div class="story__wrapper swiper-wrapper">
                     @foreach($histories as $history)
@@ -14493,7 +14390,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="story__tag tag">Отзывы</div>
+            <div class="story__tag tag">{{ $settings['home.tag__feedback'] }}</div>
         </div>
     </section>
 @endsection

@@ -46,17 +46,17 @@
             <a
                 href="/index.html#support-form"
                 class="buh__button yellow-button"
-                >Получить консультацию</a
+                >{{$settings['about.buh__button']}}</a
             >
             <div class="buh__bg">
                 <img
                     class="only-dark"
-                    src="../img/png/content-dark.png"
+                    src="{{$settings['about.buh__img-dark']}}"
                     alt="#"
                 />
                 <img
                     class="only-light"
-                    src="../img/png/content-light.png"
+                    src="{{$settings['about.buh__img']}}"
                     alt="#"
                 />
             </div>
