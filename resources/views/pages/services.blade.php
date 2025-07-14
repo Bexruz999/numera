@@ -69,7 +69,15 @@
                         {{ $settings['services.text']}}
                     </div>
                     <div class="feed__top_content-buttons">
-                        <a
+                        @foreach($settings['services.feed_btns'] as $button)
+                            <a
+                                href="{{ $button['link'] }}"
+                                class="{{ $button['class'] }}"
+                            >
+                                {{ $button['text'] }}
+                            </a>
+                        @endforeach
+                  {{--      <a
                             href="index.html#support-form"
                             class="feed__top_content-yellow-btn yellow-button"
                             >{{ $settings['services.buh__button'] }}</a
@@ -78,7 +86,7 @@
                             href="/contact.html"
                             class="feed__top_content-contact-btn button-transparent"
                             >Контакты</a
-                        >
+                        >--}}
                     </div>
                 </div>
             </div>

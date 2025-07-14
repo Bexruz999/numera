@@ -13,22 +13,16 @@
     <section class="blog">
         <div class="blog__container">
             <div class="blog__title title-big">
-                Блог Numera — бухгалтерия понятным языком
+                {{$settings['blog.title']}}
             </div>
             <div class="blog__text text">
-                Честно, просто и по делу о налогах, отчётности,
-                изменениях в законодательстве и оптимизации учёта.
-                Читайте, чтобы управлять бизнесом уверенно — без догадок
-                и лишнего риска
+                {{$settings['blog.text']}}
             </div>
             <a href="https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw" class="blog__button yellow-button"
-            >Подписаться</a
+            >{{$settings['blog.btn_text']}}</a
             >
             <div class="blog__below text">
-                Честно, просто и по делу о налогах, отчётности,
-                изменениях в законодательстве и оптимизации учёта.
-                Читайте, чтобы управлять бизнесом уверенно — без догадок
-                и лишнего риска
+                {{$settings['blog.below_text']}}
             </div>
         </div>
         <img class="blog__star01" src="../img/svg/blog01.svg" alt="#"/>
@@ -37,11 +31,9 @@
     </section>
     <section class="article">
         <div class="article__container">
-            <div class="article__title title">Свежие статьи:</div>
+            <div class="article__title title">{{$settings['blog.article_title']}}</div>
             <div class="article__text text">
-                Читайте полезные материалы о бухгалтерии, налогах,
-                законах и технологиях, которые помогут вам управлять
-                бизнесом увереннее
+                {{$settings['blog.article_text']}}
             </div>
 
             <div class="article__tags">
@@ -394,21 +386,17 @@
             <div class="article__cta">
                 <div class="article__cta_content">
                     <div class="article__cta_contnet-title title">
-                        Результаты, за которые не нужно краснеть —
-                        только гордиться
+                        {{$settings['blog.cta_title']}}
                     </div>
                     <div class="article__cta_content-text text">
-                        Честно, просто и по делу о налогах, отчётности,
-                        изменениях в законодательстве и оптимизации
-                        учёта. Читайте, чтобы управлять бизнесом
-                        уверенно — без догадок и лишнего риска
+                        {{$settings['blog.cta_text']}}
                     </div>
                 </div>
                 <div class="article__cta_button">
                     <a
                         href="#form01"
                         class="article__cta_button-btn yellow-button-big"
-                    >Оставить заявку</a
+                    >{{$settings['blog.cta_btn_text']}}</a
                     >
                 </div>
             </div>
@@ -418,21 +406,20 @@
         <div class="form__container">
             <div class="form__content">
                 <div class="form__content_title title">
-                    Да, это та самая форма
+                    {{$settings['blog.fc_title']}}
                 </div>
                 <div class="form__content_text text">
-                    Где вы оставляете email — а взамен получаете
-                    бухсоветы, которые реально работают
+                    {{$settings['blog.fc_text']}}
                 </div>
                 <div class="form__content_cta">
                     <div class="form__content_cta-title title-big">
-                        Ответим в течение 1 рабочего дня
+                        {{$settings['blog.fc_cta_title']}}
                     </div>
                     <div class="form__content_cta-subtitle">
-                        Без стресса
+                        {{$settings['blog.fc_cta_text']}}
                     </div>
                     <img
-                        src="../img/png/form-content01.png"
+                        src="{{$settings['blog.fc_cta_image']}}"
                         alt="#"
                         class="form__content_bg-message"
                     />

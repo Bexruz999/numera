@@ -6,6 +6,7 @@ declare(strict_types=1);
 use App\Orchid\Screens\Advises\AdviseScreen;
 use App\Orchid\Screens\Articles\ArticlesScreen;
 use App\Orchid\Screens\Benefits\BenefitsScreen;
+use App\Orchid\Screens\Commands\CommandScreen;
 use App\Orchid\Screens\Consultations\ConsultationScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
@@ -77,6 +78,10 @@ Route::screen('/slides', SlideScreen::class)
 //Slides
 Route::screen('/benefits', BenefitsScreen::class)
     ->name('platform.benefits');
+
+//Commands
+Route::screen('/commands',CommandScreen::class)
+    ->name('platform.commands');
 
 
 ///////////////////////////////////////////////////////////////

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Setting;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SettingsSeeder extends Seeder
@@ -268,8 +267,6 @@ class SettingsSeeder extends Seeder
                         'ru' => 'Анализируем ваших партнёров до сделки: риски, благонадёжность, прозрачность. Чтобы вы были уверены в каждом контракте.',
                     ],
                 ],
-
-                // Add more settings for the home group as needed
             ],
 
             'about' => [
@@ -322,7 +319,6 @@ class SettingsSeeder extends Seeder
                         'ru' => 'Изображение для светлого фона Buh',
                     ],
                 ],
-                // Add more settings for the home group as needed
             ],
 
             'about_mission' => [
@@ -439,8 +435,8 @@ class SettingsSeeder extends Seeder
                 'text' => [
                     'type' => 'textArea',
                     'translations' => [
-                        'uz' => "Biz kichik va o'rta biznes uchun keng qamrovli buxgalteriya xizmatlarini taqdim etamiz. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan, qog'ozbozlik bilan chalg'itmasdan.Biz taqdim etamiz kichik va o'rta biznes uchun buxgalteriya hisobining keng qamrovli yordami. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan bo'lib, qog'oz ishlariga chalg'imasdan.",
-                        'ru' => 'Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.',
+                        'uz' => "Biz kichik va o'rta biznes uchun keng qamrovli buxgalteriya xizmatlarini taqdim etamiz. Bizning barcha xizmatlarimiz sizni asosiy narsaga - biznesingiz o'sishiga e'tiboringizni qaratishga qaratilgan bo'lib, qog'oz ishlariga chalg'imasdan.",
+                        'ru' => 'Мы предоставляем комплексное бухгалтерское сопровождение для малого и среднего бизнеса. Все наши услуги нацелены на то, чтобы вы могли сосредоточиться на главном — росте своего бизнеса, не отвлекаясь на бумажную рутину.',
                     ],
                 ],
 
@@ -480,17 +476,17 @@ class SettingsSeeder extends Seeder
                     'type' => 'matrix',
                     'translations' => [
                         'uz' => [
-                            ['text' => 'Получить консультацию', 'link' => '/services', 'class' => 'yellow-button'],
-                            ['text' => 'Kontaktlar', 'link' => '/contact', 'class' => 'button-transparent'],
+                            ['text' => 'Maslahat olish', 'link' => '/index.html#support-form', 'class' => 'feed__top_content-yellow-btn yellow-button'],
+                            ['text' => 'Kontaktlar', 'link' => '/contact.html', 'class' => 'feed__top_content-contact-btn button-transparent'],
                         ],
                         'ru' => [
-                            ['text' => 'Получить консультацию', 'link' => '/services', 'class' => 'yellow-button'],
-                            ['text' => 'Контакты', 'link' => '/contact', 'class' => 'button-transparent'],
+                            ['text' => 'Получить консультацию', 'link' => 'index.html#support-form', 'class' => 'feed__top_content-yellow-btn yellow-button'],
+                            ['text' => 'Контакты', 'link' => '/contact.html', 'class' => 'feed__top_content-contact-btn button-transparent'],
                         ],
                     ],
                     'options' => [
                         'uz' => [['key' => 'text', 'value' => 'Text'], ['key' => 'link', 'value' => 'Link'], ['key' => 'class', 'value' => 'Class']],
-                        'ru' => [['key' => 'text', 'value' => 'Текст'], ['key' => 'link', 'value' => 'Ссылка'], ['key' => 'class', 'value' => 'Класс']],
+                        'ru' => [['key' => 'text', 'value' => 'Text'], ['key' => 'link', 'value' => 'Link'], ['key' => 'class', 'value' => 'Class']],
                     ],
                 ],
 
@@ -638,6 +634,274 @@ class SettingsSeeder extends Seeder
                 // Add more settings for the services group as needed
             ],
 
+            'cases' => [
+                'title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Siz o'yalmaydigan natijalar - faqat faxrlanish uchun",
+                        'ru' => 'Результаты, за которые не нужно краснеть — только гордиться',
+                    ],
+                ],
+                'text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Bu yerda biz mijozlarimizning boshidan tizimli o'sishgacha bo'lgan hikoyalarini baham ko'ramiz. Haqiqiy holatlar va jonli sharhlar - Numera xizmati ishonch, aniqlik va xotirjamlik haqida",
+                        'ru' => 'Здесь мы делимся историями наших клиентов — от старта до системного роста. Настоящие кейсы и живые отзывы — о доверии, точности и спокойствии, которое даёт сервис Numera',
+                    ],
+                ],
+
+                'imgage' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/png/case-bg01.png',
+                        'ru' => '../img/png/case-bg01.png',
+                    ],
+                ],
+
+                'btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Maslahat oling',
+                        'ru' => 'Получить консультацию',
+                    ],
+                ],
+
+                'btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/contact',
+                        'ru' => '/contact',
+                    ],
+                ],
+
+                'history_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Haqiqiy hikoyalar',
+                        'ru' => 'Реальные истории',
+                    ],
+                ],
+
+                'want_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Xuddi shu natijani xohlaysizmi?',
+                        'ru' => 'Хотите такой же результат?',
+                    ],
+                ],
+
+                'want_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Vaqt, asab va pulni tejang. Biz barcha hisob-kitoblar, hisobotlar va hisob-kitoblarni o'z zimmamizga olamiz, shunda siz biznesingizni xotirjam davom ettirishingiz mumkin. Birlamchi maslahat-bepul",
+                        'ru' => 'Сэкономьте время, нервы и деньги. Мы возьмём на себя весь учёт, отчётность и расчёты, чтобы вы могли спокойно заниматься бизнесом. Первичная консультация — бесплатно',
+                    ],
+                ],
+
+                'want_btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Arizani qoldiring',
+                        'ru' => 'Оставить заявку',
+                    ],
+                ],
+
+                'want_btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/index.html#support-form',
+                        'ru' => '/index.html#support-form',
+                    ],
+                ],
+
+                'trust_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Bizga ishonishadi',
+                        'ru' => 'Нам доверяют',
+                    ],
+                ],
+            ],
+
+            'blog' => [
+                'title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Numera blogi-tushunarli tilda buxgalteriya hisobi',
+                        'ru' => 'Блог Numera — бухгалтерия понятным языком',
+                    ],
+                ],
+                'text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Soliqlar, hisobot berish, qonunchilikdagi o'zgarishlar va buxgalteriya hisobini optimallashtirish haqida halol, sodda va aniq. Biznesingizni ishonch bilan boshqarish uchun o'qing - taxminlar va keraksiz xavflarsiz",
+                        'ru' => 'Честно, просто и по делу о налогах, отчётности, изменениях в законодательстве и оптимизации учёта. Читайте, чтобы управлять бизнесом уверенно — без догадок и лишнего риска',
+                    ],
+                ],
+
+                'btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Obuna bo'lish",
+                        'ru' => 'Подписаться',
+                    ],
+                ],
+
+                'btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw" class="blog__button yellow-button',
+                        'ru' => 'https://www.instagram.com/numera_services?igsh=cGhybTM5aHJoZzJw" class="blog__button yellow-button',
+                    ],
+                ],
+
+                'below_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Soliqlar, hisobot berish, qonunchilikdagi o'zgarishlar va buxgalteriya hisobini optimallashtirish haqida halol, sodda va aniq. Biznesingizni ishonch bilan boshqarish uchun o'qing - taxminlar va keraksiz xavflarsiz",
+                        'ru' => 'Честно, просто и по делу о налогах, отчётности, изменениях в законодательстве и оптимизации учёта. Читайте, чтобы управлять бизнесом уверенно — без догадок и лишнего риска',
+                    ],
+                ],
+
+                'article_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Yangi maqolalar:',
+                        'ru' => 'Свежие статьи:',
+                    ],
+                ],
+
+                'article_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Biznesingizni ishonchli boshqarishga yordam beradigan buxgalteriya hisobi, soliqlar, qonunlar va texnologiyalar haqida foydali materiallarni o'qing",
+                        'ru' => 'Читайте полезные материалы о бухгалтерии, налогах, законах и технологиях, которые помогут вам управлять бизнесом увереннее',
+                    ],
+                ],
+
+                'cta_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Siz uyalmaydigan natijalar - faqat faxrlanish uchun',
+                        'ru' => 'Результаты, за которые не нужно краснеть — только гордиться',
+                    ],
+                ],
+
+                'cta_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Soliqlar, hisobot berish, qonunchilikdagi o'zgarishlar va buxgalteriya hisobini optimallashtirish haqida halol, sodda va aniq. Biznesingizni ishonch bilan boshqarish uchun o'qing - taxminlar va keraksiz xavflarsiz",
+                        'ru' => 'Честно, просто и по делу о налогах, отчётности, изменениях в законодательстве и оптимизации учёта. Читайте, чтобы управлять бизнесом уверенно — без догадок и лишнего риска',
+                    ],
+                ],
+
+                'cta_btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => 'Arizani qoldiring',
+                        'ru' => 'Оставить заявку',
+                    ],
+                ],
+
+                'cta_btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '#form01',
+                        'ru' => '#form01',
+                    ],
+                ],
+
+                'fc_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Ha, bu aynan o'sha forma",
+                        'ru' => 'Да, это та самая форма',
+                    ],
+                ],
+
+                'fc_text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Elektron pochtangizni qayerga qoldirasiz va buning evaziga siz haqiqatan ham ishlaydigan buxgalteriya maslahatlarini olasiz",
+                        'ru' => 'Где вы оставляете email — а взамен получаете бухсоветы, которые реально работают',
+                    ],
+                ],
+
+                'fc_cta_title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Biz 1 ish kuni ichida javob beramiz",
+                        'ru' => 'Ответим в течение 1 рабочего дня',
+                    ],
+                ],
+
+                'fc_cta_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Stresssiz",
+                        'ru' => 'Без стресса',
+                    ],
+                ],
+
+                'fc_cta_image' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/png/form-content01.png',
+                        'ru' => '../img/png/form-content01.png',
+                    ],
+                ],
+                // Add more settings for the blog group as needed
+            ],
+
+            'contact' => [
+                'title' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Biz bilan bog'laning",
+                        'ru' => 'Свяжитесь с нами',
+                    ],
+                ],
+                'text' => [
+                    'type' => 'textArea',
+                    'translations' => [
+                        'uz' => "Buxgalteriya hisobi, xizmatlar yoki hamkorlik bo'yicha savollaringiz bormi? Biz yordam berishga tayyormiz - shunchaki yozing, qo'ng'iroq qiling yoki ofisimizga keling.",
+                        'ru' => 'У вас есть вопросы по бухгалтерии, услугам или сотрудничеству? Мы готовы помочь — просто напишите, позвоните или приходите к нам в офис.',
+                    ],
+                ],
+
+                'btn_text' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => "Bog'lanish",
+                        'ru' => 'Связаться',
+                    ],
+                ],
+
+                'btn_link' => [
+                    'type' => 'text',
+                    'translations' => [
+                        'uz' => '/index.html#support-form',
+                        'ru' => '/index.html#support-form',
+                    ],
+                ],
+
+                'image' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/png/contactbg01.png',
+                        'ru' => '../img/png/contactbg01.png',
+                    ],
+                ],
+
+                'form_image' => [
+                    'type' => 'image',
+                    'translations' => [
+                        'uz' => '../img/jpg/operatorbg01.jpg',
+                        'ru' => '../img/jpg/operatorbg01.jpg',
+                    ],
+                ],
+            ],
+
             'footer' => [
                 'social_networks' => [
                     'type' => 'matrix',
@@ -733,12 +997,13 @@ class SettingsSeeder extends Seeder
                         'ru' => 'https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d5995.009854645912!2d69.341487!3d41.297878000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE3JzUyLjQiTiA2OcKwMjAnMjkuNCJF!5e0!3m2!1sru!2s!4v1750238504433!5m2!1sru!2s',
                     ],
                 ],
-                // Add more settings for the footer group as needed
             ],
 
+            'form' => [
 
-            // Add more groups and their settings as needed
+            ],
         ];
+
 
         foreach ($groups as $gn => $group) {
             foreach ($group as $key => $setting) {

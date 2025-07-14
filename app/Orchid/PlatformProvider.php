@@ -77,6 +77,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.shield-check')
                 ->route('platform.benefits'),
 
+            Menu::make('Commands')
+                ->icon('bs.command')
+                ->route('platform.commands'),
+
             Menu::make('Get Started')
                 ->icon('bs.book')
                 ->title('Navigation')
