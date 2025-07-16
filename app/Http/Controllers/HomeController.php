@@ -50,7 +50,6 @@ class HomeController extends Controller
     {
         $articles = Article::all();
         $frames = Frame::all();
-        $consultations = Consultation::all();
         $advices = Advise::take(4)->get();
         $questions = Question::all();
 

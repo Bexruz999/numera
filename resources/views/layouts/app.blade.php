@@ -246,6 +246,11 @@
             const settings = @json($settings);
         </script>
 
+        <script>
+            const settings = @json($settings);
+            console.log(settings);
+        </script>
+
         <script src="js/index.js"></script>
         <script>
             //CALCULATOR LOGIC
