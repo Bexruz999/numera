@@ -130,17 +130,17 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
-            Menu::make('Documentation')
-                ->title('Docs')
-                ->icon('bs.box-arrow-up-right')
-                ->url('https://orchid.software/en/docs')
-                ->target('_blank'),
-
-            Menu::make('Changelog')
-                ->icon('bs.box-arrow-up-right')
-                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-                ->target('_blank')
-                ->badge(fn() => Dashboard::version(), Color::DARK),
+//            Menu::make('Documentation')
+//                ->title('Docs')
+//                ->icon('bs.box-arrow-up-right')
+//                ->url('https://orchid.software/en/docs')
+//                ->target('_blank'),
+//
+//            Menu::make('Changelog')
+//                ->icon('bs.box-arrow-up-right')
+//                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
+//                ->target('_blank')
+//                ->badge(fn() => Dashboard::version(), Color::DARK),
         ];
     }
 
