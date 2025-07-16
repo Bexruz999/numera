@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Advise;
 use App\Models\Consultation;
-use App\Models\Consultation;
-use App\Models\Faq;
 use App\Models\Frame;
 use App\Models\History;
 use App\Models\Question;
@@ -49,7 +47,6 @@ class HomeController extends Controller
     {
         $articles = Article::all();
         $frames = Frame::all();
-        $consultations = Consultation::all();
         $advices = Advise::take(4)->get();
         $questions = Question::all();
 
