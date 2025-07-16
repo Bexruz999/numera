@@ -13632,9 +13632,7 @@
                         <ul class="dropdown_list">
 
                             @foreach($settings['home.service__dropdown_options'] as $item)
-                                <li class="dropdown__item">
-                                    {{ $item['option'] }}
-                                </li>
+                                <li class="dropdown__item">{{ $item['option'] }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -14025,7 +14023,7 @@
                         <span class="active">3 {{ $settings['home.calc__content_month'] }}</span>
                         <span>6 {{ $settings['home.calc__content_month'] }}</span>
                         <span>9 {{ $settings['home.calc__content_month'] }}</span>
-                        <span>год</span>
+                        <span>{{ $settings['home.text__content_year'] }}</span>
                     </div>
                     <div class="calc__content_box">
                         <div class="calc__content_content">
@@ -14396,5 +14394,107 @@
 @endsection
 
 @push('scripts')
-    <!-- Специфичные скрипты только для главной страницы -->
+    <script>
+        $(document).ready(function () {
+            function updatePrice() {
+                let input = $(".calc__inputs_box-input"), box = $(".calc__inputs_box--2").find("input[type=number]");
+                let formaSobst = input
+                    .eq(0)
+                    .find(".dropdown-simple > a > span")
+                    .text()
+                    .trim();
+                let orgForma = input
+                    .eq(1)
+                    .find(".dropdown-simple > a > span")
+                    .text()
+                    .trim();
+                let vidDeyat = $(".calc__inputs_form .dropdown-simple > a > span")
+                    .text()
+                    .trim();
+
+                let kolSotrudnikov =
+                    parseInt(
+                        box.eq(0).val()
+                    ) || 0;
+                let oborot =
+                    parseInt(
+                        box.eq(1).val()
+                    ) || 0;
+
+                let basePrice = 500000;
+
+                let formaCoef = 1;
+                switch (formaSobst) {
+                    case "ИП":
+                        formaCoef = 0.8;
+                        break;
+                    case "ООО":
+                        formaCoef = 1;
+                        break;
+                    case "АО":
+                        formaCoef = 1.2;
+                        break;
+                    case "НКО":
+                        formaCoef = 0.9;
+                        break;
+                }
+
+                let orgCoef = 1;
+                switch (orgForma) {
+                    case "УСН":
+                        orgCoef = 0.85;
+                        break;
+                    case "ОСНО":
+                        orgCoef = 1;
+                        break;
+                    case "ПАТЕНТ":
+                        orgCoef = 0.7;
+                        break;
+                }
+
+                let vidCoef = 1;
+                switch (vidDeyat) {
+                    case "Услуги и ИТ":
+                        vidCoef = 0.9;
+                        break;
+                    case "Торговля":
+                        vidCoef = 1;
+                        break;
+                    case "Производство":
+                        vidCoef = 1.3;
+                        break;
+                    case "Строительство":
+                        vidCoef = 1.2;
+                        break;
+                    case "Управляющие компании и ТСЖ":
+                        vidCoef = 1;
+                        break;
+                    case "Общепит":
+                        vidCoef = 1.1;
+                        break;
+                    case "Мини-кафе, пекарни, вендинг":
+                        vidCoef = 1.05;
+                        break;
+                }
+
+                let pricePerMonth = basePrice + kolSotrudnikov * 100000 + oborot * 0.05;
+                pricePerMonth = pricePerMonth * formaCoef * orgCoef * vidCoef;
+
+                let totalPrice = pricePerMonth * selectedMonths;
+
+                let priceFormatted = pricePerMonth
+                    .toFixed(0)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                let totalFormatted = totalPrice
+                    .toFixed(0)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+                $(".calc__content_content-price span").text(priceFormatted + " сум");
+                $(".calc__content_content-price p").text("в месяц при оплате");
+                $(".calc__content_content-price div").text(
+                    totalFormatted + " сум за " + (selectedMonths === 12 ? "год" : selectedMonths + " месяца")
+                );
+            }
+        });
+    </script>
 @endpush

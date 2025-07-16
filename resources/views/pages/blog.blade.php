@@ -53,7 +53,7 @@
                                 <img src="{{ asset($article->img) }}" alt="#"/>
                             </div>
                             <div class="latest__card_title">{{ $article->translate($locale)->title }}</div>
-                            <div class="latest__card_text">{{ $article->translate($locale)->text }}</div>
+                            <div class="latest__card_text">{{ $article->translate($locale)->description }}</div>
                             <div class="latest__card_info">
                                 <div>
                                     <svg
@@ -74,7 +74,7 @@
                                             fill="#FFB927"
                                         />
                                     </svg>
-                                    <span>24.05.2025</span>
+                                    <span>{{ $article->created_at->format('d.m.Y') }}</span>
                                 </div>
                                 <div>
                                     <svg
@@ -103,7 +103,7 @@
                                             fill="#FFB927"
                                         />
                                     </svg>
-                                    <span>09:25</span>
+                                    <span>{{ $article->created_at->format('h:i') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -446,16 +446,16 @@
                     или приходите в офис — будем рады помочь.
                 </div>
                 <div class="form__form-box">
-                    <input type="text" placeholder="Имя*"/>
-                    <input type="text" placeholder="Фамилия*"/>
+                    <input type="text" placeholder="{{$settings['home.input_name']}}"/>
+                    <input type="text" placeholder="{{$settings['home.input__family']}}"/>
                 </div>
                 <input
                     type="email"
-                    placeholder="Email-адрес (Необязательно)"
+                    placeholder="{{ $settings['home.input_email'] }}"
                 />
-                <input type="tel" placeholder="Номер телефона*"/>
+                <input type="tel" placeholder="{{ $settings['home.input__phone'] }}"/>
                 <a class="form__form_submit yellow-button" href="##"
-                >Задать вопрос</a
+                >{{$settings['blog.form__ask']}}</a
                 >
             </div>
         </div>

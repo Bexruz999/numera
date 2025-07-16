@@ -7,6 +7,7 @@ use App\Orchid\Layouts\Articles\ArticleTable;
 use Illuminate\Support\Facades\App;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Screen;
@@ -136,7 +137,13 @@ class ArticlesScreen extends Screen
                             ->placeholder('Select the type of the article')
                             ->required(),
                     ]),
-                ])
+                ]),
+                Layout::rows([
+                    DateTimer::make('article.created_at')
+                        ->format('Y-m-d H:i:s')
+                        ->enableTime()
+                        ->format24hr()
+        ])
             ])
                 ->async('asyncGetArticle'), // <-- Make edit modal async to populate fields
         ];
@@ -187,6 +194,7 @@ class ArticlesScreen extends Screen
                 'uz' => $article->translate('uz')->type ?? '',
                 'ru' => $article->translate('ru')->type ?? '',
             ],
+            'created_at' => $article->created_at ? $article->created_at->format('Y-m-d H:i:s') : null,
         ];
 
         return [
@@ -209,6 +217,7 @@ class ArticlesScreen extends Screen
         ])->validate();
 
         $article->img = $validated['img'] ?? null;
+        $article->created_at = $data['created_at'] ?? $article->created_at;
 
         foreach (['uz', 'ru'] as $locale) {
             $article->translateOrNew($locale)->title = $data['title'][$locale] ?? null;

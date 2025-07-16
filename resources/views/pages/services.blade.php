@@ -716,7 +716,7 @@
                     @php
                         $btn = Arr::get(json_decode($consult->translate($locale)->button, true), '1', null);
                     @endphp
-                    <div class="consult__info_item">
+                    <div class="consult__info_item{{ $loop->last ? ' consult__info_item--last' : '' }}">
                         <div class="consult__info_item-img">
                             <img src="{{ asset($consult->img) }}" alt="#" />
                         </div>
@@ -748,7 +748,7 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="consult__info_item consult__info_item--last" >
+                {{--<div class="consult__info_item consult__info_item--last" >
                     <div class="consult__info_item-img">
                         <img src="../img/jpg/info06.jpg" alt="#" />
                     </div>
@@ -757,17 +757,15 @@
                             #services
                         </div>
                         <div class="consult__info_item-title title">
-                            Мы всегда на связи по телефону и в чате
+                            {{ $settings['services.consult__info_title']}}
                         </div>
                         <div
                             class="consult__info_item-text text consult__info_item-text--last"
                         >
-                            Оперативно поможем с любой ситуацией, будь
-                            то срочное оформление сотрудника или ответ
-                            на требование налоговой.
+                            {{ $settings['services.consult__info_text']}}
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </section>
@@ -781,7 +779,7 @@
                 {{ $settings['services.start_text']}}
             </div>
             <a
-                href="{{ $settings['services.start_btn_link']}}"
+                href="{{ route('contact') }}"
                 class="start__button yellow-button-big"
                 >{{ $settings['services.start_btn_text']}}</a
             >
@@ -802,7 +800,7 @@
                                 <img src="{{ asset($article->img) }}" alt="#"/>
                             </div>
                             <div class="latest__card_title">{{ $article->translate($locale)->title }}</div>
-                            <div class="latest__card_text">{{ $article->translate($locale)->text }}</div>
+                            <div class="latest__card_text">{{ $article->translate($locale)->description }}</div>
                             <div class="latest__card_info">
                                 <div>
                                     <svg
@@ -823,7 +821,7 @@
                                             fill="#FFB927"
                                         />
                                     </svg>
-                                    <span>24.05.2025</span>
+                                    <span>{{ $article->created_at->format('d.m.Y') }}</span>
                                 </div>
                                 <div>
                                     <svg
@@ -852,7 +850,7 @@
                                             fill="#FFB927"
                                         />
                                     </svg>
-                                    <span>09:25</span>
+                                    <span>{{ $article->created_at->format('h:i') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -1137,7 +1135,7 @@
         <div class="three__container">
             <div class="three__content">
                 <div class="three__content_title title">
-                    3 шага до решения проблем с учётом
+                    {{$settings['services.three__title']}}
                 </div>
                 <img src="../img/png/three01.png" alt="#" />
             </div>
@@ -1145,84 +1143,43 @@
                 <div class="three__steps">
                     <div class="three__steps_step">
                         <span class="title">01</span>
-                        <p>Обсудим вашу ситуацию с бухгалтерией</p>
+                        <p>{{$settings['services.three__step_one']}}</p>
                     </div>
                     <div class="three__steps_step">
                         <span class="title">02</span>
-                        <p>Подберем решение под ваш бизнес</p>
+                        <p>{{$settings['services.three__step_two']}}</p>
                     </div>
                     <div class="three__steps_step">
                         <span class="title">03</span>
-                        <p>Начнём работу уже сегодня</p>
+                        <p>{{$settings['services.three__step_three']}}</p>
                     </div>
                 </div>
                 <div class="three__inputs">
-                    <input type="text" placeholder="Имя" />
-                    <input type="text" placeholder="Фамилия" />
+                    <input type="text" placeholder="{{$settings['home.input_name']}}" />
+                    <input type="text" placeholder="{{$settings['home.input__family']}}" />
                 </div>
-                <input type="tel" placeholder="Номер телефона" />
+                <input type="tel" placeholder="{{ $settings['home.input__phone'] }}" />
                 <div class="dropdown-simple">
                     <a href="##">
-                        <span>Выберите услугу</span>
+                        <span>{{ $settings['home.service__dropdown_choose'] }}</span>
                         <img src="../img/svg/vector-down.svg" alt="#" />
                     </a>
                     <ul class="dropdown-simple_list">
-                        <li>
-                            <a href="##"
-                                >Ведение бухгалтерии под ключ</a
-                            >
-                        </li>
-                        <li>
-                            <a href="##">Восстановление бухгалтерии</a>
-                        </li>
-                        <li>
-                            <a href="##"
-                                >Корректировка и пересдача отчетности</a
-                            >
-                        </li>
-                        <li>
-                            <a href="##">Консультация бухгалтера</a>
-                        </li>
-                        <li>
-                            <a href="##">Экспресс аудит бухгалтерии</a>
-                        </li>
-                        <li>
-                            <a href="##"
-                                >Снижение текущих затрат на
-                                бухгалтерию</a
-                            >
-                        </li>
-                        <li>
-                            <a href="##">Разработка учетной политики</a>
-                        </li>
-                        <li>
-                            <a href="##"
-                                >Инхаус бухгалтер(на территории
-                                клиента)</a
-                            >
-                        </li>
-                        <li>
-                            <a href="##"
-                                >Расчет зарплаты и кадровый учет</a
-                            >
-                        </li>
-                        <li><a href="##">Кадровый аудит</a></li>
-                        <li><a href="##">Получение ПИНФЛ</a></li>
-                        <li><a href="##">Налоговая консультация</a></li>
-                        <li><a href="##">Регистация ИП СП ЧП</a></li>
-                        <li><a href="##">Ликвидация ИП СПЧП</a></li>
-                        <li><a href="##">Проверка контрагентов</a></li>
-                        <li><a href="##">Получение ЭЦП</a></li>
-                        <li><a href="##">Услуга возврата НДС</a></li>
-                        <li><a href="##">Другое</a></li>
+                        @foreach($settings['services.three__step_dropdown'] as $item)
+                            <li>
+                                <a href="##"
+                                >{{ $item['option'] }}</a
+                                >
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <input
                     type="email"
-                    placeholder="Email-адрес (Необязательно)"
+                    placeholder="{{ $settings['home.input_email'] }}"
                 />
                 <a class="three__submit" href="##">
-                    Отправить
+                    {{ $settings['home.input__send'] }}
                     <img src="../img/svg/form.svg" alt="#" />
                 </a>
             </div>
@@ -1230,8 +1187,8 @@
     </section>
     <section class="faq">
         <div class="faq__container">
-            <div class="faq__title title">Ответим на вопросы</div>
-            <div class="faq__tag tag">Вопросы</div>
+            <div class="faq__title title">{{ $settings['home.faq__title'] }}</div>
+            <div class="faq__tag tag">{{ $settings['home.tag__question'] }}</div>
             <div class="faq__columns">
                 <div class="faq__questions">
                     @foreach($questions as $question)

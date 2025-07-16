@@ -41,21 +41,18 @@
             <div class="operator__form">
                 <div id="contact" class="form__form form--form">
                     <div class="form__form_title title">
-                        Оставьте заявку — и мы свяжемся с вами
+                        {{$settings['contact.operator__title']}}
                     </div>
                     <div class="form__form-text text">
-                        Мы всегда готовы проконсультировать вас по
-                        услугам, тарифам и сотрудничеству. Напишите нам,
-                        позвоните или приходите в офис — будем рады
-                        помочь.
+                        {{$settings['contact.operator__subtitle']}}
                     </div>
                     <div class="form__form-box">
-                        <input type="text" placeholder="Имя*" />
-                        <input type="text" placeholder="Фамилия*" />
+                        <input type="text" placeholder="{{$settings['home.input_name']}}" />
+                        <input type="text" placeholder="{{$settings['home.input__family']}}" />
                     </div>
                     <input type="tel" placeholder="Номер телефона*" />
                     <a class="form__form_submit yellow-button" href="##"
-                        >Задать вопрос</a
+                        >{{$settings['blog.form__ask']}}</a
                     >
                 </div>
                 <div class="operator__contacts">

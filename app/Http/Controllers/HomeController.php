@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advise;
 use App\Models\Consultation;
-use App\Models\Consultation;
+use App\Models\Command;
 use App\Models\Faq;
 use App\Models\Frame;
 use App\Models\History;
@@ -37,12 +37,13 @@ class HomeController extends Controller
         $questions = Question::all();
         $benefits = Benefit::all();
 
-        return view('pages.index', ['histories' => $histories, 'questions' => $questions, 'benefits' => $benefits]);
+        return view('pages.index', ['headerContact' => '/#support-form', 'histories' => $histories, 'questions' => $questions, 'benefits' => $benefits]);
     }
 
     public function about()
     {
-        return view('pages.about', ['headerClass' => 'about-header']);
+        $commands = Command::all();
+        return view('pages.about', ['headerContact' => '/#support-form', 'headerClass' => 'about-header', 'commands' => $commands]);
     }
 
     public function services()
@@ -62,19 +63,20 @@ class HomeController extends Controller
             'consultations' => $consultations,
             'advices' => $advices,
             'questions' => $questions,
+            'headerContact' => '#three',
         ]);
     }
 
     public function contact()
     {
-        return view('pages.contact');
+        return view('pages.contact', ['headerContact' => '#contact',]);
     }
 
     public function cases()
     {
         $histories = History::all();
         $slides = Slide::all();
-        return view('pages.cases', ['headerClass' => 'about-header', 'histories' => $histories, 'slides' => $slides]);
+        return view('pages.cases', ['headerContact' => '/#support-form', 'headerClass' => 'about-header', 'histories' => $histories, 'slides' => $slides]);
     }
 
     public function blog()
@@ -85,6 +87,6 @@ class HomeController extends Controller
             return $article->translate($locale);
         })->pluck('type', 'type');
 
-        return view('pages.blog', ['articles' => $articles, 'article_filters' => $article_filters]);
+        return view('pages.blog', ['headerContact' => '#form01', 'articles' => $articles, 'article_filters' => $article_filters]);
     }
 }

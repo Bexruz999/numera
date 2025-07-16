@@ -54,7 +54,7 @@
                         <path class="only-dark" d="M12.7461 19.6992C16.8828 19.6992 20.1875 16.3945 20.1875 12.2695C20.1875 8.15625 16.8594 4.85156 12.7344 4.85156C8.62109 4.85156 5.33984 8.14453 5.33984 12.2695C5.33984 16.4062 8.63281 19.6992 12.7461 19.6992ZM12.7461 17.7422C9.71094 17.7422 7.28516 15.3281 7.28516 12.2695C7.28516 9.22266 9.69922 6.79688 12.7344 6.79688C15.7812 6.79688 18.2305 9.23438 18.2305 12.2695C18.2305 15.3164 15.8047 17.7422 12.7461 17.7422ZM12.7812 2.4375C13.4492 2.4375 13.9883 1.89844 13.9883 1.21875C13.9883 0.539062 13.4492 0 12.7812 0C12.1016 0 11.5625 0.539062 11.5625 1.21875C11.5625 1.89844 12.1016 2.4375 12.7812 2.4375ZM18.3008 3.92578C18.9688 3.92578 19.5078 3.38672 19.5078 2.70703C19.5078 2.02734 18.9688 1.48828 18.3008 1.48828C17.6211 1.48828 17.082 2.02734 17.082 2.70703C17.082 3.38672 17.6211 3.92578 18.3008 3.92578ZM22.3555 7.96875C23.0234 7.96875 23.5625 7.42969 23.5625 6.75C23.5625 6.07031 23.0234 5.53125 22.3555 5.53125C21.6758 5.53125 21.1367 6.07031 21.1367 6.75C21.1367 7.42969 21.6758 7.96875 22.3555 7.96875ZM23.8438 13.5C24.5117 13.5 25.0508 12.9609 25.0508 12.2812C25.0508 11.6016 24.5117 11.0625 23.8438 11.0625C23.1641 11.0625 22.625 11.6016 22.625 12.2812C22.625 12.9609 23.1641 13.5 23.8438 13.5ZM22.3555 19.0312C23.0234 19.0312 23.5625 18.4922 23.5625 17.8125C23.5625 17.1328 23.0234 16.5938 22.3555 16.5938C21.6758 16.5938 21.1367 17.1328 21.1367 17.8125C21.1367 18.4922 21.6758 19.0312 22.3555 19.0312ZM18.3008 23.0742C18.9688 23.0742 19.5078 22.5352 19.5078 21.8555C19.5078 21.1758 18.9688 20.6367 18.3008 20.6367C17.6211 20.6367 17.082 21.1758 17.082 21.8555C17.082 22.5352 17.6211 23.0742 18.3008 23.0742ZM12.7812 24.5625C13.4492 24.5625 13.9883 24.0117 13.9883 23.3438C13.9883 22.6641 13.4492 22.125 12.7812 22.125C12.1016 22.125 11.5625 22.6641 11.5625 23.3438C11.5625 24.0117 12.1016 24.5625 12.7812 24.5625ZM7.26172 23.0742C7.92969 23.0742 8.48047 22.5352 8.48047 21.8555C8.48047 21.1758 7.92969 20.6367 7.26172 20.6367C6.58203 20.6367 6.04297 21.1758 6.04297 21.8555C6.04297 22.5352 6.58203 23.0742 7.26172 23.0742ZM3.20703 19.0312C3.875 19.0312 4.42578 18.4922 4.42578 17.8125C4.42578 17.1328 3.875 16.5938 3.20703 16.5938C2.52734 16.5938 1.98828 17.1328 1.98828 17.8125C1.98828 18.4922 2.52734 19.0312 3.20703 19.0312ZM1.71875 13.5C2.39844 13.5 2.9375 12.9609 2.9375 12.2812C2.9375 11.6016 2.39844 11.0625 1.71875 11.0625C1.03906 11.0625 0.5 11.6016 0.5 12.2812C0.5 12.9609 1.03906 13.5 1.71875 13.5ZM3.20703 7.96875C3.875 7.96875 4.42578 7.42969 4.42578 6.75C4.42578 6.07031 3.875 5.53125 3.20703 5.53125C2.52734 5.53125 1.98828 6.07031 1.98828 6.75C1.98828 7.42969 2.52734 7.96875 3.20703 7.96875ZM7.26172 3.92578C7.92969 3.92578 8.48047 3.38672 8.48047 2.70703C8.48047 2.02734 7.92969 1.48828 7.26172 1.48828C6.58203 1.48828 6.04297 2.02734 6.04297 2.70703C6.04297 3.38672 6.58203 3.92578 7.26172 3.92578Z" fill="#FFB927"/>
                     </svg>
                 </div>
-                <a href="#support-form" class="header__contact">{{__('tr.Talk to the accountant')}}</a>
+                <a href="{{ $headerContact ?? '' }}" class="header__contact">{{__('tr.Talk to the accountant')}}</a>
             </div>
         </header>
 
@@ -242,7 +242,106 @@
                 </div>
             </div>
         </footer>
+        <script>
+            const settings = @json($settings);
+        </script>
 
         <script src="js/index.js"></script>
+        <script>
+            //CALCULATOR LOGIC
+            let selectedMonths = 3; // по умолчанию 3 месяца
+
+            function parseMonths(text) {
+                if (text.includes("год")) return 12;
+                let m = text.match(/\d+/);
+                return m ? parseInt(m[0]) : 3;
+            }
+
+            function updatePrice() {
+                // Получаем форму собственности
+                let formaSobstElement = document.querySelector(".calc__inputs_box-input:first-child .dropdown-simple > a > span");
+                let formaSobst = formaSobstElement ? formaSobstElement.textContent.trim() : "";
+
+                // Получаем организационную форму
+                let orgFormaElement = document.querySelector(".calc__inputs_box-input:nth-child(2) .dropdown-simple > a > span");
+                let orgForma = orgFormaElement ? orgFormaElement.textContent.trim() : "";
+
+                // Получаем вид деятельности
+                let vidDeyatElement = document.querySelector(".calc__inputs_form .dropdown-simple > a > span");
+                let vidDeyat = vidDeyatElement ? vidDeyatElement.textContent.trim() : "";
+
+                // Получаем количество сотрудников
+                let numberInputs = document.querySelectorAll(".calc__inputs_box--2 input[type=number]");
+                let kolSotrudnikov = numberInputs.length > 0 ? parseInt(numberInputs[0].value) || 0 : 0;
+
+                // Получаем оборот
+                let oborot = numberInputs.length > 1 ? parseInt(numberInputs[1].value) || 0 : 0;
+
+                let basePrice = 500000;
+
+                // Коэффициент формы собственности
+                let formaCoef = 1;
+                switch (formaSobst) {
+                    @foreach($settings['home.service__options_property'] as $item)
+                        case "{{ $item['option'] }}":
+                            formaCoef = {{ $item['cof'] }};
+                            break;
+                    @endforeach
+                }
+
+                // Коэффициент организационной формы
+                let orgCoef = 1;
+                switch (orgForma) {
+                    @foreach($settings['home.service__options_from'] as $item)
+                    case "{{ $item['option'] }}":
+                        orgCoef = {{ $item['cof'] }};
+                        break;
+                    @endforeach
+                }
+
+                // Коэффициент вида деятельности
+                let vidCoef = 1;
+                switch (vidDeyat) {
+                    @foreach($settings['home.service__options_main'] as $item)
+                    case "{{ $item['option'] }}":
+                        vidCoef = {{ $item['cof'] }};
+                        break;
+                    @endforeach
+                }
+
+                // Расчет цены за месяц
+                let pricePerMonth = basePrice + kolSotrudnikov * 100000 + oborot * 0.05;
+                pricePerMonth = pricePerMonth * formaCoef * orgCoef * vidCoef;
+
+                // Общая цена
+                let totalPrice = pricePerMonth * selectedMonths;
+
+                // Форматирование цен
+                let priceFormatted = pricePerMonth
+                    .toFixed(0)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                let totalFormatted = totalPrice
+                    .toFixed(0)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+                // Обновление DOM элементов
+                let priceSpan = document.querySelector(".calc__content_content-price span");
+                if (priceSpan) {
+                    priceSpan.textContent = priceFormatted + " {{$settings['home.text__content_currency']}}";
+                }
+
+                let priceP = document.querySelector(".calc__content_content-price p");
+                if (priceP) {
+                    priceP.textContent = "{{$settings['home.text__content']}}";
+                }
+
+                let priceDiv = document.querySelector(".calc__content_content-price div");
+                if (priceDiv) {
+                    priceDiv.textContent = totalFormatted + " {{$settings['home.text__content_sum']}} " +
+                        (selectedMonths === 12 ? "год" : selectedMonths + " {{$settings['home.text__content_month']}}");
+                }
+            }
+        </script>
+
     </body>
 </html>

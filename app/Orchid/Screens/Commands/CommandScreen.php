@@ -65,7 +65,9 @@ class CommandScreen extends Screen
             Layout::modal('create', [
                 Layout::rows([
                     Picture::make('command.img')
-                        ->title('Image'),
+                        ->title('Image')
+                        ->targetRelativeUrl(),
+
                     Matrix::make('command.social')
                         ->title('Social')
                         ->columns([
@@ -101,7 +103,8 @@ class CommandScreen extends Screen
             Layout::modal('edit', [
                 Layout::rows([
                     Picture::make('command.img')
-                        ->title('Image'),
+                        ->title('Image')
+                        ->targetRelativeUrl(),
                     Matrix::make('command.social')
                         ->title('Social')
                         ->columns([
