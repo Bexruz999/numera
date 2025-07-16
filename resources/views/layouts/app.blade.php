@@ -242,9 +242,6 @@
                 </div>
             </div>
         </footer>
-        <script>
-            const settings = @json($settings);
-        </script>
 
         <script>
             const settings = @json($settings);
