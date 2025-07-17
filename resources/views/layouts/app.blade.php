@@ -312,7 +312,7 @@
                 }
 
                 // Расчет цены за месяц
-                let pricePerMonth = basePrice + kolSotrudnikov * 100000 + oborot * 0.05;
+                let pricePerMonth = basePrice + kolSotrudnikov * 10000 + oborot * 0.05;
                 pricePerMonth = pricePerMonth * formaCoef * orgCoef * vidCoef;
 
                 // Общая цена

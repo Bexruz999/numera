@@ -43,41 +43,43 @@ class PlatformProvider extends OrchidServiceProvider
                         ->url(route('set-locale', ['locale' => 'ru']))
                         ->active(($this->locale === 'ru') ? 'active' : null),
                 ])
-                ->title('Locale'),
+                ->title('admin.Locale'),
 
-            Menu::make('Articles')
+            ////////////////////////////////////
+            Menu::make(__('admin.Articles'))
                 ->icon('newspaper')
-                ->route('platform.articles'),
+                ->route('platform.articles')
+                ->title(__('admin.Blocks')),
 
-            Menu::make('Frame')
+            Menu::make('admin.Frame')
                 ->icon('bs.window')
                 ->route('platform.frame'),
 
-            Menu::make('History')
+            Menu::make('admin.History')
                 ->icon('bs.window')
                 ->route('platform.history'),
 
-            Menu::make('Questions')
+            Menu::make('admin.Questions')
                 ->icon('bs.question-circle')
                 ->route('platform.questions'),
 
-            Menu::make('Consultations')
+            Menu::make('admin.Consultations')
                 ->icon('bs.chat-square-text')
                 ->route('platform.consultations'),
 
-            Menu::make('Advises')
+            Menu::make('admin.Advises')
                 ->icon('bs.lightbulb')
                 ->route('platform.advises'),
 
-            Menu::make('Slides')
+            Menu::make('admin.Slides')
                 ->icon('bs.file-slides')
                 ->route('platform.slides'),
 
-            Menu::make('Benefits')
+            Menu::make('admin.Benefits')
                 ->icon('bs.shield-check')
                 ->route('platform.benefits'),
 
-            Menu::make('Commands')
+            Menu::make('admin.Commands')
                 ->icon('bs.command')
                 ->route('platform.commands'),
 
@@ -113,18 +115,18 @@ class PlatformProvider extends OrchidServiceProvider
 //                ->route('platform.example.cards')
 //                ->divider(),
 
-            Menu::make(__('Users'))
+            Menu::make(__('admin.Users'))
                 ->icon('bs.people')
                 ->route('platform.systems.users')
                 ->permission('platform.systems.users')
-                ->title(__('Access Controls')),
+                ->title(__('admin.Access')),
 
-            Menu::make('Settings')
+            Menu::make('admin.Settings')
                 ->icon('bs.gear')
                 ->route('platform.settings')
                 ->permission('platform.systems.users'),
 
-            Menu::make(__('Roles'))
+            Menu::make(__('admin.Roles'))
                 ->icon('bs.shield')
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles')

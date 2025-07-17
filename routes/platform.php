@@ -44,7 +44,7 @@ use Tabuna\Breadcrumbs\Trail;
 */
 
 // Main
-Route::screen('/main', PlatformScreen::class)
+Route::screen('/main', ArticlesScreen::class)
     ->name('platform.main');
 
 // Articles
