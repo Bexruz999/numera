@@ -91,7 +91,7 @@
                                     </li>
                                     @foreach($settings['footer.social_networks'] as $setting)
                                         <li>
-                                            <a href="{{ $setting['link'] }}">
+                                            <a target="_blank" href="{{ $setting['link'] }}">
                                                 <img
                                                     src="{{ $setting['icon'] }}"
                                                     alt="#"
@@ -196,7 +196,7 @@
                                     </li>
                                     @foreach($settings['footer.email'] as $email)
                                         <li>
-                                            <a href="{{ $email['email'] }}">
+                                            <a href="mail:{{ $email['email'] }}">
                                                 <span>{{ $email['email'] }}</span>
                                             </a>
                                         </li>
