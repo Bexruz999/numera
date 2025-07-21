@@ -19,7 +19,7 @@
                 {{$settings['cases.text']}}
             </div>
             <a
-                href="/index.html#support-form"
+                href="{{$settings['cases.btn_link']}}"
                 class="result__button yellow-button"
                 >{{$settings['cases.btn_text']}}</a
             >
@@ -80,7 +80,7 @@
                 {{$settings['cases.want_text']}}
             </div>
             <a
-                href="/index.html#support-form"
+                href="{{$settings['cases.want_btn_link']}}"
                 class="want__button yellow-button-big"
                 >{{$settings['cases.want_btn_text']}}</a
             >

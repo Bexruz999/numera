@@ -13,6 +13,11 @@ Route::get('/set-locale/{locale}', function ($locale) {
     return redirect()->back();
 })->name('set-locale');
 
+Route::get('change-theme', function () {
+    Session::put('theme', Session::get('theme') === 'dark' ? 'light' : 'dark');
+    return redirect()->back();
+})->name('change-theme');
+
 // Публичные страницы
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
