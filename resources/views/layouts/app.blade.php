@@ -191,10 +191,10 @@
                                             <span>Email</span>
                                         </div>
                                     </li>
-                                    @foreach($settings['footer.email'] as $email)
+                                    @foreach($settings['footer.email__links'] as $email)
                                         <li>
-                                            <a href="{{ $email['email'] }}" target="_blank">
-                                                <span>{{ $email['email'] }}</span>
+                                            <a href="{{ $email['email_link'] }}" target="_blank">
+                                                <span>{{ $email['email_name'] }}</span>
                                             </a>
                                         </li>
                                     @endforeach
