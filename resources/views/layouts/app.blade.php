@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="icon" type="image/x-icon" href="../img/png/favicon.png" />
     </head>
-    <body class="{{ session()->get('theme') === 'dark' ? '' : 'light' }}">
+    <body class="{{ session('theme') === 'dark' ? '' : 'light' }}">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCGMWR75"
                       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -357,13 +357,6 @@
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log(data); // Olingan ma'lumotlarni ko'rsatish
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
                     });
             }
         </script>
