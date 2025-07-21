@@ -13877,7 +13877,7 @@
                             </label>
                             <div class="calc__inputs_production">
                                 <input type="number" value="0"/>
-                                <label for="##">Производство</label>
+                                <label for="##">{{ $settings['home.calc__inputs_production'] }}</label>
                             </div>
                         </div>
                         <div class="calc__inputs_box-item">
