@@ -14281,7 +14281,7 @@
                         </a>
 
                         <a
-                            href="{{ $settings['home.support__mail'] }}"
+                            href="{{ $settings['home.support__mail_link'] }}"
                             class="support__columns-item"
                         >
                             <div class="support__columns-item_img">
