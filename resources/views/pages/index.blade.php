@@ -13684,7 +13684,7 @@
                     <input autocomplete="phone" name="phone" type="text" placeholder="Ваш номер"/>
 
                     <a href="##" class="service__bottom_button button"
-                    >Получить консультацию</a
+                    >{{ $settings['home.main_btn'] }}</a
                     >
                 </div>
             </div>
