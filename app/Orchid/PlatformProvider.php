@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
-use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
 use Illuminate\Support\Facades\Session;
-use Orchid\Support\Color;
 
 class PlatformProvider extends OrchidServiceProvider
 {
@@ -46,74 +44,61 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title('admin.Locale'),
 
             ////////////////////////////////////
-            Menu::make(__('admin.Articles'))
-                ->icon('newspaper')
-                ->route('platform.articles')
-                ->title(__('admin.Blocks')),
 
-            Menu::make('admin.Frame')
+            Menu::make('admin.Categories')
                 ->icon('bs.window')
-                ->route('platform.frame'),
+                ->route('platform.categories'),
 
-            Menu::make('admin.History')
-                ->icon('bs.window')
-                ->route('platform.history'),
+            Menu::make('Products')
+                ->icon('bs.box-seam')
+                ->route('platform.products'),
 
-            Menu::make('admin.Questions')
-                ->icon('bs.question-circle')
-                ->route('platform.questions'),
+            Menu::make('Banners')
+                ->icon('bs.image')
+                ->route('platform.banners'),
 
-            Menu::make('admin.Consultations')
-                ->icon('bs.chat-square-text')
-                ->route('platform.consultations'),
+            Menu::make('Sliders')
+                ->icon('bs.image')
+                ->route('platform.sliders'),
 
-            Menu::make('admin.Advises')
-                ->icon('bs.lightbulb')
-                ->route('platform.advises'),
+            Menu::make('Brands')
+                ->icon('bs.bookmark-star')
+                ->route('platform.brands'),
 
-            Menu::make('admin.Slides')
-                ->icon('bs.file-slides')
-                ->route('platform.slides'),
 
-            Menu::make('admin.Benefits')
-                ->icon('bs.shield-check')
-                ->route('platform.benefits'),
+            Menu::make('Get Started')
+                ->icon('bs.book')
+                ->title('Navigation')
+                ->route(config('platform.index')),
 
-            Menu::make('admin.Commands')
-                ->icon('bs.command')
-                ->route('platform.commands'),
+            Menu::make('Sample Screen')
+                ->icon('bs.collection')
+                ->route('platform.example')
+                ->badge(fn() => 6),
 
-//            Menu::make('Get Started')
-//                ->icon('bs.book')
-//                ->title('Navigation')
-//                ->route(config('platform.index')),
-//
-//            Menu::make('Sample Screen')
-//                ->icon('bs.collection')
-//                ->route('platform.example')
-//                ->badge(fn() => 6),
-//
-//            Menu::make('Form Elements')
-//                ->icon('bs.card-list')
-//                ->route('platform.example.fields')
-//                ->active('*/examples/form/*'),
-//
-//            Menu::make('Layouts Overview')
-//                ->icon('bs.window-sidebar')
-//                ->route('platform.example.layouts'),
-//
-//            Menu::make('Grid System')
-//                ->icon('bs.columns-gap')
-//                ->route('platform.example.grid'),
-//
-//            Menu::make('Charts')
-//                ->icon('bs.bar-chart')
-//                ->route('platform.example.charts'),
-//
-//            Menu::make('Cards')
-//                ->icon('bs.card-text')
-//                ->route('platform.example.cards')
-//                ->divider(),
+            Menu::make('Form Elements')
+                ->icon('bs.card-list')
+                ->route('platform.example.fields')
+                ->active('*/examples/form/*'),
+
+            Menu::make('Layouts Overview')
+                ->icon('bs.window-sidebar')
+                ->route('platform.example.layouts'),
+
+            Menu::make('Grid System')
+                ->icon('bs.columns-gap')
+                ->route('platform.example.grid'),
+
+            Menu::make('Charts')
+                ->icon('bs.bar-chart')
+                ->route('platform.example.charts'),
+
+            Menu::make('Cards')
+                ->icon('bs.card-text')
+                ->route('platform.example.cards')
+                ->divider(),
+
+            /////////////////////////
 
             Menu::make(__('admin.Users'))
                 ->icon('bs.people')
@@ -132,17 +117,6 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
-//            Menu::make('Documentation')
-//                ->title('Docs')
-//                ->icon('bs.box-arrow-up-right')
-//                ->url('https://orchid.software/en/docs')
-//                ->target('_blank'),
-//
-//            Menu::make('Changelog')
-//                ->icon('bs.box-arrow-up-right')
-//                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-//                ->target('_blank')
-//                ->badge(fn() => Dashboard::version(), Color::DARK),
         ];
     }
 

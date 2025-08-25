@@ -32,6 +32,10 @@ return new class extends Migration {
      */
     public function down(): void
     {
+
+        Schema::dropIfExists('article_translations');
+
+        // Then drop parent table
         Schema::dropIfExists('articles');
     }
 };

@@ -65,13 +65,6 @@ class ArticlesScreen extends Screen
             ArticleTable::class,
 
             Layout::modal('createArticle', [
-                Layout::rows([
-                    Picture::make('article.img')
-                        ->title('Image')
-                        ->targetRelativeUrl()
-                        ->required()
-                        ->help('Upload an image for the article'),
-                ]),
                 Layout::tabs([
                     'Create UZ' => Layout::rows([
                         Input::make('article.title.uz')
@@ -99,7 +92,14 @@ class ArticlesScreen extends Screen
                             ->placeholder('Select the type of the article')
                             ->required(),
                     ]),
-                ])
+                ]),
+                Layout::rows([
+                    Picture::make('article.img')
+                        ->title('Image')
+                        ->targetRelativeUrl()
+                        ->required()
+                        ->help('Upload an image for the article'),
+                ]),
             ]),
 
             Layout::modal('editArticle', [

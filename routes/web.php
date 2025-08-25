@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;  // Add this
 
 Route::get('/', function () {
-    return view('orchid.custom-tabs');
+    return view('welcome');
 });
 
 Route::get('/set-locale/{locale}', function ($locale) {
@@ -19,9 +19,3 @@ Route::get('change-theme', function () {
 })->name('change-theme');
 
 // Публичные страницы
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/services', [HomeController::class, 'services'])->name('services');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/cases', [HomeController::class, 'cases'])->name('cases');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');

@@ -36,8 +36,8 @@ class ExampleFieldsAdvancedScreen extends Screen
         return [
             'name'  => 'Hello! We collected all the fields in one place',
             'place' => [
-                'lat' => 37.181244855427394,
-                'lng' => -3.6021993309259415,
+                'lat' => 41.04814614918556,
+                'lng' => 69.36346816404176,
             ],
         ];
     }

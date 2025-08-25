@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 
 use App\Orchid\Screens\Advises\AdviseScreen;
-use App\Orchid\Screens\Articles\ArticlesScreen;
+use App\Orchid\Screens\Banners\BannerScreen;
 use App\Orchid\Screens\Benefits\BenefitsScreen;
+use App\Orchid\Screens\Brands\BrandsScreen;
+use App\Orchid\Screens\Categories\CategoriesScreen;
 use App\Orchid\Screens\Commands\CommandScreen;
 use App\Orchid\Screens\Consultations\ConsultationScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
@@ -17,15 +19,15 @@ use App\Orchid\Screens\Examples\ExampleGridScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use App\Orchid\Screens\Frames\FramesScreen;
 use App\Orchid\Screens\History\HistoryScreen;
-use App\Orchid\Screens\PlatformScreen;
+use App\Orchid\Screens\Products\ProductsScreen;
 use App\Orchid\Screens\Questions\QuestionScreen;
 use App\Orchid\Screens\Reviews\ReviewScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
-use App\Orchid\Screens\Frames\FramesScreen;
 use App\Orchid\Screens\SettingsScreen;
-use App\Orchid\Screens\Slides\SlideScreen;
+use App\Orchid\Screens\Sliders\SliderScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
@@ -44,47 +46,24 @@ use Tabuna\Breadcrumbs\Trail;
 */
 
 // Main
-Route::screen('/main', ArticlesScreen::class)
+Route::screen('/main', SettingsScreen::class)
     ->name('platform.main');
 
-// Articles
-Route::screen('/articles', ArticlesScreen::class)
-    ->name('platform.articles');
+Route::screen('/categories', CategoriesScreen::class)
+    ->name('platform.categories');
 
-//Frame
-Route::screen('/frame', FramesScreen::class)
-    ->name('platform.frame');
+Route::screen('/products', ProductsScreen::class)
+    ->name('platform.products');
 
-//History
-Route::screen('/history', HistoryScreen::class)
-    ->name('platform.history');
+Route::screen('/banners', BannerScreen::class)
+    ->name('platform.banners');
 
-//Questions
-Route::screen('/question', QuestionScreen::class)
-    ->name('platform.questions');
+Route::screen('/sliders', SliderScreen::class)
+    ->name('platform.sliders');
 
-//Consultations
-Route::screen('/consultations', ConsultationScreen::class)
-    ->name('platform.consultations');
+Route::screen('/brands', BrandsScreen::class)
+    ->name('platform.brands');
 
-//Advises
-Route::screen('/advises', AdviseScreen::class)
-    ->name('platform.advises');
-
-//Slides
-Route::screen('/slides', SlideScreen::class)
-    ->name('platform.slides');
-
-//Slides
-Route::screen('/benefits', BenefitsScreen::class)
-    ->name('platform.benefits');
-
-//Commands
-Route::screen('/commands',CommandScreen::class)
-    ->name('platform.commands');
-
-
-///////////////////////////////////////////////////////////////
 
 // Settings
 Route::screen('/settings', SettingsScreen::class)

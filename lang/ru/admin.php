@@ -16,4 +16,5 @@ return [
     'Locale' => 'Язык',
     'Access' => 'Управление',
     'Blocks' => 'Блоки',
+    'Categories' => 'Категории',
 ];

@@ -16,4 +16,5 @@ return [
     'Locale' => 'Til',
     'Access' => 'Boshqarish',
     'Blocks' => 'Bloklar',
+    'Categories' => 'Kategoriyalar',
 ];
